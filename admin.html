@@ -622,6 +622,9 @@ function doLogin(){
   if(document.getElementById('pw').value===PW){
     document.getElementById('ls').style.display='none';
     document.getElementById('app').classList.add('show');
+    // Load local data immediately so admin is usable right away
+    loadState(); renderAll(); showPage('dashboard');
+    // Then sync from live in the background
     syncFromLive();
   } else {
     const e=document.getElementById('lerr');
