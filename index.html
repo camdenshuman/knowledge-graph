@@ -1076,23 +1076,29 @@ function doSearch(t){
   g.selectAll('g').each(function(d){
     if(!m.has(d.id)) return;
     const el=d3.select(this);
-    const r=R[d.type]||14;
-    // Outer gold ring
-    el.insert('circle','circle')
+    const r=(R[d.type]||14);
+    // Remove any existing glow on this node first
+    el.selectAll('.node-glow').remove();
+    // Append glow AFTER main circle so it renders on top
+    const glow=el.append('circle')
       .attr('class','node-glow')
-      .attr('r',r+12)
+      .attr('r',r+8)
       .attr('fill','none')
       .attr('stroke','#D4A017')
-      .attr('stroke-width',2.5)
+      .attr('stroke-width',3)
       .attr('stroke-opacity',0)
-      .transition().duration(400).ease(d3.easeSinOut)
-      .attr('stroke-opacity',.7)
-      .transition().duration(800).ease(d3.easeSinInOut)
-      .attr('r',r+18)
-      .attr('stroke-opacity',.3)
-      .transition().duration(600)
-      .attr('r',r+13)
-      .attr('stroke-opacity',.6);
+      .attr('pointer-events','none');
+    // Animate: fade in, expand, pulse
+    function pulse(circ){
+      circ.transition().duration(350).ease(d3.easeSinOut)
+        .attr('r',r+10).attr('stroke-opacity',.85)
+        .transition().duration(600).ease(d3.easeSinInOut)
+        .attr('r',r+18).attr('stroke-opacity',.25)
+        .transition().duration(500).ease(d3.easeSinOut)
+        .attr('r',r+10).attr('stroke-opacity',.8)
+        .on('end',()=>{ if(!el.selectAll('.node-glow').empty()) pulse(circ); });
+    }
+    pulse(glow);
   });
 
   // Pan + zoom to center the matching nodes
