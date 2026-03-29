@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Graph — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fff;--sf:#F8F8F8;--sf2:#F1F1F1;--bd:#E2E2E2;--bds:#C0C0C0;
+  --tx:#0F0F0F;--mu:#5A5A5A;--di:#9A9A9A;
+  --red:#C41C1C;--rl:#FDF0F0;--rm:#E8BCBC;
+  --blue:#1A4DAD;--bl:#EEF3FC;--bm:#B3C5E8;
+  --grn:#1A7A3C;--gl:#EDF7F2;--gm:#A8D8B8;
+  --org:#B85C00;--ol:#FDF4EC;
+  --pur:#6B3FA0;--pl:#F3EDFB;
+}
+html,body{height:100%;font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);overflow:hidden}
+
+/* LOGIN */
+#ls{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999}
+.lc{width:380px;padding:48px 40px;border:2px solid var(--tx);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.14)}
+.lc .brand{display:flex;align-items:center;gap:10px;margin-bottom:32px}
+.lc .bbar{width:4px;height:28px;background:var(--red);border-radius:2px}
+.lc .bname{font-family:'Playfair Display',serif;font-size:20px;font-weight:700}
+.lc .bsub{font-size:11px;color:var(--di);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.lc label{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin-bottom:6px}
+.lc input{width:100%;padding:11px 14px;border:1.5px solid var(--bd);border-radius:5px;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .15s;margin-bottom:16px}
+.lc input:focus{border-color:var(--blue)}
+.lc button{width:100%;padding:12px;background:var(--tx);color:#fff;border:none;border-radius:5px;font-size:14px;font-weight:600;cursor:pointer}
+.lc button:hover{opacity:.88}
+.lerr{font-size:12px;color:var(--red);margin-top:10px;display:none}
+
+/* APP */
+#app{display:none;height:100vh;flex-direction:column}
+#app.show{display:flex}
+
+/* TOPBAR */
+#tb{height:56px;display:flex;align-items:center;padding:0 20px;gap:10px;border-bottom:2px solid var(--tx);background:#fff;flex-shrink:0;z-index:50}
+.tb-bar{width:4px;height:24px;background:var(--red);border-radius:2px}
+.tb-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700}
+.tb-badge{background:var(--red);color:#fff;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+.tb-right{margin-left:auto;display:flex;gap:8px;align-items:center}
+.tb-info{font-size:12px;color:var(--di)}
+.btn-exp{padding:7px 14px;background:var(--blue);color:#fff;border:none;border-radius:4px;font-size:12px;font-weight:600;cursor:pointer}
+.btn-exp:hover{opacity:.88}
+.btn-out{padding:6px 12px;background:transparent;color:var(--mu);border:1.5px solid var(--bd);border-radius:4px;font-size:12px;cursor:pointer}
+.btn-out:hover{border-color:var(--red);color:var(--red)}
+
+/* BODY */
+#body{display:flex;flex:1;overflow:hidden}
+
+/* SIDEBAR */
+#sb{width:196px;border-right:1px solid var(--bd);padding:12px 0 24px;flex-shrink:0;overflow-y:auto;background:var(--sf)}
+.ns{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--di);padding:14px 16px 5px}
+.ni{display:flex;align-items:center;gap:9px;padding:9px 16px;cursor:pointer;font-size:13px;color:var(--mu);border-left:3px solid transparent;transition:all .12s;user-select:none}
+.ni:hover{background:var(--sf2);color:var(--tx)}
+.ni.active{background:#fff;color:var(--blue);border-left-color:var(--blue);font-weight:600}
+.ndot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.nc{margin-left:auto;font-size:11px;background:var(--sf2);padding:1px 7px;border-radius:100px;color:var(--mu)}
+.ni.active .nc{background:var(--bl);color:var(--blue)}
+
+/* MAIN */
+#main{flex:1;overflow-y:auto;padding:28px 32px 80px}
+.pg{display:none}
+.pg.active{display:block}
+
+/* PAGE HEADERS */
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.pt{font-family:'Playfair Display',serif;font-size:22px}
+.cp{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;background:var(--sf);border:1px solid var(--bd);color:var(--mu)}
+.btn-p{margin-left:auto;padding:9px 18px;background:var(--tx);color:#fff;border:none;border-radius:5px;font-size:13px;font-weight:600;cursor:pointer}
+.btn-p:hover{opacity:.82}
+.btn-s{padding:8px 14px;background:transparent;color:var(--tx);border:1.5px solid var(--bd);border-radius:5px;font-size:13px;font-weight:500;cursor:pointer}
+.btn-s:hover{border-color:var(--tx)}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--di);padding:9px 14px;border-bottom:2px solid var(--bd)}
+.tbl td{padding:11px 14px;border-bottom:1px solid var(--bd);vertical-align:middle;font-size:13px}
+.tbl tr:hover td{background:#FAFAFA}
+.tbl tr:last-child td{border-bottom:none}
+.ct{font-weight:600}
+.cs{font-size:12px;color:var(--mu);margin-top:1px}
+.sp{display:inline-block;font-size:10px;font-weight:700;padding:2px 9px;border-radius:100px;letter-spacing:.04em;white-space:nowrap}
+.sr{background:var(--gl);color:var(--grn);border:1px solid var(--gm)}
+.sg{background:var(--bl);color:var(--blue);border:1px solid var(--bm)}
+.sw{background:var(--ol);color:var(--org);border:1px solid #DCA86A}
+.ctags{display:flex;flex-wrap:wrap;gap:4px}
+.ctag{font-size:10px;padding:2px 8px;border-radius:3px;background:var(--bl);color:var(--blue);border:1px solid var(--bm);white-space:nowrap}
+.stars{color:var(--red);letter-spacing:1px;font-size:12px}
+.rbtns{display:flex;gap:6px}
+.bsm{padding:5px 11px;font-size:11px;font-weight:600;border-radius:4px;cursor:pointer;border:1.5px solid var(--bd);background:transparent;color:var(--mu);transition:all .12s}
+.bsm.ed:hover{border-color:var(--blue);color:var(--blue)}
+.bsm.dl:hover{border-color:var(--red);color:var(--red)}
+
+/* FORMS */
+.fg{margin-bottom:18px}
+.fg:last-child{margin-bottom:0}
+.fg label{display:block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mu);margin-bottom:6px}
+.fg .hint{font-size:11px;color:var(--di);margin-top:4px}
+.fi,.fsel,.fta{width:100%;padding:9px 12px;border:1.5px solid var(--bd);border-radius:5px;font-family:'Inter',sans-serif;font-size:13px;color:var(--tx);outline:none;transition:border-color .15s;background:#fff}
+.fi:focus,.fsel:focus,.fta:focus{border-color:var(--blue)}
+.fta{resize:vertical;min-height:88px;line-height:1.65}
+.fta.tall{min-height:160px}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.fsp{grid-column:1/-1}
+
+/* STARS */
+.srow{display:flex;gap:4px;margin-top:2px}
+.sbtn{font-size:22px;cursor:pointer;color:var(--bd);transition:color .1s;background:none;border:none;padding:0;line-height:1}
+.sbtn.on{color:var(--red)}
+
+/* TAG INPUT */
+.tbox{display:flex;flex-wrap:wrap;gap:6px;padding:8px 10px;border:1.5px solid var(--bd);border-radius:5px;min-height:46px;cursor:text;transition:border-color .15s}
+.tbox:focus-within{border-color:var(--blue)}
+.ti{display:flex;align-items:center;gap:4px;background:var(--sf);border:1px solid var(--bd);border-radius:4px;padding:3px 8px;font-size:12px}
+.ti button{background:none;border:none;cursor:pointer;color:var(--di);font-size:15px;line-height:1;padding:0;margin-left:1px}
+.ti button:hover{color:var(--red)}
+.tinput{border:none;outline:none;font-size:12px;font-family:'Inter',sans-serif;flex:1;min-width:100px;background:transparent}
+
+/* CONCEPT CBS */
+.cbg{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.cbr{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:4px;cursor:pointer;font-size:12px;border:1px solid transparent}
+.cbr:hover{background:var(--sf);border-color:var(--bd)}
+.cbr input{accent-color:var(--blue);width:14px;height:14px}
+
+/* CHAPTERS */
+.chw{display:flex;flex-direction:column;gap:10px}
+.chc{border:1.5px solid var(--bd);border-radius:6px;overflow:hidden}
+.chh{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--sf);cursor:pointer}
+.chn{width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chti{flex:1;border:none;background:transparent;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;outline:none;color:var(--tx)}
+.chb{padding:14px;border-top:1px solid var(--bd);display:none}
+.chb.open{display:block}
+.chtog{margin-left:auto;font-size:14px;color:var(--mu);transition:transform .2s}
+.chtog.open{transform:rotate(180deg)}
+.chdel{background:none;border:none;color:var(--di);cursor:pointer;font-size:16px;padding:2px}
+.chdel:hover{color:var(--red)}
+.addbtn{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1.5px dashed var(--bd);border-radius:6px;font-size:13px;color:var(--mu);cursor:pointer;background:transparent;width:100%}
+.addbtn:hover{border-color:var(--blue);color:var(--blue);background:var(--bl)}
+
+/* OVERLAYS */
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-start;justify-content:center;z-index:400;overflow-y:auto;padding:40px 16px}
+.ov.open{display:flex}
+.mo{background:#fff;border-radius:8px;border:2px solid var(--tx);width:680px;max-width:96vw;box-shadow:0 8px 32px rgba(0,0,0,.14);margin:auto}
+.mo.wide{width:820px}
+.mh{padding:22px 26px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:flex-start;gap:12px}
+.mht h2{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:3px}
+.mht p{font-size:12px;color:var(--mu);line-height:1.5}
+.mhc{width:30px;height:30px;border:1.5px solid var(--bd);border-radius:4px;background:transparent;cursor:pointer;color:var(--mu);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto}
+.mhc:hover{border-color:var(--tx);color:var(--tx)}
+.mb{padding:26px}
+.mf{padding:16px 26px;border-top:1px solid var(--bd);display:flex;gap:10px;justify-content:flex-end;align-items:center}
+.mfn{font-size:11px;color:var(--di);margin-right:auto}
+
+/* DASHBOARD */
+.dg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.dc{border:1.5px solid var(--bd);border-radius:8px;padding:20px 22px}
+.dn{font-size:36px;font-family:'Playfair Display',serif;font-weight:700;line-height:1;margin-bottom:4px}
+.dl{font-size:11px;color:var(--mu);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.dn.red{color:var(--red)}.dn.blue{color:var(--blue)}.dn.grn{color:var(--grn)}.dn.blk{color:var(--tx)}
+.ac{border:1.5px solid var(--bd);border-radius:8px;overflow:hidden}
+.ah{padding:14px 20px;border-bottom:1px solid var(--bd);font-weight:600;font-size:14px;display:flex;align-items:center;gap:10px}
+.ah span{font-size:11px;color:var(--mu);font-weight:400;margin-left:auto}
+.ar{display:flex;align-items:center;gap:12px;padding:10px 20px;border-bottom:1px solid var(--bd);font-size:13px}
+.ar:last-child{border-bottom:none}
+.ar:hover{background:var(--sf)}
+.adot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.atit{font-weight:600;flex:1}
+.aau{color:var(--mu);font-size:12px;min-width:140px}
+.ast{min-width:80px}
+.arat{color:var(--red);font-size:12px;min-width:70px;text-align:right}
+.aed{font-size:11px;color:var(--blue);cursor:pointer;opacity:0}
+.ar:hover .aed{opacity:1}
+
+/* CONNECTIONS */
+.cnh{display:flex;gap:12px;align-items:flex-end;margin-bottom:20px;padding:18px;background:var(--sf);border:1px solid var(--bd);border-radius:8px}
+.cnc{border:1.5px solid var(--bd);border-radius:8px;overflow:hidden}
+.cnch{padding:12px 18px;background:var(--sf);border-bottom:1px solid var(--bd);font-weight:600;font-size:13px}
+.cnl{max-height:400px;overflow-y:auto}
+.cnr{display:flex;align-items:center;gap:8px;padding:9px 18px;border-bottom:1px solid var(--bd);font-size:12px}
+.cnr:last-child{border-bottom:none}
+.cnr:hover{background:var(--sf)}
+.cnbk{color:var(--red);font-weight:600;flex:1}
+.cnar{color:var(--di)}
+.cnco{color:var(--blue);flex:1}
+.cnd{background:none;border:none;color:var(--di);cursor:pointer;font-size:16px}
+.cnd:hover{color:var(--red)}
+
+/* IMPORT/EXPORT */
+.ib{border:1.5px solid var(--bd);border-radius:8px;padding:24px;margin-bottom:20px}
+.ib h3{font-weight:700;margin-bottom:6px;font-size:15px}
+.ib p{font-size:13px;color:var(--mu);margin-bottom:16px;line-height:1.6}
+.pli{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid var(--bd)}
+.pli:last-child{border-bottom:none}
+.plt{flex:1}
+.pltit{font-weight:600;font-size:13px;margin-bottom:2px}
+.plsub{font-size:12px;color:var(--mu);line-height:1.5}
+.esteps{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.esr{display:flex;gap:12px;align-items:flex-start;font-size:13px}
+.esc{width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.est{flex:1;line-height:1.5;padding-top:3px}
+code{background:var(--sf);padding:1px 6px;border-radius:3px;font-size:12px;border:1px solid var(--bd)}
+
+/* HOSTING CARDS */
+.hc{border:1.5px solid var(--bd);border-radius:8px;padding:22px;margin-bottom:18px}
+.hc h3{font-weight:700;font-size:15px;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.hc p{font-size:13px;color:var(--mu);line-height:1.65;margin-bottom:10px}
+.hc p:last-child{margin-bottom:0}
+.hc.blue{border-color:var(--blue);background:var(--bl)}
+.hc.blue p{color:var(--blue)}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.05em;text-transform:uppercase}
+.b-bl{background:var(--bl);color:var(--blue);border:1px solid var(--bm)}
+.b-rd{background:var(--rl);color:var(--red);border:1px solid var(--rm)}
+.b-gn{background:var(--gl);color:var(--grn);border:1px solid var(--gm)}
+
+/* TOAST */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--tx);color:#fff;padding:10px 20px;border-radius:5px;font-size:13px;z-index:9000;opacity:0;pointer-events:none;transition:opacity .25s;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.14)}
+#toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<div id="ls">
+  <div class="lc">
+    <div class="brand"><div class="bbar"></div><div><div class="bname">Knowledge Graph</div><div class="bsub">Admin Panel</div></div></div>
+    <label>Password</label>
+    <input type="password" id="pw" placeholder="Enter admin password" />
+    <button onclick="doLogin()">Sign In →</button>
+    <div class="lerr" id="lerr">Incorrect password.</div>
+  </div>
+</div>
+
+<div id="app">
+  <div id="tb">
+    <div class="tb-bar"></div>
+    <div class="tb-title">Camden's Knowledge Graph</div>
+    <div class="tb-badge">ADMIN</div>
+    <div class="tb-right">
+      <span class="tb-info" id="tbinfo"></span>
+      <button class="btn-exp" onclick="showPage('export')">↓ Export</button>
+      <button class="btn-out" onclick="doLogout()">Logout</button>
+    </div>
+  </div>
+  <div id="body">
+    <div id="sb">
+      <div class="ns">Overview</div>
+      <div class="ni active" data-page="dashboard" onclick="showPage('dashboard')"><div class="ndot" style="background:#111"></div>Dashboard</div>
+      <div class="ns">Content</div>
+      <div class="ni" data-page="books" onclick="showPage('books')"><div class="ndot" style="background:#C41C1C"></div>Books<span class="nc" id="nc-books">0</span></div>
+      <div class="ni" data-page="concepts" onclick="showPage('concepts')"><div class="ndot" style="background:#1A4DAD"></div>Concepts<span class="nc" id="nc-concepts">0</span></div>
+      <div class="ni" data-page="authors" onclick="showPage('authors')"><div class="ndot" style="background:#111"></div>Authors<span class="nc" id="nc-authors">0</span></div>
+      <div class="ni" data-page="connections" onclick="showPage('connections')"><div class="ndot" style="background:#555"></div>Connections</div>
+      <div class="ns">Tools</div>
+      <div class="ni" data-page="import" onclick="showPage('import')"><div class="ndot" style="background:#1A7A3C"></div>Import Books</div>
+      <div class="ni" data-page="export" onclick="showPage('export')"><div class="ndot" style="background:#B85C00"></div>Export & Deploy</div>
+      <div class="ni" data-page="hosting" onclick="showPage('hosting')"><div class="ndot" style="background:#6B3FA0"></div>Framer Hosting</div>
+    </div>
+    <div id="main">
+
+      <!-- DASHBOARD -->
+      <div class="pg active" id="pg-dashboard">
+        <div class="ph"><div class="pt">Dashboard</div></div>
+        <div class="dg">
+          <div class="dc"><div class="dn red" id="d-books">0</div><div class="dl">Total Books</div></div>
+          <div class="dc"><div class="dn blue" id="d-concepts">0</div><div class="dl">Concepts</div></div>
+          <div class="dc"><div class="dn grn" id="d-conns">0</div><div class="dl">Connections</div></div>
+          <div class="dc"><div class="dn blk" id="d-read">0</div><div class="dl">Books Read</div></div>
+        </div>
+        <div class="ac">
+          <div class="ah">All Books <span id="dash-sub"></span></div>
+          <div id="dash-list"></div>
+        </div>
+      </div>
+
+      <!-- BOOKS -->
+      <div class="pg" id="pg-books">
+        <div class="ph">
+          <div class="pt">Books</div>
+          <div class="cp" id="cp-books">0</div>
+          <button class="btn-p" id="btn-add-book">+ Add Book</button>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Title / Author</th><th>Year</th><th>Rating</th><th>Status</th><th>Concepts</th><th>Chapters</th><th>Actions</th></tr></thead>
+          <tbody id="books-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- CONCEPTS -->
+      <div class="pg" id="pg-concepts">
+        <div class="ph">
+          <div class="pt">Concepts</div>
+          <div class="cp" id="cp-concepts">0</div>
+          <button class="btn-p" id="btn-add-concept">+ Add Concept</button>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Concept</th><th>Quote</th><th>Books</th><th>Actions</th></tr></thead>
+          <tbody id="concepts-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- AUTHORS -->
+      <div class="pg" id="pg-authors">
+        <div class="ph">
+          <div class="pt">Authors</div>
+          <div class="cp" id="cp-authors">0</div>
+          <button class="btn-p" id="btn-add-author">+ Add Author</button>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Author</th><th>Bio</th><th>Books in Graph</th><th>Actions</th></tr></thead>
+          <tbody id="authors-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- CONNECTIONS -->
+      <div class="pg" id="pg-connections">
+        <div class="ph"><div class="pt">Connections</div></div>
+        <div class="cnh">
+          <div class="fg" style="flex:1;margin:0"><label>Book</label><select class="fsel" id="cn-book"></select></div>
+          <div style="padding-bottom:2px;font-size:18px;color:var(--di)">→</div>
+          <div class="fg" style="flex:1;margin:0"><label>Concept</label><select class="fsel" id="cn-concept"></select></div>
+          <button class="btn-p" style="margin:0;white-space:nowrap" onclick="addConn()">Add Connection</button>
+        </div>
+        <div class="cnc"><div class="cnch" id="cn-count-hd">All Connections</div><div class="cnl" id="cn-list"></div></div>
+      </div>
+
+      <!-- IMPORT -->
+      <div class="pg" id="pg-import">
+        <div class="ph"><div class="pt">Import Books</div></div>
+        <div class="ib">
+          <h3>Paste a book list — any format</h3>
+          <p>Give me a list of books (titles, authors, chapters, key ideas). Format is flexible — simple list, chapters, or raw JSON.</p>
+          <textarea class="fta tall" id="import-raw" placeholder="Simple:   The Lean Startup by Eric Ries&#10;&#10;With chapters:&#10;Built to Sell by John Warrillow&#10;Chapter 1: The Anatomy of a Sellable Company&#10;Key ideas: teachable, valuable, repeatable&#10;&#10;JSON: [{ &quot;title&quot;: &quot;...&quot;, &quot;author&quot;: &quot;...&quot; }]"></textarea>
+          <div style="display:flex;gap:10px;margin-top:12px">
+            <button class="btn-p" onclick="doImport()">Import</button>
+            <button class="btn-s" onclick="loadTemplate()">Load JSON Template</button>
+          </div>
+          <div id="import-msg" style="margin-top:12px;font-size:13px"></div>
+        </div>
+        <div class="ib">
+          <h3>Reading pipeline — recommended for your graph</h3>
+          <p style="margin-bottom:12px">Strong fits. Click any to pre-fill the Add Book form.</p>
+          <div id="pipeline-list"></div>
+        </div>
+      </div>
+
+      <!-- EXPORT -->
+      <div class="pg" id="pg-export">
+        <div class="ph"><div class="pt">Export &amp; Deploy</div></div>
+        <div class="ib">
+          <h3>Deploy to your live site</h3>
+          <div class="esteps">
+            <div class="esr"><div class="esc">1</div><div class="est">Make changes here in the admin panel</div></div>
+            <div class="esr"><div class="esc">2</div><div class="est">Click <strong>Export graph-data.js</strong> to download the updated data file</div></div>
+            <div class="esr"><div class="esc">3</div><div class="est">Replace <code>graph-data.js</code> in your site folder with the downloaded file</div></div>
+            <div class="esr"><div class="esc">4</div><div class="est">If using GitHub + Vercel: commit and push — auto-deploys in ~30s. For Framer: see the Hosting guide.</div></div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button class="btn-p" onclick="doExport()">↓ Export graph-data.js</button>
+            <button class="btn-s" onclick="previewExport()">Preview JSON</button>
+          </div>
+        </div>
+        <div class="ib">
+          <h3>Data preview</h3>
+          <textarea class="fta" id="export-preview" style="min-height:280px;font-family:monospace;font-size:11px;line-height:1.4" readonly placeholder="Click Preview JSON…"></textarea>
+        </div>
+      </div>
+
+      <!-- HOSTING -->
+      <div class="pg" id="pg-hosting">
+        <div class="ph"><div class="pt">Hosting on Framer</div></div>
+        <div class="hc">
+          <h3><span class="badge b-bl">Option 1</span> &nbsp;Recommended: Subdomain on Vercel</h3>
+          <p>Host the graph at <strong>graph.camdenshuman.com</strong> via Vercel (free). Framer handles your main site; Vercel handles the graph. You link between them normally — no conflicts, no Framer limitations.</p>
+          <p><strong>Steps:</strong> Push <code>knowledge-graph.html</code>, <code>admin.html</code>, and <code>graph-data.js</code> to a GitHub repo. Connect to Vercel. In Vercel → Settings → Domains, add <code>graph.camdenshuman.com</code>. In your Framer site settings add the DNS record Vercel provides. Done — the graph is live at its own URL.</p>
+          <p>To update: export <code>graph-data.js</code> from this admin, commit to GitHub, Vercel auto-deploys in ~30 seconds.</p>
+        </div>
+        <div class="hc">
+          <h3><span class="badge b-rd">Option 2</span> &nbsp;Embed in Framer via iframe</h3>
+          <p>In Framer, add an <strong>Embed</strong> component and point it to your graph URL. The full interactive graph renders inside your Framer page. Visitors never leave your site.</p>
+          <p>Tradeoff: the graph is constrained to the embed block dimensions. Best for embedding alongside other content. Use Option 1 if you want the graph to be a full-screen destination.</p>
+          <p><strong>Framer steps:</strong> Insert → Embed → set URL to <code>https://graph.camdenshuman.com</code> → width 100%, height 700px (or set to viewport height for full-screen feel).</p>
+        </div>
+        <div class="hc blue">
+          <h3>⚡ Fastest path to live (~45 minutes)</h3>
+          <p>1. Create a GitHub account if needed. 2. New repo, upload 3 files. 3. vercel.com → New Project → import repo → deploy. 4. Vercel → Settings → Domains → add <code>graph.camdenshuman.com</code>. 5. Framer site settings → add the DNS record Vercel gives you. The graph is live.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- BOOK MODAL -->
+<div class="ov" id="book-ov">
+  <div class="mo wide">
+    <div class="mh">
+      <div class="mht"><h2 id="bm-title">Add Book</h2><p>Fill in what you know. Every field makes the graph richer.</p></div>
+      <button class="mhc" onclick="closeOv('book-ov')">✕</button>
+    </div>
+    <div class="mb">
+      <input type="hidden" id="b-id" />
+      <div class="fg3">
+        <div class="fg fsp"><label>Title *</label><input class="fi" id="b-title" placeholder="e.g. The Psychology of Money" /></div>
+        <div class="fg"><label>Author *</label><input class="fi" id="b-author" placeholder="e.g. Morgan Housel" /></div>
+        <div class="fg"><label>Year</label><input class="fi" id="b-year" type="number" placeholder="2020" /></div>
+        <div class="fg">
+          <label>Status</label>
+          <select class="fsel" id="b-status">
+            <option value="read">Read</option>
+            <option value="reading">Currently Reading</option>
+            <option value="want-to-read">Want to Read</option>
+          </select>
+        </div>
+        <div class="fg fsp"><label>Rating</label>
+          <div class="srow" id="srow">
+            <button class="sbtn" data-v="1">★</button><button class="sbtn" data-v="2">★</button>
+            <button class="sbtn" data-v="3">★</button><button class="sbtn" data-v="4">★</button>
+            <button class="sbtn" data-v="5">★</button>
+          </div>
+          <input type="hidden" id="b-rating" value="0" />
+        </div>
+        <div class="fg fsp"><label>Key Quote</label><input class="fi" id="b-quote" placeholder="The single best line from the book" /></div>
+        <div class="fg fsp"><label>Summary — Why This Book Matters</label><textarea class="fta" id="b-summary" placeholder="What is the core argument? Why does it matter to you personally?"></textarea></div>
+        <div class="fg fsp">
+          <label>Key Ideas <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;color:var(--di)">— press Enter after each</span></label>
+          <div class="tbox" id="tbox"><input class="tinput" id="tinput" placeholder="Type an idea, press Enter…" /></div>
+        </div>
+        <div class="fg fsp"><label>Connect to Concepts</label><div class="cbg" id="cbg"></div></div>
+      </div>
+      <div style="margin-top:22px">
+        <label style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mu);display:block;margin-bottom:4px">Chapters &amp; Ideas per Chapter</label>
+        <p style="font-size:12px;color:var(--di);margin-bottom:12px">Add chapters with their key ideas and your personal notes. This builds the full note structure.</p>
+        <div class="chw" id="chw"></div>
+        <button class="addbtn" onclick="addChapter()">+ Add Chapter</button>
+      </div>
+    </div>
+    <div class="mf">
+      <span class="mfn" id="bm-note"></span>
+      <button class="btn-s" onclick="closeOv('book-ov')">Cancel</button>
+      <button class="btn-p" onclick="saveBook()">Save Book</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONCEPT MODAL -->
+<div class="ov" id="concept-ov">
+  <div class="mo">
+    <div class="mh">
+      <div class="mht"><h2 id="cm-title">Add Concept</h2><p>Cross-cutting ideas that connect multiple books.</p></div>
+      <button class="mhc" onclick="closeOv('concept-ov')">✕</button>
+    </div>
+    <div class="mb">
+      <input type="hidden" id="c-idh" />
+      <div class="fg2">
+        <div class="fg"><label>Concept Name *</label><input class="fi" id="c-label" placeholder="e.g. First Principles" /></div>
+        <div class="fg"><label>ID <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">(auto-filled)</span></label><input class="fi" id="c-id" placeholder="first-principles" /></div>
+        <div class="fg fsp"><label>Key Quote</label><input class="fi" id="c-quote" placeholder="Best single line expressing this concept" /></div>
+        <div class="fg fsp"><label>Summary</label><textarea class="fta" id="c-summary" placeholder="What is this concept? Why does it matter?"></textarea></div>
+        <div class="fg fsp"><label>Unified Principle — synthesis across all books</label><textarea class="fta" id="c-principle" placeholder="What do all these books ultimately agree on about this concept?"></textarea></div>
+      </div>
+    </div>
+    <div class="mf">
+      <button class="btn-s" onclick="closeOv('concept-ov')">Cancel</button>
+      <button class="btn-p" onclick="saveConcept()">Save Concept</button>
+    </div>
+  </div>
+</div>
+
+<!-- AUTHOR MODAL -->
+<div class="ov" id="author-ov">
+  <div class="mo">
+    <div class="mh">
+      <div class="mht"><h2 id="am-title">Add Author</h2></div>
+      <button class="mhc" onclick="closeOv('author-ov')">✕</button>
+    </div>
+    <div class="mb">
+      <input type="hidden" id="a-idh" />
+      <div class="fg2">
+        <div class="fg fsp"><label>Author Name *</label><input class="fi" id="a-name" placeholder="e.g. Morgan Housel" /></div>
+        <div class="fg fsp"><label>Short Bio</label><textarea class="fta" id="a-bio" placeholder="Who are they? What makes them worth reading?"></textarea></div>
+        <div class="fg fsp"><label>Central Thesis</label><textarea class="fta" id="a-thesis" placeholder="What is the core thing this author argues or stands for?"></textarea></div>
+        <div class="fg"><label>Website</label><input class="fi" id="a-web" placeholder="https://" /></div>
+        <div class="fg"><label>Twitter / X</label><input class="fi" id="a-tw" placeholder="@handle" /></div>
+      </div>
+    </div>
+    <div class="mf">
+      <button class="btn-s" onclick="closeOv('author-ov')">Cancel</button>
+      <button class="btn-p" onclick="saveAuthor()">Save Author</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const PW = "knowledge2026";
+
+const SB=[
+  {id:"psych-money",title:"The Psychology of Money",author:"Morgan Housel",year:2020,rating:5,status:"read",quote:"Doing well with money has little to do with how smart you are and a lot to do with how you behave.",summary:"Housel's central argument: money is not a math problem — it is a behavior problem.",ideas:["Wealth vs. Being Rich","The Power of Compounding","Tail Events Drive Everything","Reasonable vs. Rational","Room for Error","You'll Change"],concepts:["compounding","wealth-income","risk-asymmetry","long-term-thinking","identity","systems-thinking"],chapters:[]},
+  {id:"buy-build",title:"Buy Then Build",author:"Walker Deibel",year:2018,rating:5,status:"read",quote:"Acquisition entrepreneurship is entrepreneurship — just with a head start.",summary:"Deibel reframes entrepreneurship entirely. Buying an existing business gives you proof of concept, existing customers, and infrastructure on day one.",ideas:["Acquisition Entrepreneurship","SDE as a Valuation Tool","The Wealth Certainty Spectrum","Buy vs. Build Risk"],concepts:["cashflow","ownership","risk-asymmetry","capital-allocation","long-term-thinking"],chapters:[]},
+  {id:"main-street",title:"Main Street Millionaire",author:"Codie Sanchez",year:2024,rating:4,status:"read",quote:"The boring business is not a consolation prize. It is the point.",summary:"Sanchez popularizes the boring business thesis — unglamorous, cash-flowing Main Street businesses are better acquisition targets than tech-adjacent startups.",ideas:["The Boring Business Thesis","Cashflow Over Growth","Seller Financing","Owner-Dependent Risk"],concepts:["cashflow","ownership","risk-asymmetry","capital-allocation","compounding"],chapters:[]},
+  {id:"financial-intelligence",title:"Financial Intelligence",author:"Karen Berman & Joe Knight",year:2006,rating:4,status:"read",quote:"Profit is an opinion. Cash is a fact.",summary:"Financial statements are not objective truth — they are constructed documents with built-in assumptions. This builds the literacy to read financials with appropriate skepticism.",ideas:["The Art of Finance","Accrual vs. Cash Accounting","Working Capital","Reading a Balance Sheet"],concepts:["cashflow","capital-allocation","systems-thinking","risk-asymmetry"],chapters:[]},
+  {id:"atomic-habits",title:"Atomic Habits",author:"James Clear",year:2018,rating:5,status:"read",quote:"You do not rise to the level of your goals. You fall to the level of your systems.",summary:"Outcomes are a lagging measure of habits. You don't get to choose your outcomes — you choose your habits, and outcomes follow.",ideas:["Systems vs. Goals","Identity-Based Habits","Habit Stacking","Environment Design","The 1% Rule"],concepts:["compounding","systems-thinking","identity","long-term-thinking"],chapters:[]},
+  {id:"naval",title:"Almanack of Naval Ravikant",author:"Naval Ravikant",year:2020,rating:5,status:"read",quote:"Wealth is assets that earn while you sleep.",summary:"Naval's mental models for wealth creation and happiness — some of the clearest first-principles thinking available.",ideas:["Specific Knowledge","Leverage","Long-Term Thinking","Reading is Foundational"],concepts:["leverage","wealth-income","compounding","long-term-thinking","ownership","identity"],chapters:[]},
+  {id:"zero-to-one",title:"Zero to One",author:"Peter Thiel",year:2014,rating:4,status:"read",quote:"Every moment in business happens only once.",summary:"True innovation goes from 0 to 1. The best businesses are monopolies in disguise. Competition is for losers.",ideas:["0 to 1 vs 1 to n","Secrets Still Exist","Competition Is for Losers","Power Law in Portfolios"],concepts:["leverage","long-term-thinking","risk-asymmetry","ownership"],chapters:[]},
+  {id:"good-to-great",title:"Good to Great",author:"Jim Collins",year:2001,rating:4,status:"read",quote:"Good is the enemy of great.",summary:"Collins studied companies that made the leap from good to great and found a consistent pattern: Level 5 leaders, the right people, Hedgehog Concept, discipline, and the Flywheel.",ideas:["Level 5 Leadership","First Who Then What","The Hedgehog Concept","The Flywheel"],concepts:["systems-thinking","long-term-thinking","compounding","ownership"],chapters:[]},
+  {id:"never-split",title:"Never Split the Difference",author:"Chris Voss",year:2016,rating:5,status:"read",quote:"No deal is better than a bad deal.",summary:"All negotiation is emotional. Tactical empathy and calibrated questions are more powerful than logic.",ideas:["Tactical Empathy","Mirroring","Calibrated Questions","The Black Swan"],concepts:["risk-asymmetry","systems-thinking"],chapters:[]},
+  {id:"e-myth",title:"The E-Myth Revisited",author:"Michael Gerber",year:1995,rating:4,status:"read",quote:"Build your business like you're going to franchise it.",summary:"Most small businesses fail because the owner is a technician who had an entrepreneurial seizure. The fix: build systems so the business runs without you.",ideas:["Entrepreneur vs Technician vs Manager","Work On vs In Your Business","The Franchise Prototype"],concepts:["systems-thinking","ownership","leverage","risk-asymmetry"],chapters:[]}
+];
+const SC=[
+  {id:"compounding",label:"Compounding",quote:"The most powerful force in the universe.",summary:"The process by which something grows exponentially because each period's growth builds on all prior growth.",books:["psych-money","atomic-habits","naval","main-street","good-to-great"],unifiedPrinciple:"Choose a direction, make consistent deposits, don't interrupt the accumulation, wait."},
+  {id:"long-term-thinking",label:"Long-Term Thinking",quote:"Play long-term games with long-term people. — Naval",summary:"The cognitive discipline of making decisions for outcomes years or decades away.",books:["psych-money","naval","buy-build","atomic-habits","good-to-great"],unifiedPrinciple:"The longer your time horizon, the fewer competitors you have."},
+  {id:"ownership",label:"Ownership",quote:"You're not going to get rich renting out your time. — Naval",summary:"Wealth requires owning things — equity, businesses, assets — not just exchanging time for money.",books:["buy-build","main-street","naval","e-myth","zero-to-one"],unifiedPrinciple:"The path from income to wealth runs through ownership."},
+  {id:"cashflow",label:"Cashflow",quote:"Profit is an opinion. Cash is a fact.",summary:"The actual movement of money — distinct from profit and revenue.",books:["main-street","buy-build","financial-intelligence","e-myth"],unifiedPrinciple:"Not 'what does this earn?' but 'what cash does this generate, when, and how reliably?'"},
+  {id:"risk-asymmetry",label:"Risk & Asymmetry",quote:"Risk is what's left over when you think you've thought of everything.",summary:"Asymmetric risk: potential gain substantially exceeds potential loss.",books:["psych-money","buy-build","main-street","zero-to-one","never-split"],unifiedPrinciple:"Ensure downside survival, position for asymmetric upside."},
+  {id:"identity",label:"Identity",quote:"Every action you take is a vote for the type of person you wish to become.",summary:"The set of beliefs you hold about who you are. The deepest driver of sustained change.",books:["atomic-habits","psych-money","naval"],unifiedPrinciple:"Identity → Habits → Outcomes. Not: Outcomes → Habits → Identity."},
+  {id:"systems-thinking",label:"Systems Thinking",quote:"You fall to the level of your systems.",summary:"A system is a set of interconnected components that produce outcomes through their interaction.",books:["atomic-habits","psych-money","financial-intelligence","main-street","e-myth","good-to-great"],unifiedPrinciple:"Build a system that generates desired outcomes without ongoing willpower."},
+  {id:"leverage",label:"Leverage",quote:"Give me a lever long enough and I shall move the world.",summary:"Any mechanism that multiplies the output of effort.",books:["naval","buy-build","main-street","zero-to-one","e-myth"],unifiedPrinciple:"Specific knowledge × leverage = wealth at scale."},
+  {id:"wealth-income",label:"Wealth vs. Income",quote:"Wealth is what you don't see. — Morgan Housel",summary:"Income is a flow. Wealth is a stock. The connecting variable is conversion rate.",books:["psych-money","naval","main-street"],unifiedPrinciple:"Wealth is built by converting income into assets before spending it."},
+  {id:"capital-allocation",label:"Capital Allocation",quote:"The most important decision is what to do with your money.",summary:"The decision of where to deploy finite financial resources. Every dollar has an opportunity cost.",books:["buy-build","main-street","financial-intelligence"],unifiedPrinciple:"Capital allocation determines whether the same income produces dramatically different wealth."}
+];
+const PIPELINE=[
+  {title:"$100M Offers",author:"Alex Hormozi",year:2021,concepts:["leverage","systems-thinking"],note:"Directly applicable to BD and acquisition deal structuring."},
+  {title:"Good Strategy / Bad Strategy",author:"Richard Rumelt",year:2011,concepts:["long-term-thinking","systems-thinking"],note:"Clearest definition of real strategy. Applies directly to your BD work."},
+  {title:"Range",author:"David Epstein",year:2019,concepts:["long-term-thinking","identity","compounding"],note:"Validates the PCE → BD → acquisition path you're building."},
+  {title:"The Millionaire Next Door",author:"Thomas Stanley",year:1996,concepts:["wealth-income","compounding","ownership"],note:"Data on actual wealthy Americans. Validates boring business accumulation."},
+  {title:"High Output Management",author:"Andy Grove",year:1983,concepts:["leverage","systems-thinking","ownership"],note:"Operational leverage framework. Essential pre-reading before your first acquisition."},
+  {title:"Built to Sell",author:"John Warrillow",year:2011,concepts:["systems-thinking","ownership","cashflow"],note:"Building a sellable business is the same as building a good one."},
+  {title:"Skin in the Game",author:"Nassim Taleb",year:2018,concepts:["ownership","risk-asymmetry","long-term-thinking"],note:"Ownership and accountability as the foundation of trust."},
+  {title:"The Mom Test",author:"Rob Fitzpatrick",year:2013,concepts:["systems-thinking","risk-asymmetry"],note:"Best book on getting honest information — applies directly to acquisition due diligence."}
+];
+
+// STATE
+let books=[],concepts=[],authors=[];
+
+function loadState(){
+  const sb=localStorage.getItem('kg_b'),sc=localStorage.getItem('kg_c'),sa=localStorage.getItem('kg_a');
+  books=sb?JSON.parse(sb):JSON.parse(JSON.stringify(SB));
+  concepts=sc?JSON.parse(sc):JSON.parse(JSON.stringify(SC));
+  authors=sa?JSON.parse(sa):[];
+}
+function persist(){
+  localStorage.setItem('kg_b',JSON.stringify(books));
+  localStorage.setItem('kg_c',JSON.stringify(concepts));
+  localStorage.setItem('kg_a',JSON.stringify(authors));
+}
+
+// AUTH
+function doLogin(){
+  if(document.getElementById('pw').value===PW){
+    document.getElementById('ls').style.display='none';
+    document.getElementById('app').classList.add('show');
+    loadState(); renderAll(); showPage('dashboard');
+  } else {
+    const e=document.getElementById('lerr');
+    e.style.display='block';
+    document.getElementById('pw').value='';
+    setTimeout(()=>e.style.display='none',3000);
+  }
+}
+document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+function doLogout(){
+  document.getElementById('ls').style.display='flex';
+  document.getElementById('app').classList.remove('show');
+  document.getElementById('pw').value='';
+}
+
+// NAV
+function showPage(id){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+  const pg=document.getElementById('pg-'+id);
+  if(pg)pg.classList.add('active');
+  const ni=document.querySelector('[data-page="'+id+'"]');
+  if(ni)ni.classList.add('active');
+  if(id==='connections')renderConn();
+  if(id==='import')renderPipeline();
+}
+
+// RENDER ALL
+function renderAll(){
+  updateCounts();
+  renderDash();
+  renderBooks();
+  renderConcepts();
+  renderAuthors();
+}
+function updateCounts(){
+  const read=books.filter(b=>b.status==='read').length;
+  const conns=books.reduce((s,b)=>s+(b.concepts||[]).length,0);
+  document.getElementById('tbinfo').textContent=books.length+' books · '+concepts.length+' concepts';
+  document.getElementById('d-books').textContent=books.length;
+  document.getElementById('d-concepts').textContent=concepts.length;
+  document.getElementById('d-conns').textContent=conns;
+  document.getElementById('d-read').textContent=read;
+  document.getElementById('nc-books').textContent=books.length;
+  document.getElementById('nc-concepts').textContent=concepts.length;
+  document.getElementById('nc-authors').textContent=authors.length;
+  document.getElementById('cp-books').textContent=books.length;
+  document.getElementById('cp-concepts').textContent=concepts.length;
+  document.getElementById('cp-authors').textContent=authors.length;
+}
+
+// DASHBOARD
+function renderDash(){
+  updateCounts();
+  const read=books.filter(b=>b.status==='read').length;
+  const ing=books.filter(b=>b.status==='reading').length;
+  const want=books.filter(b=>b.status==='want-to-read').length;
+  document.getElementById('dash-sub').textContent=read+' read, '+ing+' reading, '+want+' to read';
+  document.getElementById('dash-list').innerHTML=books.length?books.map((b,i)=>`
+    <div class="ar">
+      <div class="adot" style="background:${b.status==='read'?'#1A7A3C':b.status==='reading'?'#1A4DAD':'#B85C00'}"></div>
+      <div class="atit">${esc(b.title)}</div>
+      <div class="aau">${esc(b.author)}</div>
+      <div class="ast"><span class="sp ${b.status==='want-to-read'?'sw':b.status==='reading'?'sg':'sr'}">${fmtS(b.status)}</span></div>
+      <div class="arat">${'★'.repeat(b.rating||0)}</div>
+      <div class="aed" onclick="openEditBook(${i})">Edit →</div>
+    </div>
+  `).join(''):'<div style="padding:20px;color:var(--di);text-align:center;font-size:13px">No books yet.</div>';
+}
+
+// BOOKS TABLE
+function renderBooks(){
+  document.getElementById('books-tbody').innerHTML=books.length?books.map((b,i)=>{
+    const cl=(b.concepts||[]).slice(0,3).map(cid=>{const c=concepts.find(x=>x.id===cid);return c?`<span class="ctag">${esc(c.label)}</span>`:''}).join('');
+    const ex=(b.concepts||[]).length>3?`<span class="ctag">+${(b.concepts||[]).length-3}</span>`:'';
+    const ch=(b.chapters||[]).length;
+    return`<tr>
+      <td><div class="ct">${esc(b.title)}</div><div class="cs">${esc(b.author)}</div></td>
+      <td>${b.year||'—'}</td>
+      <td><span class="stars">${'★'.repeat(b.rating||0)}</span></td>
+      <td><span class="sp ${b.status==='want-to-read'?'sw':b.status==='reading'?'sg':'sr'}">${fmtS(b.status)}</span></td>
+      <td><div class="ctags">${cl}${ex}</div></td>
+      <td style="color:${ch?'var(--blue)':'var(--di)'}">${ch?ch+' ch.':'—'}</td>
+      <td><div class="rbtns"><button class="bsm ed" onclick="openEditBook(${i})">Edit</button><button class="bsm dl" onclick="deleteBook(${i})">Delete</button></div></td>
+    </tr>`;
+  }).join(''):`<tr><td colspan="7" style="text-align:center;color:var(--di);padding:28px">No books yet. Click "+ Add Book" to start.</td></tr>`;
+}
+function fmtS(s){return{read:'Read',reading:'Reading','want-to-read':'Want to Read'}[s]||s}
+
+// CONCEPTS TABLE
+function renderConcepts(){
+  document.getElementById('concepts-tbody').innerHTML=concepts.length?concepts.map((c,i)=>{
+    const bl=(c.books||[]).slice(0,3).map(bid=>{const b=books.find(x=>x.id===bid);return b?`<span class="ctag" style="background:var(--rl);color:var(--red);border-color:var(--rm)">${esc(b.title.slice(0,22))}</span>`:''}).join('');
+    const ex=(c.books||[]).length>3?`<span class="ctag">+${(c.books||[]).length-3}</span>`:'';
+    return`<tr>
+      <td><div class="ct">${esc(c.label)}</div></td>
+      <td style="font-style:italic;color:var(--mu);font-size:12px;max-width:200px">${esc((c.quote||'').slice(0,72))}${(c.quote||'').length>72?'…':''}</td>
+      <td><div class="ctags">${bl}${ex}</div></td>
+      <td><div class="rbtns"><button class="bsm ed" onclick="openEditConcept(${i})">Edit</button><button class="bsm dl" onclick="deleteConcept(${i})">Delete</button></div></td>
+    </tr>`;
+  }).join(''):`<tr><td colspan="4" style="text-align:center;color:var(--di);padding:28px">No concepts yet.</td></tr>`;
+}
+
+// AUTHORS TABLE
+function renderAuthors(){
+  const all=[...authors];
+  books.forEach(b=>{if(!all.find(a=>a.name===b.author))all.push({id:slugify(b.author),name:b.author,bio:'',thesis:'',web:'',tw:''})});
+  document.getElementById('authors-tbody').innerHTML=all.length?all.map((a,i)=>{
+    const bks=books.filter(b=>b.author===a.name||b.author.includes(a.name.split(' ')[0]));
+    return`<tr>
+      <td><div class="ct">${esc(a.name)}</div></td>
+      <td style="font-size:12px;color:var(--mu);max-width:220px">${esc((a.bio||'No bio yet.').slice(0,80))}${(a.bio||'').length>80?'…':''}</td>
+      <td><div class="ctags">${bks.slice(0,3).map(b=>`<span class="ctag" style="background:var(--rl);color:var(--red);border-color:var(--rm)">${esc(b.title.slice(0,20))}</span>`).join('')}${bks.length>3?`<span class="ctag">+${bks.length-3}</span>`:''}</div></td>
+      <td><div class="rbtns"><button class="bsm ed" onclick='openEditAuthor(${i},${JSON.stringify(a).replace(/"/g,"&quot;")})'>Edit</button></div></td>
+    </tr>`;
+  }).join(''):`<tr><td colspan="4" style="text-align:center;color:var(--di);padding:28px">Authors appear here as you add books.</td></tr>`;
+}
+
+// CONNECTIONS
+function renderConn(){
+  document.getElementById('cn-book').innerHTML=books.map(b=>`<option value="${b.id}">${esc(b.title)}</option>`).join('');
+  document.getElementById('cn-concept').innerHTML=concepts.map(c=>`<option value="${c.id}">${esc(c.label)}</option>`).join('');
+  const rows=[];
+  books.forEach(b=>(b.concepts||[]).forEach(cid=>{
+    const c=concepts.find(x=>x.id===cid);
+    rows.push({bid:b.id,bt:b.title,cid,cl:c?.label||cid});
+  }));
+  document.getElementById('cn-count-hd').textContent='All Connections ('+rows.length+')';
+  document.getElementById('cn-list').innerHTML=rows.length?rows.map(r=>`
+    <div class="cnr">
+      <span class="cnbk">${esc(r.bt.slice(0,34))}</span>
+      <span class="cnar">→</span>
+      <span class="cnco">${esc(r.cl)}</span>
+      <button class="cnd" onclick="removeConn('${r.bid}','${r.cid}')">×</button>
+    </div>
+  `).join(''):'<div style="padding:20px;text-align:center;color:var(--di);font-size:13px">No connections yet.</div>';
+}
+function addConn(){
+  const bid=document.getElementById('cn-book').value;
+  const cid=document.getElementById('cn-concept').value;
+  const b=books.find(x=>x.id===bid),c=concepts.find(x=>x.id===cid);
+  if(!b||!c)return;
+  if(!b.concepts)b.concepts=[];
+  if(b.concepts.includes(cid)){toast('Already connected');return;}
+  b.concepts.push(cid);
+  if(!c.books)c.books=[];
+  if(!c.books.includes(bid))c.books.push(bid);
+  persist();renderAll();renderConn();
+  toast('Connected: '+b.title.slice(0,25)+' → '+c.label);
+}
+function removeConn(bid,cid){
+  const b=books.find(x=>x.id===bid),c=concepts.find(x=>x.id===cid);
+  if(b)b.concepts=(b.concepts||[]).filter(x=>x!==cid);
+  if(c)c.books=(c.books||[]).filter(x=>x!==bid);
+  persist();renderAll();renderConn();toast('Connection removed');
+}
+
+// BOOK MODAL
+let ebi=-1,tags=[],chaps=[];
+document.getElementById('btn-add-book').onclick=function(){openAddBook()};
+function openAddBook(){
+  ebi=-1;tags=[];chaps=[];
+  document.getElementById('bm-title').textContent='Add Book';
+  document.getElementById('b-id').value='';
+  ['b-title','b-author','b-year','b-quote','b-summary'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('b-status').value='read';
+  setStars(0);
+  document.getElementById('bm-note').textContent='';
+  renderTags();renderCBs([]);renderChaps();
+  openOv('book-ov');
+}
+function openEditBook(i){
+  ebi=i;const b=books[i];
+  tags=[...(b.ideas||[])];chaps=JSON.parse(JSON.stringify(b.chapters||[]));
+  document.getElementById('bm-title').textContent='Edit Book';
+  document.getElementById('b-id').value=b.id;
+  document.getElementById('b-title').value=b.title||'';
+  document.getElementById('b-author').value=b.author||'';
+  document.getElementById('b-year').value=b.year||'';
+  document.getElementById('b-quote').value=b.quote||'';
+  document.getElementById('b-summary').value=b.summary||'';
+  document.getElementById('b-status').value=b.status||'read';
+  setStars(b.rating||0);
+  document.getElementById('bm-note').textContent='ID: '+b.id;
+  renderTags();renderCBs(b.concepts||[]);renderChaps();
+  openOv('book-ov');
+}
+function saveBook(){
+  const title=document.getElementById('b-title').value.trim();
+  const author=document.getElementById('b-author').value.trim();
+  if(!title||!author){toast('Title and author required');return;}
+  const id=document.getElementById('b-id').value||slugify(title);
+  const checked=[...document.querySelectorAll('#cbg input:checked')].map(el=>el.value);
+  const book={id,title,author,
+    year:parseInt(document.getElementById('b-year').value)||null,
+    rating:parseInt(document.getElementById('b-rating').value)||0,
+    status:document.getElementById('b-status').value,
+    quote:document.getElementById('b-quote').value.trim(),
+    summary:document.getElementById('b-summary').value.trim(),
+    ideas:[...tags],concepts:checked,
+    chapters:JSON.parse(JSON.stringify(chaps)),topics:[]
+  };
+  concepts.forEach(c=>{
+    if(!c.books)c.books=[];
+    if(checked.includes(c.id)&&!c.books.includes(id))c.books.push(id);
+    else if(!checked.includes(c.id))c.books=c.books.filter(x=>x!==id);
+  });
+  if(ebi>=0)books[ebi]=book;else books.push(book);
+  persist();renderAll();closeOv('book-ov');
+  toast(ebi>=0?'"'+title+'" updated':'"'+title+'" added');
+}
+function deleteBook(i){
+  if(!confirm('Delete "'+books[i].title+'"?'))return;
+  const id=books[i].id;books.splice(i,1);
+  concepts.forEach(c=>{c.books=(c.books||[]).filter(b=>b!==id);});
+  persist();renderAll();toast('Book deleted');
+}
+
+// stars
+function setStars(v){
+  document.getElementById('b-rating').value=v;
+  document.querySelectorAll('.sbtn').forEach(s=>s.classList.toggle('on',+s.dataset.v<=v));
+}
+document.getElementById('srow').addEventListener('click',e=>{const s=e.target.closest('.sbtn');if(s)setStars(+s.dataset.v);});
+
+// tags
+function renderTags(){
+  const box=document.getElementById('tbox');
+  box.querySelectorAll('.ti').forEach(t=>t.remove());
+  const inp=document.getElementById('tinput');
+  tags.forEach((t,i)=>{
+    const el=document.createElement('div');el.className='ti';
+    el.innerHTML=esc(t)+'<button type="button" onclick="removeTag('+i+')">×</button>';
+    box.insertBefore(el,inp);
+  });
+}
+function removeTag(i){tags.splice(i,1);renderTags();}
+document.getElementById('tinput').addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===','){e.preventDefault();const v=e.target.value.replace(/,$/,'').trim();if(v){tags.push(v);e.target.value='';renderTags();}}
+});
+document.getElementById('tbox').addEventListener('click',()=>document.getElementById('tinput').focus());
+
+// concept checkboxes
+function renderCBs(sel){
+  document.getElementById('cbg').innerHTML=concepts.map(c=>`
+    <label class="cbr"><input type="checkbox" value="${c.id}"${sel.includes(c.id)?' checked':''}>${esc(c.label)}</label>
+  `).join('');
+}
+
+// chapters
+function renderChaps(){
+  const wrap=document.getElementById('chw');wrap.innerHTML='';
+  chaps.forEach((ch,i)=>{
+    const d=document.createElement('div');d.className='chc';
+    d.innerHTML=`
+      <div class="chh" onclick="togCh(${i})">
+        <div class="chn">${i+1}</div>
+        <input class="chti" value="${esc(ch.title||'')}" placeholder="Chapter title…"
+               onclick="event.stopPropagation()" oninput="chaps[${i}].title=this.value" />
+        <button class="chdel" onclick="event.stopPropagation();delCh(${i})">×</button>
+        <span class="chtog" id="chtog-${i}">▾</span>
+      </div>
+      <div class="chb" id="chb-${i}">
+        <label style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mu);display:block;margin-bottom:6px">Key Ideas from this Chapter</label>
+        <textarea class="fta" placeholder="Key ideas, quotes, or concepts from this chapter…"
+                  oninput="chaps[${i}].ideas=this.value">${esc(ch.ideas||'')}</textarea>
+        <label style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mu);display:block;margin:12px 0 6px">Your Notes &amp; Connections</label>
+        <textarea class="fta" placeholder="Reflections, connections to other ideas, what you want to remember…"
+                  oninput="chaps[${i}].notes=this.value">${esc(ch.notes||'')}</textarea>
+      </div>`;
+    wrap.appendChild(d);
+  });
+}
+function togCh(i){
+  document.getElementById('chb-'+i).classList.toggle('open');
+  document.getElementById('chtog-'+i).classList.toggle('open');
+}
+function addChapter(){chaps.push({title:'',ideas:'',notes:''});renderChaps();setTimeout(()=>togCh(chaps.length-1),50);}
+function delCh(i){chaps.splice(i,1);renderChaps();}
+
+// CONCEPT MODAL
+let eci=-1;
+document.getElementById('btn-add-concept').onclick=function(){openAddConcept()};
+function openAddConcept(){
+  eci=-1;document.getElementById('cm-title').textContent='Add Concept';
+  document.getElementById('c-idh').value='';
+  ['c-label','c-id','c-quote','c-summary','c-principle'].forEach(id=>document.getElementById(id).value='');
+  openOv('concept-ov');
+}
+function openEditConcept(i){
+  eci=i;const c=concepts[i];
+  document.getElementById('cm-title').textContent='Edit Concept';
+  document.getElementById('c-idh').value=c.id;
+  document.getElementById('c-id').value=c.id;
+  document.getElementById('c-label').value=c.label||'';
+  document.getElementById('c-quote').value=c.quote||'';
+  document.getElementById('c-summary').value=c.summary||'';
+  document.getElementById('c-principle').value=c.unifiedPrinciple||'';
+  openOv('concept-ov');
+}
+document.getElementById('c-label').addEventListener('input',e=>{if(eci<0)document.getElementById('c-id').value=slugify(e.target.value);});
+function saveConcept(){
+  const label=document.getElementById('c-label').value.trim();
+  if(!label){toast('Concept name required');return;}
+  const id=document.getElementById('c-id').value.trim()||slugify(label);
+  const c={id,label,quote:document.getElementById('c-quote').value.trim(),summary:document.getElementById('c-summary').value.trim(),unifiedPrinciple:document.getElementById('c-principle').value.trim(),books:eci>=0?(concepts[eci].books||[]):[]};
+  if(eci>=0)concepts[eci]=c;else concepts.push(c);
+  persist();renderAll();closeOv('concept-ov');toast(eci>=0?'"'+label+'" updated':'"'+label+'" added');
+}
+function deleteConcept(i){
+  if(!confirm('Delete "'+concepts[i].label+'"?'))return;
+  const id=concepts[i].id;concepts.splice(i,1);
+  books.forEach(b=>{b.concepts=(b.concepts||[]).filter(c=>c!==id);});
+  persist();renderAll();toast('Concept deleted');
+}
+
+// AUTHOR MODAL
+let eai=-1;
+document.getElementById('btn-add-author').onclick=function(){openAddAuthor()};
+function openAddAuthor(){
+  eai=-1;document.getElementById('am-title').textContent='Add Author';
+  document.getElementById('a-idh').value='';
+  ['a-name','a-bio','a-thesis','a-web','a-tw'].forEach(id=>document.getElementById(id).value='');
+  openOv('author-ov');
+}
+function openEditAuthor(i,a){
+  eai=i;document.getElementById('am-title').textContent='Edit Author';
+  document.getElementById('a-idh').value=a.id||'';
+  document.getElementById('a-name').value=a.name||'';
+  document.getElementById('a-bio').value=a.bio||'';
+  document.getElementById('a-thesis').value=a.thesis||'';
+  document.getElementById('a-web').value=a.web||'';
+  document.getElementById('a-tw').value=a.tw||'';
+  openOv('author-ov');
+}
+function saveAuthor(){
+  const name=document.getElementById('a-name').value.trim();
+  if(!name){toast('Author name required');return;}
+  const author={id:document.getElementById('a-idh').value||slugify(name),name,bio:document.getElementById('a-bio').value.trim(),thesis:document.getElementById('a-thesis').value.trim(),web:document.getElementById('a-web').value.trim(),tw:document.getElementById('a-tw').value.trim()};
+  if(eai>=0)authors[eai]=author;else authors.push(author);
+  persist();renderAll();closeOv('author-ov');toast(eai>=0?'"'+name+'" updated':'"'+name+'" added');
+}
+
+// IMPORT
+function doImport(){
+  const raw=document.getElementById('import-raw').value.trim();
+  const msg=document.getElementById('import-msg');
+  if(raw.startsWith('[')||raw.startsWith('{')){
+    try{
+      const arr=JSON.parse(raw.startsWith('{')?'['+raw+']':raw);
+      let added=0,skip=0;
+      arr.forEach(b=>{
+        if(!b.title||!b.author){skip++;return;}
+        const id=b.id||slugify(b.title);
+        if(books.find(x=>x.id===id)){skip++;return;}
+        books.push({id,status:'read',concepts:[],topics:[],ideas:[],rating:0,chapters:[],...b});
+        added++;
+      });
+      persist();renderAll();
+      msg.innerHTML='<span style="color:var(--grn)">✓ Imported '+added+' book'+(added!==1?'s':'')+'. </span>'+(skip?skip+' skipped.':'');
+    }catch(e){msg.innerHTML='<span style="color:var(--red)">JSON error: '+e.message+'</span>';}
+    return;
+  }
+  const lines=raw.split('\n').map(l=>l.trim()).filter(Boolean);
+  let added=0;
+  lines.forEach(line=>{
+    const m=line.match(/^(.+?) by (.+?)(?:\s*[\(\[](\d{4})[\)\]])?$/i);
+    if(m){
+      const title=m[1].trim(),author=m[2].trim(),year=m[3]?parseInt(m[3]):null;
+      const id=slugify(title);
+      if(!books.find(x=>x.id===id)){books.push({id,title,author,year,rating:0,status:'want-to-read',quote:'',summary:'',ideas:[],concepts:[],chapters:[],topics:[]});added++;}
+    }
+  });
+  if(added>0){persist();renderAll();msg.innerHTML='<span style="color:var(--grn)">✓ Added '+added+' book'+(added!==1?'s':'')+'. Open each to fill in details.</span>';}
+  else msg.innerHTML='<span style="color:var(--org)">Could not parse. Try JSON or format each line as: <em>Title by Author Name</em></span>';
+}
+function loadTemplate(){
+  document.getElementById('import-raw').value=JSON.stringify([{title:"The Lean Startup",author:"Eric Ries",year:2011,rating:4,status:"read",quote:"Build, measure, learn.",summary:"Ries argues startups should validate assumptions rapidly through build-measure-learn cycles.",ideas:["Build-Measure-Learn","MVP","Pivot or Persevere"],concepts:["systems-thinking","risk-asymmetry"],chapters:[{title:"Start",ideas:"Most startups fail not because they can't build the product, but because they build the wrong product.",notes:""}]}],null,2);
+}
+function renderPipeline(){
+  document.getElementById('pipeline-list').innerHTML=PIPELINE.map(p=>`
+    <div class="pli">
+      <div class="plt"><div class="pltit">${esc(p.title)} <span style="font-weight:400;color:var(--mu)">— ${esc(p.author)} (${p.year})</span></div><div class="plsub">${esc(p.note)}</div></div>
+      <button class="btn-s" style="font-size:11px;padding:5px 11px;white-space:nowrap;flex-shrink:0" onclick='prefill(${JSON.stringify(p)})'>Add →</button>
+    </div>
+  `).join('');
+}
+function prefill(p){
+  showPage('books');
+  setTimeout(()=>{
+    openAddBook();
+    document.getElementById('b-title').value=p.title;
+    document.getElementById('b-author').value=p.author;
+    document.getElementById('b-year').value=p.year;
+    if(p.concepts)p.concepts.forEach(cid=>{const cb=document.querySelector('#cbg input[value="'+cid+'"]');if(cb)cb.checked=true;});
+  },80);
+}
+
+// EXPORT
+function buildExportJS(){
+  return`// Camden's Knowledge Graph — graph-data.js\n// Generated ${new Date().toISOString().slice(0,10)}\n\nconst GRAPH_VERSION="1.0.0";\n\nconst BOOKS=${JSON.stringify(books,null,2)};\n\nconst CONCEPTS=${JSON.stringify(concepts,null,2)};\n\nconst TOPICS=[\n  {id:"personal-finance",label:"Personal Finance",books:[]},\n  {id:"business-acquisition",label:"Business Acquisition",books:[]},\n  {id:"wealth-building",label:"Wealth Building",books:[]},\n  {id:"habit-formation",label:"Habit Formation",books:[]},\n  {id:"entrepreneurship",label:"Entrepreneurship",books:[]},\n  {id:"decision-making",label:"Decision Making",books:[]},\n  {id:"leadership",label:"Leadership",books:[]},\n  {id:"philosophy",label:"Philosophy",books:[]}\n];\n\nfunction buildGraphData(){\n  const nodes=[],linkSet=new Set(),links=[];\n  function addLink(a,b){const k=[a,b].sort().join('--');if(!linkSet.has(k)){linkSet.add(k);links.push({source:a,target:b});}}\n  BOOKS.forEach(b=>{\n    const lbl=b.title.length>20?b.title.split(/[:—]/)[0].trim().split(' ').slice(0,3).join(' '):b.title;\n    nodes.push({id:b.id,type:'book',label:lbl,displayLabel:b.title,author:b.author,year:b.year,rating:b.rating,status:b.status,quote:b.quote,summary:b.summary,ideas:b.ideas,chapters:b.chapters||[],conceptIds:b.concepts});\n    (b.concepts||[]).forEach(c=>addLink(b.id,c));\n  });\n  CONCEPTS.forEach(c=>{\n    nodes.push({id:c.id,type:'concept',label:c.label,displayLabel:c.label,quote:c.quote,summary:c.summary,connections:(c.books||[]).map(bid=>BOOKS.find(b=>b.id===bid)?.title).filter(Boolean),unifiedPrinciple:c.unifiedPrinciple});\n  });\n  return{nodes,links};\n}\n\nif(typeof module!=='undefined')module.exports={BOOKS,CONCEPTS,buildGraphData};\n`;
+}
+function doExport(){
+  const blob=new Blob([buildExportJS()],{type:'application/javascript'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='graph-data.js';a.click();URL.revokeObjectURL(a.href);
+  toast('graph-data.js downloaded!');
+}
+function previewExport(){
+  document.getElementById('export-preview').value=JSON.stringify({books_count:books.length,concepts_count:concepts.length,books,concepts},null,2);
+  toast('Preview loaded');
+}
+
+// UTILS
+function slugify(s){return(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function openOv(id){document.getElementById(id).classList.add('open')}
+function closeOv(id){document.getElementById(id).classList.remove('open')}
+document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open')}));
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400);}
+</script>
+</body>
+</html>
