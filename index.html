@@ -701,19 +701,21 @@ function buildDesktopList(ft=''){
     if(!term)return true;
     return(n.displayLabel||'').toLowerCase().includes(term)||
       (n.author||'').toLowerCase().includes(term)||
-      (n.summary||'').toLowerCase().includes(term);
+      (n.summary||'').toLowerCase().includes(term)||
+      (n.ideas||[]).some(i=>i.toLowerCase().includes(term));
   }
   const books=ND.filter(n=>n.type==='book'&&matches(n));
   const concs=ND.filter(n=>n.type==='concept'&&matches(n));
-  const colStyle='display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:32px';
-  const secStyle='font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--di);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--tx)';
-
+  const colStyle='display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:36px';
+  const secStyle='font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--di);margin-bottom:16px;padding-bottom:9px;border-bottom:2px solid var(--tx);display:flex;align-items:center;gap:10px';
   let html='';
+
   if(books.length){
-    html+=`<div style="${secStyle}">Books (${books.length})</div>`;
+    html+=`<div style="${secStyle}"><span>Books</span><span style="font-size:12px;font-weight:400;color:var(--di);text-transform:none;letter-spacing:0">${books.length} titles</span></div>`;
     html+=`<div style="${colStyle}">`;
     books.forEach(n=>{
       const stars='★'.repeat(n.rating||0);
+      const empty='☆'.repeat(5-(n.rating||0));
       const sc=n.status==='read'?'background:var(--gl);color:var(--grn);border:1px solid var(--gm)':n.status==='reading'?'background:var(--bl);color:var(--blue);border:1px solid var(--bm)':'background:var(--ol);color:var(--org);border:1px solid #DCA86A';
       const stxt=n.status==='read'?'Read':n.status==='reading'?'Reading':'Want to Read';
       const cCons=LD.filter(l=>{
@@ -724,41 +726,70 @@ function buildDesktopList(ft=''){
         const oid=a===n.id?b:a;
         return ND.find(x=>x.id===oid&&x.type==='concept');
       }).filter(Boolean);
-      html+=`<div onclick="setDesktopView('graph');setTimeout(()=>{const nd=ND.find(x=>x.id==='${n.id}');if(nd){sel=nd.id;openPanel(nd);hlNode(nd,true);}},300)"
-        style="background:var(--white);border:1px solid var(--bd);border-radius:10px;padding:18px;cursor:pointer;transition:all .15s;box-shadow:0 1px 3px rgba(0,0,0,.05)"
-        onmouseover="this.style.borderColor='var(--tx)';this.style.boxShadow='0 2px 12px rgba(0,0,0,.1)'"
-        onmouseout="this.style.borderColor='var(--bd)';this.style.boxShadow='0 1px 3px rgba(0,0,0,.05)'">
-        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;line-height:1.3;margin-bottom:4px">${esc(n.displayLabel)}</div>
-        <div style="font-size:12px;color:var(--mu);margin-bottom:8px">${esc(n.author||'')}${n.year?' · '+n.year:''}</div>
-        ${stars?`<div style="color:var(--red);font-size:12px;letter-spacing:1px;margin-bottom:8px">${stars}</div>`:''}
-        <span style="display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.05em;text-transform:uppercase;${sc}">${stxt}</span>
-        ${cCons.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:10px">${cCons.map(c=>`<span style="font-size:10px;padding:2px 8px;border-radius:4px;background:var(--bl);color:var(--blue);border:1px solid var(--bm)">${esc(c.displayLabel)}</span>`).join('')}</div>`:''}
-        ${n.quote?`<div style="font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:var(--mu);margin-top:10px;padding-top:10px;border-top:1px solid var(--bd);line-height:1.5">"${esc(n.quote.slice(0,120))}${n.quote.length>120?'…':''}"</div>`:''}
+      const ideas=(n.ideas||[]).slice(0,4);
+      const extra=(n.ideas||[]).length-4;
+      const chCount=(n.chapters||[]).length;
+      const summary=n.summary?n.summary.slice(0,160)+(n.summary.length>160?'…':''):'';
+      html+=`<div
+        onclick="setDesktopView('graph');setTimeout(()=>{const nd=ND.find(x=>x.id==='${n.id}');if(nd){sel=nd.id;openPanel(nd);hlNode(nd,true);}},300)"
+        style="background:var(--white);border:1px solid var(--bd);border-radius:10px;cursor:pointer;transition:all .15s;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column;overflow:hidden"
+        onmouseover="this.style.borderColor='var(--tx)';this.style.boxShadow='0 4px 20px rgba(0,0,0,.1)';this.querySelector('.cf').style.background='var(--sf)'"
+        onmouseout="this.style.borderColor='var(--bd)';this.style.boxShadow='0 1px 3px rgba(0,0,0,.05)';this.querySelector('.cf').style.background='var(--white)'">
+        <div style="padding:18px 18px 14px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+            <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.05em;text-transform:uppercase;${sc}">${stxt}</span>
+            ${stars?`<span style="color:var(--red);font-size:11px;letter-spacing:1px">${stars}<span style="color:var(--bd)">${empty}</span></span>`:''}
+            ${chCount?`<span style="margin-left:auto;font-size:10px;color:var(--di);font-weight:600">${chCount} ch.</span>`:''}
+          </div>
+          <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;line-height:1.25;margin-bottom:4px">${esc(n.displayLabel)}</div>
+          <div style="font-size:12px;color:var(--mu);margin-bottom:12px">${esc(n.author||'')}${n.year?' · '+n.year:''}</div>
+          ${summary?`<div style="font-size:13px;line-height:1.65;color:var(--tx);margin-bottom:12px">${esc(summary)}</div>`:''}
+          ${n.quote?`<div style="font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--red);line-height:1.55;padding:10px 14px;background:var(--rl);border-left:3px solid var(--red);border-radius:0 5px 5px 0;margin-bottom:12px">"${esc(n.quote.slice(0,140))}${n.quote.length>140?'…':''}"</div>`:''}
+          ${ideas.length?`<div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--di);margin-bottom:6px">Key Ideas</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px">${ideas.map(i=>`<span style="font-size:11px;padding:3px 9px;border-radius:4px;background:var(--sf);border:1px solid var(--bd);color:var(--mu)">${esc(i)}</span>`).join('')}${extra>0?`<span style="font-size:11px;padding:3px 9px;border-radius:4px;background:var(--sf);border:1px solid var(--bd);color:var(--di)">+${extra} more</span>`:''}</div>`:''}
+          ${cCons.length?`<div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--di);margin-bottom:6px">Concepts</div><div style="display:flex;flex-wrap:wrap;gap:5px">${cCons.map(c=>`<span style="font-size:11px;padding:3px 9px;border-radius:4px;background:var(--bl);color:var(--blue);border:1px solid var(--bm)">${esc(c.displayLabel)}</span>`).join('')}</div>`:''}
+        </div>
+        <div class="cf" style="padding:10px 18px;border-top:1px solid var(--bd);background:var(--white);display:flex;align-items:center;justify-content:space-between;transition:background .15s">
+          <span style="font-size:11px;color:var(--di)">Click to explore in graph</span>
+          <span style="font-size:12px;color:var(--blue);font-weight:600">View notes →</span>
+        </div>
       </div>`;
     });
     html+='</div>';
   }
+
   if(concs.length){
-    html+=`<div style="${secStyle}">Concepts (${concs.length})</div>`;
+    html+=`<div style="${secStyle}"><span>Concepts</span><span style="font-size:12px;font-weight:400;color:var(--di);text-transform:none;letter-spacing:0">${concs.length} ideas</span></div>`;
     html+=`<div style="${colStyle}">`;
     concs.forEach(n=>{
-      const bCons=(n.connections||[]).slice(0,5);
-      html+=`<div onclick="setDesktopView('graph');setTimeout(()=>{const nd=ND.find(x=>x.id==='${n.id}');if(nd){sel=nd.id;openPanel(nd);hlNode(nd,true);}},300)"
-        style="background:var(--white);border:1px solid var(--bm);border-radius:10px;padding:18px;cursor:pointer;transition:all .15s;box-shadow:0 1px 3px rgba(0,0,0,.05)"
-        onmouseover="this.style.borderColor='var(--blue)';this.style.boxShadow='0 2px 12px rgba(26,77,173,.1)'"
-        onmouseout="this.style.borderColor='var(--bm)';this.style.boxShadow='0 1px 3px rgba(0,0,0,.05)'">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-          <div style="width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0"></div>
-          <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700">${esc(n.displayLabel)}</div>
+      const bCons=n.connections||[];
+      const principle=n.unifiedPrinciple?n.unifiedPrinciple.slice(0,180)+(n.unifiedPrinciple.length>180?'…':''):'';
+      html+=`<div
+        onclick="setDesktopView('graph');setTimeout(()=>{const nd=ND.find(x=>x.id==='${n.id}');if(nd){sel=nd.id;openPanel(nd);hlNode(nd,true);}},300)"
+        style="background:var(--white);border:1px solid var(--bm);border-radius:10px;cursor:pointer;transition:all .15s;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column;overflow:hidden"
+        onmouseover="this.style.borderColor='var(--blue)';this.style.boxShadow='0 4px 20px rgba(26,77,173,.12)';this.querySelector('.cf').style.background='var(--bl)'"
+        onmouseout="this.style.borderColor='var(--bm)';this.style.boxShadow='0 1px 3px rgba(0,0,0,.05)';this.querySelector('.cf').style.background='var(--white)'">
+        <div style="padding:18px 18px 14px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+            <div style="width:9px;height:9px;border-radius:50%;background:var(--blue);flex-shrink:0"></div>
+            <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);background:var(--bl);padding:2px 8px;border-radius:3px;border:1px solid var(--bm)">Concept</span>
+            <span style="margin-left:auto;font-size:10px;color:var(--di);font-weight:600">${bCons.length} books</span>
+          </div>
+          <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:8px">${esc(n.displayLabel)}</div>
+          ${n.quote?`<div style="font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--red);line-height:1.55;padding:10px 14px;background:var(--rl);border-left:3px solid var(--red);border-radius:0 5px 5px 0;margin-bottom:12px">"${esc(n.quote.slice(0,120))}${n.quote.length>120?'…':''}"</div>`:''}
+          ${n.summary?`<div style="font-size:13px;line-height:1.65;color:var(--tx);margin-bottom:12px">${esc(n.summary.slice(0,180))}${n.summary.length>180?'…':''}</div>`:''}
+          ${principle?`<div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--di);margin-bottom:6px">The Principle</div><div style="font-size:12px;line-height:1.65;color:var(--blue);background:var(--bl);padding:10px 13px;border-radius:6px;border-left:3px solid var(--blue);margin-bottom:12px">${esc(principle)}</div>`:''}
+          ${bCons.length?`<div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--di);margin-bottom:6px">Appears In</div><div style="display:flex;flex-wrap:wrap;gap:5px">${bCons.slice(0,6).map(b=>`<span style="font-size:11px;padding:3px 9px;border-radius:4px;background:var(--rl);color:var(--red);border:1px solid var(--rm)">${esc(b)}</span>`).join('')}${bCons.length>6?`<span style="font-size:11px;padding:3px 9px;border-radius:4px;background:var(--sf);border:1px solid var(--bd);color:var(--di)">+${bCons.length-6} more</span>`:''}</div>`:''}
         </div>
-        ${n.quote?`<div style="font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:var(--red);margin-bottom:10px;line-height:1.5">"${esc(n.quote.slice(0,100))}${n.quote.length>100?'…':''}"</div>`:''}
-        ${n.summary?`<div style="font-size:12px;color:var(--mu);line-height:1.6;margin-bottom:10px">${esc(n.summary.slice(0,140))}…</div>`:''}
-        ${bCons.length?`<div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--di);margin-bottom:6px">Appears In</div><div style="display:flex;flex-wrap:wrap;gap:4px">${bCons.map(b=>`<span style="font-size:10px;padding:2px 8px;border-radius:4px;background:var(--rl);color:var(--red);border:1px solid var(--rm)">${esc(b)}</span>`).join('')}</div>`:''}
+        <div class="cf" style="padding:10px 18px;border-top:1px solid var(--bm);background:var(--white);display:flex;align-items:center;justify-content:space-between;transition:background .15s">
+          <span style="font-size:11px;color:var(--di)">Click to explore in graph</span>
+          <span style="font-size:12px;color:var(--blue);font-weight:600">View connections →</span>
+        </div>
       </div>`;
     });
     html+='</div>';
   }
-  wrap.innerHTML=html||'<div style="padding:60px 0;text-align:center;color:var(--di)">No results.</div>';
+
+  wrap.innerHTML=html||'<div style="padding:60px 0;text-align:center;color:var(--di);font-size:14px">No results found.</div>';
 }
 
 // Hook search to also update desktop list view
