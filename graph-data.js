@@ -1,399 +1,1401 @@
-// ============================================================
-//  CAMDEN'S KNOWLEDGE GRAPH — graph-data.js
-//  This is the single source of truth for all nodes and links.
-//  Edit in the admin panel, then replace this file on your site.
-//  Last updated: 2026-03-28
-// ============================================================
+// Camden's Knowledge Graph — graph-data.js
+// Generated 2026-03-29
 
-const GRAPH_VERSION = "1.0.0";
+const GRAPH_VERSION="1.0.0";
 
-const BOOKS = [
+const BOOKS=[
   {
-    id: "psych-money",
-    type: "book",
-    title: "The Psychology of Money",
-    author: "Morgan Housel",
-    year: 2020,
-    rating: 5,
-    status: "read",
-    cover: "",
-    quote: "Doing well with money has little to do with how smart you are and a lot to do with how you behave.",
-    summary: "Housel's central argument: money is not a math problem — it is a behavior problem. The gap between knowing what to do and actually doing it is explained entirely by psychology, not intelligence. This reframes every financial decision as a behavioral challenge first.",
-    ideas: ["Wealth vs. Being Rich", "The Power of Compounding", "Tail Events Drive Everything", "Reasonable vs. Rational", "Room for Error", "You'll Change"],
-    topics: ["Personal Finance", "Wealth Building"],
-    concepts: ["compounding", "wealth-income", "risk-asymmetry", "long-term-thinking", "identity", "systems-thinking"]
+    "id": "psych-money",
+    "title": "The Psychology of Money",
+    "author": "Morgan Housel",
+    "year": 2020,
+    "rating": 5,
+    "status": "read",
+    "quote": "Doing well with money has little to do with how smart you are and a lot to do with how you behave.",
+    "summary": "Housel's central argument: money is not a math problem — it is a behavior problem.",
+    "ideas": [
+      "Wealth vs. Being Rich",
+      "The Power of Compounding",
+      "Tail Events Drive Everything",
+      "Reasonable vs. Rational",
+      "Room for Error",
+      "You'll Change"
+    ],
+    "concepts": [
+      "compounding",
+      "wealth-income",
+      "risk-asymmetry",
+      "long-term-thinking",
+      "identity",
+      "systems-thinking"
+    ],
+    "chapters": []
   },
   {
-    id: "buy-build",
-    type: "book",
-    title: "Buy Then Build",
-    author: "Walker Deibel",
-    year: 2018,
-    rating: 5,
-    status: "read",
-    cover: "",
-    quote: "Acquisition entrepreneurship is entrepreneurship — just with a head start.",
-    summary: "Deibel reframes entrepreneurship entirely. Buying an existing business with real cash flow gives you proof of concept, existing customers, and operational infrastructure on day one. This is the intellectual foundation of small business acquisition strategy.",
-    ideas: ["Acquisition Entrepreneurship", "SDE as a Valuation Tool", "The Wealth Certainty Spectrum", "Buy vs. Build Risk", "Search Fund Model"],
-    topics: ["Business Acquisition", "Entrepreneurship", "Wealth Building"],
-    concepts: ["cashflow", "ownership", "risk-asymmetry", "capital-allocation", "long-term-thinking"]
+    "id": "buy-build",
+    "title": "Buy Then Build",
+    "author": "Walker Deibel",
+    "year": 2018,
+    "rating": 5,
+    "status": "read",
+    "quote": "Acquisition entrepreneurship is entrepreneurship — just with a head start.",
+    "summary": "Deibel reframes entrepreneurship entirely. Buying an existing business gives you proof of concept, existing customers, and infrastructure on day one.",
+    "ideas": [
+      "Acquisition Entrepreneurship",
+      "SDE as a Valuation Tool",
+      "The Wealth Certainty Spectrum",
+      "Buy vs. Build Risk"
+    ],
+    "concepts": [
+      "cashflow",
+      "ownership",
+      "risk-asymmetry",
+      "capital-allocation",
+      "long-term-thinking"
+    ],
+    "chapters": []
   },
   {
-    id: "main-street",
-    type: "book",
-    title: "Main Street Millionaire",
-    author: "Codie Sanchez",
-    year: 2024,
-    rating: 4,
-    status: "read",
-    cover: "",
-    quote: "The boring business is not a consolation prize. It is the point.",
-    summary: "Sanchez popularizes the boring business thesis: unglamorous, cash-flowing Main Street businesses are better acquisition targets than tech-adjacent startups. Where Deibel gives the framework, Sanchez gives the operator's perspective on finding, buying, and scaling these businesses.",
-    ideas: ["The Boring Business Thesis", "Cashflow Over Growth", "Seller Financing", "Owner-Dependent Risk"],
-    topics: ["Business Acquisition", "Cashflow"],
-    concepts: ["cashflow", "ownership", "risk-asymmetry", "capital-allocation", "compounding"]
+    "id": "main-street",
+    "title": "Main Street Millionaire",
+    "author": "Codie Sanchez",
+    "year": 2024,
+    "rating": 4,
+    "status": "read",
+    "quote": "The boring business is not a consolation prize. It is the point.",
+    "summary": "Sanchez popularizes the boring business thesis — unglamorous, cash-flowing Main Street businesses are better acquisition targets than tech-adjacent startups.",
+    "ideas": [
+      "The Boring Business Thesis",
+      "Cashflow Over Growth",
+      "Seller Financing",
+      "Owner-Dependent Risk"
+    ],
+    "concepts": [
+      "cashflow",
+      "ownership",
+      "risk-asymmetry",
+      "capital-allocation",
+      "compounding"
+    ],
+    "chapters": []
   },
   {
-    id: "financial-intelligence",
-    type: "book",
-    title: "Financial Intelligence",
-    author: "Karen Berman & Joe Knight",
-    year: 2006,
-    rating: 4,
-    status: "read",
-    cover: "",
-    quote: "Profit is an opinion. Cash is a fact.",
-    summary: "Financial statements are not objective truth — they are constructed documents with built-in assumptions. Understanding those assumptions is the difference between a sophisticated acquirer and a naive one. Builds the literacy to read financials with appropriate skepticism.",
-    ideas: ["The Art of Finance", "Accrual vs. Cash Accounting", "Working Capital", "Reading a Balance Sheet"],
-    topics: ["Personal Finance", "Business Acquisition"],
-    concepts: ["cashflow", "capital-allocation", "systems-thinking", "risk-asymmetry"]
+    "id": "financial-intelligence",
+    "title": "Financial Intelligence",
+    "author": "Karen Berman & Joe Knight",
+    "year": 2006,
+    "rating": 5,
+    "status": "reading",
+    "quote": "Profit is an opinion. Cash is a fact.",
+    "summary": "Financial statements are not objective truth — they are constructed documents with built-in assumptions. This builds the literacy to read financials with appropriate skepticism.",
+    "ideas": [
+      "The Art of Finance",
+      "Accrual vs. Cash Accounting",
+      "Working Capital",
+      "Reading a Balance Sheet"
+    ],
+    "concepts": [
+      "cashflow",
+      "risk-asymmetry",
+      "systems-thinking",
+      "capital-allocation"
+    ],
+    "chapters": [],
+    "topics": []
   },
   {
-    id: "atomic-habits",
-    type: "book",
-    title: "Atomic Habits",
-    author: "James Clear",
-    year: 2018,
-    rating: 5,
-    status: "read",
-    cover: "",
-    quote: "You do not rise to the level of your goals. You fall to the level of your systems.",
-    summary: "Clear's central argument: outcomes are a lagging measure of habits. You don't get to choose your outcomes — you choose your habits, and outcomes follow. The most practically applicable book on behavior change — and the one that makes compounding feel real at the human level.",
-    ideas: ["Systems vs. Goals", "Identity-Based Habits", "Habit Stacking", "Environment Design", "The 1% Rule"],
-    topics: ["Habit Formation", "Personal Development"],
-    concepts: ["compounding", "systems-thinking", "identity", "long-term-thinking"]
+    "id": "atomic-habits",
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "year": 2018,
+    "rating": 5,
+    "status": "read",
+    "quote": "You do not rise to the level of your goals. You fall to the level of your systems.",
+    "summary": "Outcomes are a lagging measure of habits. You don't get to choose your outcomes — you choose your habits, and outcomes follow.",
+    "ideas": [
+      "Systems vs. Goals",
+      "Identity-Based Habits",
+      "Habit Stacking",
+      "Environment Design",
+      "The 1% Rule"
+    ],
+    "concepts": [
+      "compounding",
+      "systems-thinking",
+      "identity",
+      "long-term-thinking"
+    ],
+    "chapters": []
   },
   {
-    id: "naval",
-    type: "book",
-    title: "Almanack of Naval Ravikant",
-    author: "Naval Ravikant",
-    year: 2020,
-    rating: 5,
-    status: "read",
-    cover: "",
-    quote: "Wealth is assets that earn while you sleep.",
-    summary: "Naval's mental models for wealth creation and happiness — some of the clearest first-principles thinking available. The framework for specific knowledge and leverage is the most useful model for career trajectory. The distinction between wealth (positive-sum) and status (zero-sum) changes how you play the game.",
-    ideas: ["Specific Knowledge", "Leverage", "Long-Term Thinking", "Reading is Foundational", "Wealth vs. Status"],
-    topics: ["Wealth Building", "Entrepreneurship", "Philosophy"],
-    concepts: ["leverage", "wealth-income", "compounding", "long-term-thinking", "ownership", "identity"]
+    "id": "naval",
+    "title": "Almanack of Naval Ravikant",
+    "author": "Naval Ravikant",
+    "year": 2020,
+    "rating": 5,
+    "status": "read",
+    "quote": "Wealth is assets that earn while you sleep.",
+    "summary": "Naval's mental models for wealth creation and happiness — some of the clearest first-principles thinking available.",
+    "ideas": [
+      "Specific Knowledge",
+      "Leverage",
+      "Long-Term Thinking",
+      "Reading is Foundational"
+    ],
+    "concepts": [
+      "leverage",
+      "wealth-income",
+      "compounding",
+      "long-term-thinking",
+      "ownership",
+      "identity"
+    ],
+    "chapters": []
   },
   {
-    id: "zero-to-one",
-    type: "book",
-    title: "Zero to One",
-    author: "Peter Thiel",
-    year: 2014,
-    rating: 4,
-    status: "read",
-    cover: "",
-    quote: "Every moment in business happens only once. The next Bill Gates will not build an operating system. The next Larry Page will not make a search engine.",
-    summary: "Thiel argues that true innovation goes from 0 to 1 — creating something genuinely new — rather than from 1 to n (copying what works). The best businesses are monopolies in disguise. Competition is for losers. The most important question: what important truth do very few people agree with you on?",
-    ideas: ["0 to 1 vs 1 to n", "Secrets Still Exist", "Competition Is for Losers", "Power Law in Portfolios", "Definite vs. Indefinite Optimism"],
-    topics: ["Entrepreneurship", "Strategy"],
-    concepts: ["leverage", "long-term-thinking", "risk-asymmetry", "ownership"]
+    "id": "zero-to-one",
+    "title": "Zero to One",
+    "author": "Peter Thiel",
+    "year": 2014,
+    "rating": 4,
+    "status": "read",
+    "quote": "Every moment in business happens only once.",
+    "summary": "True innovation goes from 0 to 1. The best businesses are monopolies in disguise. Competition is for losers.",
+    "ideas": [
+      "0 to 1 vs 1 to n",
+      "Secrets Still Exist",
+      "Competition Is for Losers",
+      "Power Law in Portfolios"
+    ],
+    "concepts": [
+      "leverage",
+      "long-term-thinking",
+      "risk-asymmetry",
+      "ownership"
+    ],
+    "chapters": []
   },
   {
-    id: "good-to-great",
-    type: "book",
-    title: "Good to Great",
-    author: "Jim Collins",
-    year: 2001,
-    rating: 4,
-    status: "read",
-    cover: "",
-    quote: "Good is the enemy of great.",
-    summary: "Collins studied companies that made the leap from good to great sustained performance and found a consistent pattern: Level 5 leaders, the right people on the bus, a Hedgehog Concept, a culture of discipline, and the Flywheel. Not flashy, not dramatic — relentlessly consistent execution over time.",
-    ideas: ["Level 5 Leadership", "First Who Then What", "The Hedgehog Concept", "Culture of Discipline", "The Flywheel"],
-    topics: ["Leadership", "Strategy", "Entrepreneurship"],
-    concepts: ["systems-thinking", "long-term-thinking", "compounding", "ownership"]
+    "id": "good-to-great",
+    "title": "Good to Great",
+    "author": "Jim Collins",
+    "year": 2001,
+    "rating": 4,
+    "status": "read",
+    "quote": "Good is the enemy of great.",
+    "summary": "Collins studied companies that made the leap from good to great and found a consistent pattern: Level 5 leaders, the right people, Hedgehog Concept, discipline, and the Flywheel.",
+    "ideas": [
+      "Level 5 Leadership",
+      "First Who Then What",
+      "The Hedgehog Concept",
+      "The Flywheel"
+    ],
+    "concepts": [
+      "systems-thinking",
+      "long-term-thinking",
+      "compounding",
+      "ownership"
+    ],
+    "chapters": []
   },
   {
-    id: "never-split-difference",
-    type: "book",
-    title: "Never Split the Difference",
-    author: "Chris Voss",
-    year: 2016,
-    rating: 5,
-    status: "read",
-    cover: "",
-    quote: "No deal is better than a bad deal.",
-    summary: "Former FBI hostage negotiator Chris Voss reveals that all negotiation is emotional, not rational. Tactical empathy, calibrated questions, and the Black Swan — unexpected information that changes everything — are more powerful than logic. Directly applicable to acquisition deal-making, hiring, and any high-stakes conversation.",
-    ideas: ["Tactical Empathy", "Mirroring", "Calibrated Questions", "The Black Swan", "Accusation Audit"],
-    topics: ["Negotiation", "Communication", "Business Acquisition"],
-    concepts: ["risk-asymmetry", "systems-thinking"]
+    "id": "never-split",
+    "title": "Never Split the Difference",
+    "author": "Chris Voss",
+    "year": 2016,
+    "rating": 5,
+    "status": "read",
+    "quote": "No deal is better than a bad deal.",
+    "summary": "All negotiation is emotional. Tactical empathy and calibrated questions are more powerful than logic.",
+    "ideas": [
+      "Tactical Empathy",
+      "Mirroring",
+      "Calibrated Questions",
+      "The Black Swan"
+    ],
+    "concepts": [
+      "risk-asymmetry",
+      "systems-thinking"
+    ],
+    "chapters": []
   },
   {
-    id: "thinking-fast-slow",
-    type: "book",
-    title: "Thinking, Fast and Slow",
-    author: "Daniel Kahneman",
-    year: 2011,
-    rating: 5,
-    status: "read",
-    cover: "",
-    quote: "Nothing in life is as important as you think it is, while you are thinking about it.",
-    summary: "Kahneman introduces System 1 (fast, intuitive, emotional) and System 2 (slow, deliberate, logical) thinking. The book is a catalog of how System 1 leads us astray — availability bias, anchoring, loss aversion, overconfidence. Understanding these isn't enough to avoid them; but it changes how you design decisions.",
-    ideas: ["System 1 vs System 2", "Anchoring", "Loss Aversion", "Availability Heuristic", "Overconfidence Bias", "Regression to the Mean"],
-    topics: ["Psychology", "Decision Making"],
-    concepts: ["risk-asymmetry", "systems-thinking", "identity"]
+    "id": "e-myth",
+    "title": "The E-Myth Revisited",
+    "author": "Michael Gerber",
+    "year": 1995,
+    "rating": 4,
+    "status": "read",
+    "quote": "Build your business like you're going to franchise it.",
+    "summary": "Most small businesses fail because the owner is a technician who had an entrepreneurial seizure. The fix: build systems so the business runs without you.",
+    "ideas": [
+      "Entrepreneur vs Technician vs Manager",
+      "Work On vs In Your Business",
+      "The Franchise Prototype"
+    ],
+    "concepts": [
+      "systems-thinking",
+      "ownership",
+      "leverage",
+      "risk-asymmetry"
+    ],
+    "chapters": []
   },
   {
-    id: "e-myth",
-    type: "book",
-    title: "The E-Myth Revisited",
-    author: "Michael Gerber",
-    year: 1995,
-    rating: 4,
-    status: "read",
-    cover: "",
-    quote: "The difference between great people and everyone else is that great people create their lives actively, while everyone else is created by their lives.",
-    summary: "Gerber argues most small businesses fail because the owner is a technician who had an entrepreneurial seizure — not a true entrepreneur. The fix: build your business as if you were franchising it. Document everything. Create systems so the business runs without you. This is the Owner-Dependent Risk problem solved.",
-    ideas: ["The Entrepreneur vs Technician vs Manager", "Work On vs In Your Business", "The Franchise Prototype", "Systems Create Freedom"],
-    topics: ["Entrepreneurship", "Business Acquisition", "Systems"],
-    concepts: ["systems-thinking", "ownership", "leverage", "risk-asymmetry"]
+    "id": "no-rules-rules",
+    "status": "want-to-read",
+    "concepts": [
+      "systems-thinking",
+      "leverage",
+      "ownership"
+    ],
+    "topics": [],
+    "ideas": [
+      "Talent Density",
+      "Freedom and Responsibility",
+      "Radical Candor at Scale",
+      "Remove Controls as Trust Builds",
+      "Context Not Control"
+    ],
+    "rating": 0,
+    "chapters": [],
+    "title": "No Rules Rules",
+    "author": "Reed Hastings & Erin Meyer",
+    "year": 2020,
+    "quote": "The best thing you can do for employees is hire only senior people.",
+    "summary": "Netflix's co-founder argues that most corporate policies exist to manage the lowest common denominator — and that eliminating them while hiring only exceptional people creates a culture of freedom and responsibility that outperforms conventional management. Talent density is the prerequisite to everything else."
   },
   {
-    id: "deep-work",
-    type: "book",
-    title: "Deep Work",
-    author: "Cal Newport",
-    year: 2016,
-    rating: 4,
-    status: "read",
-    cover: "",
-    quote: "Clarity about what matters provides clarity about what does not.",
-    summary: "Newport argues that the ability to perform deep work — focused, undistracted cognitive effort — is becoming increasingly rare and increasingly valuable simultaneously. Most knowledge workers spend their days in shallow work (email, meetings, reactive tasks) that produces the feeling of productivity without real output. Deep work is the skill that compounds.",
-    ideas: ["Deep Work vs Shallow Work", "The 4 Rules of Deep Work", "Attention Residue", "Bimodal vs Monastic Scheduling", "The Any-Benefit Trap"],
-    topics: ["Personal Development", "Productivity"],
-    concepts: ["compounding", "long-term-thinking", "systems-thinking", "leverage"]
+    "id": "writing-busy-readers",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "leverage"
+    ],
+    "topics": [],
+    "ideas": [
+      "Less Is More",
+      "Lead with the Ask",
+      "Hierarchy of Information",
+      "Design for Skimmers",
+      "Cognitive Load in Writing"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "Writing for Busy Readers",
+    "author": "Todd Rogers & Jessica Lasky-Fink",
+    "year": 2023,
+    "quote": "The best writing anticipates what the reader needs, not what the writer wants to say.",
+    "summary": "Two behavioral scientists apply cognitive research to practical writing. The core insight: readers are always busier than writers assume. Every word that doesn't earn its place loses the reader. Less is almost always more, and structure does more work than style."
   },
   {
-    id: "built-to-sell",
-    type: "book",
-    title: "Built to Sell",
-    author: "John Warrillow",
-    year: 2011,
-    rating: 5,
-    status: "read",
-    cover: "",
-    quote: "Don't be in love with your company. Fall in love with the problem you're solving.",
-    summary: "Warrillow argues that the most valuable businesses are ones that can run without the owner — businesses that are sellable. Even if you never sell, building with the exit in mind forces better systems, clearer processes, and less owner-dependence. The irony: building to sell makes the business more valuable whether you sell or not.",
-    ideas: ["Teachable, Valuable, Repeatable", "The Sellability Score", "Avoiding the Owner Trap", "Standard Operating Procedures as Equity"],
-    topics: ["Business Acquisition", "Entrepreneurship"],
-    concepts: ["systems-thinking", "ownership", "cashflow", "risk-asymmetry"]
+    "id": "power-professionalism",
+    "status": "want-to-read",
+    "concepts": [
+      "identity",
+      "systems-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Mindset Over Credentials",
+      "Accountability as Identity",
+      "Client-First Thinking",
+      "Professionalism Under Pressure"
+    ],
+    "rating": 0,
+    "chapters": [],
+    "title": "The Power of Professionalism",
+    "author": "Bill Wiersma",
+    "year": 2011,
+    "quote": "Professionalism is about what you do when no one is watching.",
+    "summary": "Wiersma argues that professionalism is not about etiquette or credentials but about a mindset — a commitment to excellence, accountability, and client-first thinking that separates elite performers from the rest. It is a choice made repeatedly under pressure."
   },
   {
-    id: "poor-charlies-almanack",
-    type: "book",
-    title: "Poor Charlie's Almanack",
-    author: "Charlie Munger",
-    year: 2005,
-    rating: 5,
-    status: "want-to-read",
-    cover: "",
-    quote: "All I want to know is where I'm going to die, so I'll never go there.",
-    summary: "A collection of Munger's speeches and mental models. The core thesis: the best thinkers are multidisciplinary — they borrow the most useful ideas from every field and build a latticework of mental models. Inversion, second-order thinking, and the psychology of human misjudgment are the most actionable frameworks.",
-    ideas: ["Mental Models as Latticework", "Inversion", "Second-Order Thinking", "The Psychology of Human Misjudgment", "Lollapalooza Effects"],
-    topics: ["Decision Making", "Investing", "Philosophy"],
-    concepts: ["compounding", "long-term-thinking", "risk-asymmetry", "systems-thinking"]
+    "id": "great-mental-models-1",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "risk-asymmetry",
+      "long-term-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "The Map Is Not The Territory",
+      "First Principles Thinking",
+      "Second-Order Thinking",
+      "Inversion",
+      "Probabilistic Thinking",
+      "Occam's Razor"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "The Great Mental Models Vol. 1",
+    "author": "Shane Parrish",
+    "year": 2019,
+    "quote": "The quality of our thinking is proportional to the models in our head.",
+    "summary": "Parrish introduces the concept of a mental model latticework — a cross-disciplinary collection of thinking tools that improve decision-making across all domains. Volume 1 covers foundational models: the map is not the territory, first principles thinking, thought experiments, second-order thinking, probabilistic thinking, inversion, and Occam's razor."
   },
   {
-    id: "antifragile",
-    type: "book",
-    title: "Antifragile",
-    author: "Nassim Nicholas Taleb",
-    year: 2012,
-    rating: 4,
-    status: "want-to-read",
-    cover: "",
-    quote: "Wind extinguishes a candle and energizes fire. Likewise with randomness, uncertainty, and chaos: you want to use them, not hide from them.",
-    summary: "Taleb introduces the concept of antifragility: beyond resilience or robustness. Fragile things break under stress. Robust things resist. Antifragile things get stronger. The goal for individuals, businesses, and portfolios is to be positioned so that disorder, volatility, and uncertainty are net positive. Skin in the game is what creates antifragility.",
-    ideas: ["Fragile vs Robust vs Antifragile", "Via Negativa", "The Barbell Strategy", "Optionality", "Skin in the Game"],
-    topics: ["Decision Making", "Investing", "Philosophy"],
-    concepts: ["risk-asymmetry", "long-term-thinking", "ownership", "leverage"]
+    "id": "great-mental-models-2",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "leverage",
+      "long-term-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Velocity vs Speed",
+      "Leverage from Physics",
+      "Activation Energy",
+      "Catalysts",
+      "Natural Selection Applied to Ideas",
+      "Ecosystem Thinking"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "The Great Mental Models Vol. 2",
+    "author": "Shane Parrish",
+    "year": 2019,
+    "quote": "Physics, chemistry, and biology offer the most reliable models because they describe how the world actually works.",
+    "summary": "Volume 2 draws mental models from physics, chemistry, and biology — velocity vs. speed, leverage, activation energy, catalysts, evolution, natural selection, ecosystem thinking. The goal is to see patterns across disciplines that most specialists never notice because they stay inside their own domain."
+  },
+  {
+    "id": "great-mental-models-3",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "risk-asymmetry",
+      "long-term-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Redundancy",
+      "Critical Mass",
+      "Game Theory Basics",
+      "Via Negativa",
+      "Margin of Safety Applied",
+      "Default Thinking"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "The Great Mental Models Vol. 3",
+    "author": "Shane Parrish",
+    "year": 2021,
+    "quote": "The military understands something most businesses don't: complex systems fail in complex ways.",
+    "summary": "Volume 3 pulls models from mathematics and military thinking — redundancy, margin of safety, critical mass, game theory, via negativa, the power of default thinking. The military section is particularly sharp on how to act under uncertainty with incomplete information."
+  },
+  {
+    "id": "great-mental-models-4",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "identity",
+      "risk-asymmetry"
+    ],
+    "topics": [],
+    "ideas": [
+      "Status Games",
+      "Signaling vs Substance",
+      "Narrative Bias",
+      "Incentive Structures",
+      "Social Proof",
+      "Tribalism"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "The Great Mental Models Vol. 4",
+    "author": "Shane Parrish",
+    "year": 2023,
+    "quote": "Human behavior follows predictable patterns precisely because we are social animals.",
+    "summary": "Volume 4 focuses on human nature and social systems — status games, signaling, narrative bias, tribalism, social proof, incentive structures, and the dynamics of group behavior. Understanding these models makes you harder to manipulate and better at designing systems that work with human nature rather than against it."
+  },
+  {
+    "id": "youre-invited",
+    "status": "read",
+    "concepts": [
+      "leverage",
+      "long-term-thinking",
+      "identity"
+    ],
+    "topics": [],
+    "ideas": [
+      "Belonging Over Networking",
+      "The IKEA Effect in Relationships",
+      "Influence Through Experience",
+      "Community as Infrastructure",
+      "Effortful Investment Creates Value"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "You're Invited",
+    "author": "Jon Levy",
+    "year": 2021,
+    "quote": "The most influential people in the world got there by helping others feel like they belong.",
+    "summary": "Behavioral scientist Jon Levy studies the science of belonging and influence. His thesis: the most connected people don't network — they create experiences that make others feel seen, invested, and part of something meaningful. The dinner table is more powerful than the conference room."
+  },
+  {
+    "id": "greatest-salesman",
+    "status": "read",
+    "concepts": [
+      "identity",
+      "compounding",
+      "long-term-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Habits as Master",
+      "Persistence as Strategy",
+      "Love as a Sales Tool",
+      "Act Now",
+      "Each Day a New Life"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "The Greatest Salesman in the World",
+    "author": "Og Mandino",
+    "year": 1968,
+    "quote": "I will form good habits and become their slave.",
+    "summary": "A parable structured around ten scrolls of wisdom on habit, persistence, love, and action. Mandino's central argument: all success is built on habits formed through daily repetition until they become automatic. The scrolls are designed to be read repeatedly — the repetition is the point."
+  },
+  {
+    "id": "drucker-leadership",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "leverage",
+      "ownership"
+    ],
+    "topics": [],
+    "ideas": [
+      "Effectiveness as a Discipline",
+      "Management vs Leadership",
+      "Results Define Leadership",
+      "Trust as Foundation",
+      "Developing People"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "Drucker on Leadership",
+    "author": "William A. Cohen",
+    "year": 2010,
+    "quote": "Management is doing things right. Leadership is doing the right things.",
+    "summary": "A synthesis of Peter Drucker's leadership philosophy — the most important management thinker of the 20th century. Drucker argued that leadership is not about personality or charisma but about results, trust, and the elevation of people's capacity. Effectiveness is a discipline that can be learned."
+  },
+  {
+    "id": "ruthless-elimination-hurry",
+    "status": "read",
+    "concepts": [
+      "identity",
+      "long-term-thinking",
+      "systems-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Hurry as a Spiritual Problem",
+      "Sabbath as Resistance",
+      "Silence and Solitude",
+      "Simplicity",
+      "Formation Requires Pace"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "The Ruthless Elimination of Hurry",
+    "author": "John Mark Comer",
+    "year": 2019,
+    "quote": "Hurry is the great enemy of spiritual life in our day.",
+    "summary": "Comer argues that the pace of modern life — chronic busyness, digital distraction, the tyranny of the urgent — is incompatible with a deep, meaningful existence. Drawing on ancient spiritual practices, he makes the case for intentional slowness, sabbath, silence, and simplicity as acts of resistance and formation."
+  },
+  {
+    "id": "ceo-excellence",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "leverage",
+      "long-term-thinking",
+      "ownership"
+    ],
+    "topics": [],
+    "ideas": [
+      "Direction Setting at Scale",
+      "Bold Vision vs Sandbagging",
+      "Organization Design as Strategy",
+      "Board as Asset Not Obstacle",
+      "Operating Cadence",
+      "Managing Energy Not Time"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "CEO Excellence",
+    "author": "Scott Keller & Vikram Malhotra",
+    "year": 2022,
+    "quote": "The best CEOs don't do things differently — they do different things.",
+    "summary": "McKinsey researchers interviewed 67 of the world's top-performing CEOs to identify what distinguishes excellent from merely good leadership at the top. Six key mindsets emerge: direction-setting, organization alignment, team mobilization, board engagement, stakeholder connection, and personal effectiveness. Each has a higher and lower road."
+  },
+  {
+    "id": "basic-economics",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "risk-asymmetry",
+      "capital-allocation"
+    ],
+    "topics": [],
+    "ideas": [
+      "Price Signals",
+      "Incentives Change Behavior",
+      "Trade-offs Are Unavoidable",
+      "Unintended Consequences",
+      "Scarcity as the Foundation",
+      "Comparative Advantage"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "Basic Economics",
+    "author": "Thomas Sowell",
+    "year": 2000,
+    "quote": "The first lesson of economics is scarcity. The first lesson of politics is to disregard the first lesson of economics.",
+    "summary": "Sowell's masterwork explains economic principles without equations or jargon — supply and demand, price signals, incentives, trade-offs, and the law of unintended consequences. His central argument: economic decisions should be judged by their actual results, not their intentions. Resources are allocated by prices, not good intentions."
+  },
+  {
+    "id": "why-we-sleep",
+    "status": "read",
+    "concepts": [
+      "compounding",
+      "systems-thinking",
+      "long-term-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "REM vs Deep Sleep Functions",
+      "Sleep Deprivation Compounds",
+      "Memory Consolidation During Sleep",
+      "Emotional Regulation and Sleep",
+      "Caffeine Half-Life",
+      "The Lie of Catching Up on Sleep"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "Why We Sleep",
+    "author": "Matthew Walker",
+    "year": 2017,
+    "quote": "Sleep is the single most effective thing you can do to reset your brain and body health each day.",
+    "summary": "Neuroscientist Matthew Walker presents the science of sleep — what it does, what happens when we deprive ourselves of it, and why the modern world's relationship with sleep is a public health catastrophe. The research is unambiguous: consistently sleeping less than seven hours is correlated with nearly every major disease and dramatically impairs cognitive performance."
+  },
+  {
+    "id": "million-dollar-weekend",
+    "status": "read",
+    "concepts": [
+      "risk-asymmetry",
+      "leverage",
+      "systems-thinking",
+      "ownership"
+    ],
+    "topics": [],
+    "ideas": [
+      "Validate Before Building",
+      "The Coffee Challenge",
+      "Ask for the Sale",
+      "Freedom Number",
+      "Customer-First Entrepreneurship",
+      "The 48-Hour Launch"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "Million Dollar Weekend",
+    "author": "Noah Kagan",
+    "year": 2024,
+    "quote": "The biggest barrier to starting is the stories we tell ourselves about why we can't.",
+    "summary": "AppSumo founder Noah Kagan's playbook for validating a business idea in 48 hours before investing serious time or money. The core methodology: identify a customer, make an offer, collect money — in that order. Most entrepreneurs build before they validate. Kagan argues you can and should validate in a weekend."
+  },
+  {
+    "id": "first-90-days",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "long-term-thinking",
+      "leverage"
+    ],
+    "topics": [],
+    "ideas": [
+      "Breakeven Point",
+      "Early Wins Build Credibility",
+      "Diagnose Before Prescribing",
+      "Secure Early Wins",
+      "Build Your Team",
+      "Match Strategy to Situation Type"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "The First 90 Days",
+    "author": "Michael Watkins",
+    "year": 2003,
+    "quote": "The actions you take in your first 90 days will largely determine whether you succeed or fail.",
+    "summary": "The definitive guide to navigating role transitions — new job, promotion, or new assignment. Watkins argues that the first 90 days are disproportionately important because patterns are set, alliances are formed, and credibility is established before you've had time to make results. The goal: reach the breakeven point (where you're contributing more than consuming) as fast as possible."
+  },
+  {
+    "id": "grit",
+    "status": "read",
+    "concepts": [
+      "identity",
+      "compounding",
+      "long-term-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Talent vs Effort Formula",
+      "Passion as Direction",
+      "Perseverance as Engine",
+      "Growth Mindset Foundation",
+      "Hard Thing Rule",
+      "Grit Is Learnable"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "Grit",
+    "author": "Angela Duckworth",
+    "year": 2016,
+    "quote": "Enthusiasm is common. Endurance is rare.",
+    "summary": "Psychologist Angela Duckworth presents her research on what predicts success: not talent, not IQ, but grit — the combination of passion and perseverance for long-term goals. Talent multiplied by effort equals skill; skill multiplied by effort equals achievement. Effort counts twice, talent once."
+  },
+  {
+    "id": "forging-mettle",
+    "status": "read",
+    "concepts": [
+      "identity",
+      "long-term-thinking",
+      "compounding"
+    ],
+    "topics": [],
+    "ideas": [
+      "Mettle as Forged Not Given",
+      "Pressure Reveals Character",
+      "Deliberate Discomfort",
+      "Courage as a Skill",
+      "Leadership Under Fire"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "Forging Mettle",
+    "author": "Brad Buren Jr.",
+    "year": 2022,
+    "quote": "Character is not what you claim. It is what pressure reveals.",
+    "summary": "A framework for developing the character and resilience required for elite performance and leadership. Buren argues that mettle — the combination of courage, character, and competence under pressure — is forged through deliberate exposure to difficulty, not through comfort or theory. You become what you repeatedly do under fire."
+  },
+  {
+    "id": "meditations",
+    "status": "read",
+    "concepts": [
+      "identity",
+      "long-term-thinking",
+      "systems-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Control What You Control",
+      "Memento Mori",
+      "Virtue as the Highest Good",
+      "The Present Moment",
+      "Amor Fati",
+      "The View from Above"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "Meditations",
+    "author": "Marcus Aurelius",
+    "year": 180,
+    "quote": "You have power over your mind, not outside events. Realize this, and you will find strength.",
+    "summary": "The private journal of a Roman emperor — never intended for publication. Marcus Aurelius wrote to himself to maintain his Stoic practice: focus on what you control, accept what you don't, act virtuously regardless of outcome, and remember your mortality. The most powerful leadership philosophy ever written, and the author was arguably the most powerful person alive when he wrote it."
+  },
+  {
+    "id": "emotional-intelligence",
+    "status": "read",
+    "concepts": [
+      "identity",
+      "systems-thinking",
+      "leverage"
+    ],
+    "topics": [],
+    "ideas": [
+      "Self-Awareness as Foundation",
+      "Self-Regulation Under Pressure",
+      "Empathy as Intelligence",
+      "The Amygdala Hijack",
+      "EQ Is Developable",
+      "Social Skills as Competence"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "Emotional Intelligence",
+    "author": "Daniel Goleman",
+    "year": 1995,
+    "quote": "If your emotional abilities aren't in hand, if you don't have self-awareness, if you are not able to manage your distressing emotions, if you can't have empathy and have effective relationships, then no matter how smart you are you are not going to get very far.",
+    "summary": "Goleman introduced EQ to mainstream consciousness: the ability to recognize, understand, and manage emotions — in yourself and others — predicts success more than IQ in most domains. The five components: self-awareness, self-regulation, motivation, empathy, and social skills. EQ is not fixed; it can be developed."
+  },
+  {
+    "id": "crucial-conversations",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "identity",
+      "leverage"
+    ],
+    "topics": [],
+    "ideas": [
+      "Start with Heart",
+      "Creating Safety",
+      "The Pool of Shared Meaning",
+      "STATE Your Path",
+      "Explore Others' Paths",
+      "Move to Action"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "Crucial Conversations",
+    "author": "Patterson, Grenny, McMillan & Switzler",
+    "year": 2002,
+    "quote": "The single biggest problem in communication is the illusion that it has taken place.",
+    "summary": "A framework for handling high-stakes conversations where emotions run high, opinions differ, and the stakes matter. The core insight: most people either avoid crucial conversations or handle them poorly. The skills — creating safety, stating your path, exploring others' paths — can be learned and dramatically change outcomes in relationships, teams, and organizations."
+  },
+  {
+    "id": "very-good-copy",
+    "status": "read",
+    "concepts": [
+      "leverage",
+      "systems-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Write for One Person",
+      "Lead with the Problem",
+      "Specificity Over Generality",
+      "The Job of Every Line",
+      "Voice and Distinctiveness",
+      "Edit to the Bone"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "Very Good Copy",
+    "author": "Eddie Shleyner",
+    "year": 2023,
+    "quote": "Copy is salesmanship in print.",
+    "summary": "A practitioner's guide to writing copy that moves people to action. Shleyner distills his experience into principles: write for one person, lead with the problem, use specificity over generality, and treat every word as earning its place. Good copy is invisible — the reader doesn't notice it, they just act."
+  },
+  {
+    "id": "billion-dollar-brand-club",
+    "status": "read",
+    "concepts": [
+      "leverage",
+      "ownership",
+      "capital-allocation",
+      "risk-asymmetry"
+    ],
+    "topics": [],
+    "ideas": [
+      "Direct to Consumer Model",
+      "Cut Out the Middleman",
+      "Brand as Relationship",
+      "Digital as Leverage",
+      "Category Disruption Pattern",
+      "Unit Economics First"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "Billion Dollar Brand Club",
+    "author": "Lawrence Ingrassia",
+    "year": 2020,
+    "quote": "The internet didn't just change how we shop. It changed who can build a brand.",
+    "summary": "The story of how direct-to-consumer brands — Warby Parker, Dollar Shave Club, Casper, Away — disrupted legacy industries by going direct to customers, cutting out the middleman, and using digital channels as leverage. The pattern: identify an industry where the incumbent is lazy, use the internet to undercut on price and experience, build a brand that feels personal."
+  },
+  {
+    "id": "life-youve-always-wanted",
+    "status": "read",
+    "concepts": [
+      "identity",
+      "long-term-thinking",
+      "compounding"
+    ],
+    "topics": [],
+    "ideas": [
+      "Training vs Trying",
+      "Spiritual Disciplines as Training",
+      "Soul Renovation",
+      "Ruthless Elimination of Hurry",
+      "Practicing the Presence",
+      "Community as Formation Context"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "The Life You've Always Wanted",
+    "author": "John Ortberg",
+    "year": 2002,
+    "quote": "Spiritual transformation is not about trying harder. It is about training smarter.",
+    "summary": "Ortberg applies the same logic athletes use for physical training to spiritual formation. You don't try your way to transformation — you train for it through spiritual disciplines: silence, solitude, confession, service, celebration. The goal is not behavior modification but the renovation of the heart."
+  },
+  {
+    "id": "graphic-design-everyone",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "leverage"
+    ],
+    "topics": [],
+    "ideas": [
+      "Visual Hierarchy",
+      "Typography as Voice",
+      "Color Psychology",
+      "White Space as Tool",
+      "Grid Systems",
+      "Design Is Communication"
+    ],
+    "rating": 3,
+    "chapters": [],
+    "title": "Graphic Design for Everyone",
+    "author": "Cath Caldwell",
+    "year": 2019,
+    "quote": "Design is not decoration. Design is communication.",
+    "summary": "An accessible introduction to graphic design principles for non-designers: typography, color theory, layout, hierarchy, and visual communication. The central argument is that design literacy — understanding why things look the way they do — makes you a better communicator in any medium, not just visual ones."
+  },
+  {
+    "id": "how-to-win-friends",
+    "status": "read",
+    "concepts": [
+      "leverage",
+      "long-term-thinking",
+      "identity"
+    ],
+    "topics": [],
+    "ideas": [
+      "Genuine Interest in Others",
+      "The Only Way to Win an Argument",
+      "Remember Names",
+      "See From Their Perspective",
+      "Let Others Feel the Idea Is Theirs",
+      "Sincere Appreciation"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "How to Win Friends and Influence People",
+    "author": "Dale Carnegie",
+    "year": 1936,
+    "quote": "You can make more friends in two months by becoming genuinely interested in other people than you can in two years by trying to get other people interested in you.",
+    "summary": "The original relationship handbook — still the best. Carnegie's principles are simple and counter-intuitive: don't criticize, condemn, or complain; give honest appreciation; arouse in others an eager want. The book's durability comes from the fact that human nature hasn't changed. People want to feel important and understood, and whoever provides that wins."
+  },
+  {
+    "id": "build-fadell",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "ownership",
+      "leverage"
+    ],
+    "topics": [],
+    "ideas": [
+      "Customer Pain as Product Foundation",
+      "Tell a Story Not a Spec",
+      "Hire for Attitude",
+      "Make the Intangible Tangible",
+      "The Butterflies in Your Stomach Test",
+      "Culture Is Built in the Details"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "Build",
+    "author": "Tony Fadell",
+    "year": 2022,
+    "quote": "The best products solve problems people didn't know they had.",
+    "summary": "The inventor of the iPod and Nest shares his playbook for building products and companies. Fadell's core argument: most people focus on the product, but the real work is building the team, culture, and conditions for great products to emerge. Product intuition comes from obsessive attention to customer pain — not market research."
+  },
+  {
+    "id": "lean-startup",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "risk-asymmetry",
+      "long-term-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Build-Measure-Learn",
+      "Minimum Viable Product",
+      "Validated Learning",
+      "Pivot or Persevere",
+      "Vanity vs Actionable Metrics",
+      "Innovation Accounting"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "The Lean Startup",
+    "author": "Eric Ries",
+    "year": 2011,
+    "quote": "The only way to win is to learn faster than anyone else.",
+    "summary": "Ries argues that most startups fail not because they can't build the product, but because they build the wrong product. The antidote: build-measure-learn cycles that validate assumptions before committing resources. The minimum viable product is not the smallest product — it is the smallest experiment that produces the most learning."
+  },
+  {
+    "id": "outliers",
+    "status": "read",
+    "concepts": [
+      "compounding",
+      "long-term-thinking",
+      "systems-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "The 10,000-Hour Rule",
+      "Meaningful Work",
+      "Accumulative Advantage",
+      "Cultural Legacy",
+      "The Matthew Effect",
+      "Timing and Opportunity"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "Outliers",
+    "author": "Malcolm Gladwell",
+    "year": 2008,
+    "quote": "Practice isn't the thing you do once you're good. It's the thing you do that makes you good.",
+    "summary": "Gladwell examines exceptional success and finds that individual talent explains far less than we think. What actually produces outliers: the 10,000-hour rule, birth month effects, cultural legacies, and the extraordinary importance of opportunity. Success is more sociological than psychological — it's about systems, timing, and access as much as effort."
+  },
+  {
+    "id": "design-everyday-things",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "identity"
+    ],
+    "topics": [],
+    "ideas": [
+      "Affordances and Signifiers",
+      "The User Is Never Wrong",
+      "Feedback Loops in Design",
+      "Constraints as Guidance",
+      "Human Error Is Usually Design Error",
+      "Mental Models in UX"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "The Design of Everyday Things",
+    "author": "Don Norman",
+    "year": 1988,
+    "quote": "It's not the user's fault. It's the designer's fault.",
+    "summary": "The foundational text of user-centered design. Norman argues that most design failures are not user errors but design errors — when something is confusing or hard to use, blame the designer, not the user. Affordances, signifiers, feedback, constraints, and mappings are the vocabulary of good design. This book changed how every product designer thinks."
+  },
+  {
+    "id": "personal-mba",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "capital-allocation",
+      "ownership",
+      "cashflow"
+    ],
+    "topics": [],
+    "ideas": [
+      "Five Core Business Processes",
+      "Value Creation First",
+      "Marketing vs Sales",
+      "The Iron Law of the Market",
+      "Systems Create Businesses",
+      "Sufficiency Over Maximization"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "The Personal MBA",
+    "author": "Josh Kaufman",
+    "year": 2010,
+    "quote": "Every successful business creates or provides something of value that other people want or need.",
+    "summary": "Kaufman argues you can learn everything a business school teaches — and more practically — by reading the right books and building things. His framework covers five core business processes: value creation, marketing, sales, value delivery, and finance. Understanding all five and how they interconnect is the MBA."
+  },
+  {
+    "id": "leadership-challenge",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "identity",
+      "leverage"
+    ],
+    "topics": [],
+    "ideas": [
+      "Model the Way",
+      "Inspire a Shared Vision",
+      "Challenge the Process",
+      "Enable Others to Act",
+      "Encourage the Heart",
+      "Leadership Is a Choice"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "The Leadership Challenge",
+    "author": "James Kouzes & Barry Posner",
+    "year": 1987,
+    "quote": "Leadership is not about personality. It's about behavior.",
+    "summary": "Based on 30+ years of research on peak leadership moments, Kouzes and Posner identify five practices of exemplary leadership: model the way, inspire a shared vision, challenge the process, enable others to act, and encourage the heart. Leadership is not a position — it is a set of practices available to anyone willing to develop them."
+  },
+  {
+    "id": "crossing-chasm",
+    "status": "read",
+    "concepts": [
+      "risk-asymmetry",
+      "leverage",
+      "long-term-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Technology Adoption Lifecycle",
+      "The Chasm",
+      "Beachhead Strategy",
+      "Whole Product Concept",
+      "Early Adopters vs Early Majority",
+      "Concentrate Force"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "Crossing the Chasm",
+    "author": "Geoffrey Moore",
+    "year": 1991,
+    "quote": "The chasm is the perilous journey from early market success to mainstream market penetration.",
+    "summary": "Moore's technology adoption lifecycle model identifies the gap between early adopters (who accept imperfect products for cutting-edge capabilities) and the early majority (who need proven solutions). Most technology companies die in this chasm. The solution: concentrate all resources on one beachhead market and win it completely before expanding."
+  },
+  {
+    "id": "innovators-dilemma",
+    "status": "read",
+    "concepts": [
+      "risk-asymmetry",
+      "long-term-thinking",
+      "ownership",
+      "systems-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Sustaining vs Disruptive Innovation",
+      "The Innovator's Dilemma",
+      "Jobs to Be Done",
+      "Disruption from Below",
+      "Asymmetric Motivation",
+      "Spin-Out for New Markets"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "The Innovator's Dilemma",
+    "author": "Clayton Christensen",
+    "year": 1997,
+    "quote": "Disruptive technologies typically enable new markets to emerge.",
+    "summary": "Christensen's landmark work explains why great companies fail: they are killed by doing everything right. Sustaining innovation — improving products for existing customers — leaves companies vulnerable to disruptive innovations that initially look worse by traditional metrics but serve new markets before improving rapidly. The innovator's dilemma: serving current customers well makes you blind to the next wave."
+  },
+  {
+    "id": "managing-up",
+    "status": "read",
+    "concepts": [
+      "leverage",
+      "systems-thinking",
+      "long-term-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Understand Your Manager's Pressures",
+      "Make Their Priorities Your Priorities",
+      "Communicate in Their Style",
+      "Deliver Before Being Asked",
+      "Build a Reputation Not Just Results",
+      "Navigate Office Politics Cleanly"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "Managing Up",
+    "author": "Melody Wilding",
+    "year": 2023,
+    "quote": "Managing up is not about managing your boss. It's about managing the relationship.",
+    "summary": "Wilding's framework for building productive relationships with managers and senior leadership — understanding their priorities, communication styles, and pressures, then positioning yourself as a solution rather than a problem. The core insight: your manager has their own manager. Understanding that chain makes you dramatically more effective."
+  },
+  {
+    "id": "financial-literacy-managers",
+    "status": "read",
+    "concepts": [
+      "cashflow",
+      "capital-allocation",
+      "systems-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Income Statement Logic",
+      "Balance Sheet Relationships",
+      "Cash Flow as Reality",
+      "ROI Thinking",
+      "Margin Analysis",
+      "Working Capital Cycles"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "Financial Literacy for Managers",
+    "author": "Richard Lambert",
+    "year": 2011,
+    "quote": "Every business decision is a financial decision.",
+    "summary": "A Wharton professor's concise guide to financial literacy for non-finance managers. The core argument: you don't need to be an accountant to make good financial decisions, but you do need to understand what the numbers are measuring and why they matter. Covers the income statement, balance sheet, cash flow statement, and how they connect."
+  },
+  {
+    "id": "21-laws-leadership",
+    "status": "read",
+    "concepts": [
+      "systems-thinking",
+      "identity",
+      "leverage",
+      "compounding"
+    ],
+    "topics": [],
+    "ideas": [
+      "Leadership Is Influence",
+      "The Law of the Lid",
+      "The Law of Process",
+      "Leadership Develops Daily",
+      "Connect Before You Direct",
+      "The Law of Addition"
+    ],
+    "rating": 4,
+    "chapters": [],
+    "title": "The 21 Irrefutable Laws of Leadership",
+    "author": "John C. Maxwell",
+    "year": 1998,
+    "quote": "Everything rises and falls on leadership.",
+    "summary": "Maxwell's most influential work — 21 principles of leadership drawn from decades of study and practice. His central thesis: leadership is influence, nothing more, nothing less. The laws include the Law of the Lid (leadership ability determines the ceiling on effectiveness), the Law of Process (leadership develops daily), and the Law of Connection (leaders touch hearts before they ask for hands)."
+  },
+  {
+    "id": "made-to-stick",
+    "status": "read",
+    "concepts": [
+      "leverage",
+      "systems-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "The SUCCESs Framework",
+      "The Curse of Knowledge",
+      "Simple Core Message",
+      "Unexpected Creates Curiosity",
+      "Concrete Beats Abstract",
+      "Stories Drive Action"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "Made to Stick",
+    "author": "Chip Heath & Dan Heath",
+    "year": 2007,
+    "quote": "The curse of knowledge: once you know something, it's hard to imagine not knowing it.",
+    "summary": "The Heath brothers analyze why some ideas survive and others die. Their framework: sticky ideas are Simple, Unexpected, Concrete, Credible, Emotional, and tell Stories (SUCCESs). The book's deepest insight is the curse of knowledge — the more you know about something, the harder it is to communicate it to those who don't."
+  },
+  {
+    "id": "buying-small-business",
+    "status": "read",
+    "concepts": [
+      "ownership",
+      "cashflow",
+      "capital-allocation",
+      "risk-asymmetry",
+      "long-term-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "The Search Fund Process",
+      "Self-Assessment First",
+      "Deal Sourcing Strategy",
+      "Due Diligence Framework",
+      "Deal Structure and Financing",
+      "Post-Acquisition 100 Days"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "Buying a Small Business",
+    "author": "Richard Ruback & Royce Yudkoff",
+    "year": 2017,
+    "quote": "Buying a small business is a highly personal decision that requires honest self-assessment.",
+    "summary": "Two Harvard Business School professors make the academic case for search fund entrepreneurship — buying a small business rather than starting one. The book covers the full search fund process: the decision to search, sourcing deals, due diligence, deal structure, financing, and post-acquisition management. It is the most rigorous framework for small business acquisition available."
+  },
+  {
+    "id": "on-writing-well",
+    "status": "read",
+    "concepts": [
+      "leverage",
+      "systems-thinking"
+    ],
+    "topics": [],
+    "ideas": [
+      "Clutter Is the Enemy",
+      "Strip to the Essentials",
+      "Write to Express Not Impress",
+      "Every Word Earns Its Place",
+      "Voice Is Humanity on the Page",
+      "Rewriting Is Writing"
+    ],
+    "rating": 5,
+    "chapters": [],
+    "title": "On Writing Well",
+    "author": "William Zinsser",
+    "year": 1976,
+    "quote": "The secret of good writing is to strip every sentence to its cleanest components.",
+    "summary": "The classic guide to nonfiction writing. Zinsser's principles are ruthless and timeless: simplicity, clarity, brevity, and humanity. Clutter is the enemy. Every word must earn its place. The writer's job is not to impress but to communicate, and the highest compliment a reader can pay is to keep reading."
   }
 ];
 
-const CONCEPTS = [
+const CONCEPTS=[
   {
-    id: "compounding",
-    type: "concept",
-    label: "Compounding",
-    quote: "The most powerful force in the universe.",
-    summary: "The process by which something grows exponentially because each period's growth builds on all prior growth. Applies to money, habits, knowledge, and relationships. The key variable is time — compounding looks like nothing for a long time, then looks like everything. Most people quit before the curve bends upward.",
-    books: ["psych-money", "atomic-habits", "naval", "main-street", "deep-work"],
-    unifiedPrinciple: "Whether the asset is money, behavior, knowledge, or relationships — the mechanism is identical: choose a direction, make consistent deposits, don't interrupt the accumulation, and wait. The enemy of compounding is not losing — it is quitting before the curve bends."
+    "id": "compounding",
+    "label": "Compounding",
+    "quote": "The most powerful force in the universe.",
+    "summary": "The process by which something grows exponentially because each period's growth builds on all prior growth.",
+    "books": [
+      "psych-money",
+      "atomic-habits",
+      "naval",
+      "main-street",
+      "good-to-great"
+    ],
+    "unifiedPrinciple": "Choose a direction, make consistent deposits, don't interrupt the accumulation, wait."
   },
   {
-    id: "long-term-thinking",
-    type: "concept",
-    label: "Long-Term Thinking",
-    quote: "Play long-term games with long-term people. — Naval Ravikant",
-    summary: "The cognitive discipline of making decisions for outcomes years or decades away rather than optimizing for immediate feedback. Most people structurally can't do this. Those who can operate with long time horizons gain an enormous structural advantage — fewer competitors occupy that space.",
-    books: ["psych-money", "naval", "buy-build", "atomic-habits", "good-to-great", "poor-charlies-almanack"],
-    unifiedPrinciple: "Long-term thinking is a structural advantage created by extending your time horizon beyond what most people can sustain. The longer your time horizon, the fewer competitors you have for the same opportunity."
+    "id": "long-term-thinking",
+    "label": "Long-Term Thinking",
+    "quote": "Play long-term games with long-term people. — Naval",
+    "summary": "The cognitive discipline of making decisions for outcomes years or decades away.",
+    "books": [
+      "psych-money",
+      "naval",
+      "buy-build",
+      "atomic-habits",
+      "good-to-great"
+    ],
+    "unifiedPrinciple": "The longer your time horizon, the fewer competitors you have."
   },
   {
-    id: "ownership",
-    type: "concept",
-    label: "Ownership",
-    quote: "You're not going to get rich renting out your time. — Naval Ravikant",
-    summary: "Wealth requires owning things — equity, businesses, assets — not just exchanging time for money. A salary is a rental arrangement on your skills. Ownership is a claim on future value creation. The distinction between these two modes is the most important structural decision in wealth building.",
-    books: ["buy-build", "main-street", "naval", "e-myth", "built-to-sell", "antifragile"],
-    unifiedPrinciple: "The path from income to wealth runs through ownership. Ownership converts active income potential into passive asset value. The career builds the skills; the acquisition deploys them."
+    "id": "ownership",
+    "label": "Ownership",
+    "quote": "You're not going to get rich renting out your time. — Naval",
+    "summary": "Wealth requires owning things — equity, businesses, assets — not just exchanging time for money.",
+    "books": [
+      "buy-build",
+      "main-street",
+      "naval",
+      "e-myth",
+      "zero-to-one"
+    ],
+    "unifiedPrinciple": "The path from income to wealth runs through ownership."
   },
   {
-    id: "cashflow",
-    type: "concept",
-    label: "Cashflow",
-    quote: "Profit is an opinion. Cash is a fact. — Karen Berman",
-    summary: "The actual movement of money into and out of a business or portfolio — distinct from profit (an accounting construct) and revenue (the top line). You can be profitable on paper while running out of cash. In small business acquisition, cash flow is the primary metric that matters.",
-    books: ["main-street", "buy-build", "financial-intelligence", "built-to-sell", "e-myth"],
-    unifiedPrinciple: "Cash is what you have to actually work with — for operations, reinvestment, and wealth accumulation. The first question for any acquisition: not 'what does this earn?' but 'what cash does this generate, when, and how reliably?'"
+    "id": "cashflow",
+    "label": "Cashflow",
+    "quote": "Profit is an opinion. Cash is a fact.",
+    "summary": "The actual movement of money — distinct from profit and revenue.",
+    "books": [
+      "main-street",
+      "buy-build",
+      "financial-intelligence",
+      "e-myth"
+    ],
+    "unifiedPrinciple": "Not 'what does this earn?' but 'what cash does this generate, when, and how reliably?'"
   },
   {
-    id: "risk-asymmetry",
-    type: "concept",
-    label: "Risk & Asymmetry",
-    quote: "Risk is what's left over when you think you've thought of everything. — Morgan Housel",
-    summary: "Asymmetric risk means potential gain substantially exceeds potential loss — or vice versa. Smart risk-taking is not risk avoidance. It is finding and taking asymmetric positions: survive being wrong, thrive when right.",
-    books: ["psych-money", "buy-build", "main-street", "antifragile", "zero-to-one", "never-split-difference", "poor-charlies-almanack", "thinking-fast-slow"],
-    unifiedPrinciple: "Good risk management: understand the nature of the risk, ensure downside survival, position for asymmetric upside, concentrate where your information advantage is greatest. The worst position: unlimited downside, capped upside."
+    "id": "risk-asymmetry",
+    "label": "Risk & Asymmetry",
+    "quote": "Risk is what's left over when you think you've thought of everything.",
+    "summary": "Asymmetric risk: potential gain substantially exceeds potential loss.",
+    "books": [
+      "psych-money",
+      "buy-build",
+      "main-street",
+      "zero-to-one",
+      "never-split",
+      "financial-intelligence"
+    ],
+    "unifiedPrinciple": "Ensure downside survival, position for asymmetric upside."
   },
   {
-    id: "identity",
-    type: "concept",
-    label: "Identity",
-    quote: "Every action you take is a vote for the type of person you wish to become. — James Clear",
-    summary: "The set of beliefs you hold about who you are. The deepest and most durable driver of sustained change — more durable than motivation, willpower, or external goals. Identity shapes behavior at the level below conscious decision-making.",
-    books: ["atomic-habits", "psych-money", "naval", "thinking-fast-slow"],
-    unifiedPrinciple: "The sequence is Identity → Habits → Outcomes. Not: Outcomes → Habits → Identity. Design your identity consciously — claim who you're becoming before you've fully arrived — and let behaviors follow."
+    "id": "identity",
+    "label": "Identity",
+    "quote": "Every action you take is a vote for the type of person you wish to become.",
+    "summary": "The set of beliefs you hold about who you are. The deepest driver of sustained change.",
+    "books": [
+      "atomic-habits",
+      "psych-money",
+      "naval"
+    ],
+    "unifiedPrinciple": "Identity → Habits → Outcomes. Not: Outcomes → Habits → Identity."
   },
   {
-    id: "systems-thinking",
-    type: "concept",
-    label: "Systems Thinking",
-    quote: "You do not rise to the level of your goals. You fall to the level of your systems.",
-    summary: "A system is a set of interconnected components that produce outcomes through their interaction. To change an outcome reliably, change the system — not the goal. Systems produce results consistently and at scale. People produce results variably and with effort.",
-    books: ["atomic-habits", "psych-money", "financial-intelligence", "main-street", "e-myth", "built-to-sell", "deep-work", "good-to-great"],
-    unifiedPrinciple: "The highest-leverage move in any domain: build a system that generates desired outcomes without ongoing willpower. Systems are the answer to 'how do I make the right choice the default choice?'"
+    "id": "systems-thinking",
+    "label": "Systems Thinking",
+    "quote": "You fall to the level of your systems.",
+    "summary": "A system is a set of interconnected components that produce outcomes through their interaction.",
+    "books": [
+      "atomic-habits",
+      "psych-money",
+      "financial-intelligence",
+      "main-street",
+      "e-myth",
+      "good-to-great"
+    ],
+    "unifiedPrinciple": "Build a system that generates desired outcomes without ongoing willpower."
   },
   {
-    id: "leverage",
-    type: "concept",
-    label: "Leverage",
-    quote: "Give me a lever long enough and I shall move the world. — Archimedes",
-    summary: "Any mechanism that multiplies the output of effort. Without leverage, producing more requires doing more. With leverage, small inputs produce large outputs. Naval identifies four types: labor, capital, code, and media — the last two being permissionless.",
-    books: ["naval", "buy-build", "main-street", "zero-to-one", "e-myth", "deep-work"],
-    unifiedPrinciple: "Highest-leverage positions combine specific knowledge (the foundation) + scale mechanisms (the multiplier) + time (for compounding). Identifying the right leverage at each career stage is the meta-strategy."
+    "id": "leverage",
+    "label": "Leverage",
+    "quote": "Give me a lever long enough and I shall move the world.",
+    "summary": "Any mechanism that multiplies the output of effort.",
+    "books": [
+      "naval",
+      "buy-build",
+      "main-street",
+      "zero-to-one",
+      "e-myth"
+    ],
+    "unifiedPrinciple": "Specific knowledge × leverage = wealth at scale."
   },
   {
-    id: "wealth-income",
-    type: "concept",
-    label: "Wealth vs. Income",
-    quote: "Wealth is what you don't see. — Morgan Housel",
-    summary: "Income is a flow — money coming in per time. Wealth is a stock — assets accumulated and compounding. You can have high income and zero wealth. The connecting variable is the conversion rate: what percentage of income becomes assets rather than consumption.",
-    books: ["psych-money", "naval", "main-street"],
-    unifiedPrinciple: "Wealth is built by converting income into assets before spending it. Income ceiling is set by skills and leverage. Wealth is built by conversion rate and time. These are different problems with different solutions."
+    "id": "wealth-income",
+    "label": "Wealth vs. Income",
+    "quote": "Wealth is what you don't see. — Morgan Housel",
+    "summary": "Income is a flow. Wealth is a stock. The connecting variable is conversion rate.",
+    "books": [
+      "psych-money",
+      "naval",
+      "main-street"
+    ],
+    "unifiedPrinciple": "Wealth is built by converting income into assets before spending it."
   },
   {
-    id: "capital-allocation",
-    type: "concept",
-    label: "Capital Allocation",
-    quote: "The most important decision is what to do with your money.",
-    summary: "The decision of where to deploy finite financial resources. Every dollar has an opportunity cost. The quality of capital allocation decisions compounds over time — one of the highest-leverage skills for wealth creation. Buffett describes his primary job as capital allocation.",
-    books: ["buy-build", "main-street", "financial-intelligence", "poor-charlies-almanack"],
-    unifiedPrinciple: "Capital allocation determines whether the same income produces dramatically different long-term wealth. Two people with identical earnings — one into assets, one into consumption — have radically different net worths in 20 years."
+    "id": "capital-allocation",
+    "label": "Capital Allocation",
+    "quote": "The most important decision is what to do with your money.",
+    "summary": "The decision of where to deploy finite financial resources. Every dollar has an opportunity cost.",
+    "books": [
+      "buy-build",
+      "main-street",
+      "financial-intelligence"
+    ],
+    "unifiedPrinciple": "Capital allocation determines whether the same income produces dramatically different wealth."
   }
 ];
 
-const TOPICS = [
-  { id: "personal-finance",     label: "Personal Finance",     books: ["psych-money", "financial-intelligence"] },
-  { id: "business-acquisition", label: "Business Acquisition", books: ["buy-build", "main-street", "financial-intelligence", "e-myth", "built-to-sell", "never-split-difference"] },
-  { id: "wealth-building",      label: "Wealth Building",      books: ["psych-money", "buy-build", "naval", "atomic-habits", "zero-to-one"] },
-  { id: "habit-formation",      label: "Habit Formation",      books: ["atomic-habits", "deep-work"] },
-  { id: "entrepreneurship",     label: "Entrepreneurship",     books: ["buy-build", "main-street", "zero-to-one", "e-myth", "built-to-sell", "good-to-great"] },
-  { id: "decision-making",      label: "Decision Making",      books: ["thinking-fast-slow", "poor-charlies-almanack", "antifragile", "never-split-difference"] },
-  { id: "leadership",           label: "Leadership",           books: ["good-to-great", "never-split-difference"] },
-  { id: "philosophy",           label: "Philosophy",           books: ["naval", "poor-charlies-almanack", "antifragile"] }
+const TOPICS=[
+  {id:"personal-finance",label:"Personal Finance",books:[]},
+  {id:"business-acquisition",label:"Business Acquisition",books:[]},
+  {id:"wealth-building",label:"Wealth Building",books:[]},
+  {id:"habit-formation",label:"Habit Formation",books:[]},
+  {id:"entrepreneurship",label:"Entrepreneurship",books:[]},
+  {id:"decision-making",label:"Decision Making",books:[]},
+  {id:"leadership",label:"Leadership",books:[]},
+  {id:"philosophy",label:"Philosophy",books:[]}
 ];
 
-// ── BUILD GRAPH NODES & LINKS ─────────────────────────────────────────────────
-// Called by both public and admin HTML files
-function buildGraphData() {
-  const nodes = [];
-  const linkSet = new Set();
-  const links = [];
-
-  function addLink(a, b) {
-    const key = [a, b].sort().join("--");
-    if (!linkSet.has(key)) { linkSet.add(key); links.push({ source: a, target: b }); }
-  }
-
-  // Books
-  BOOKS.forEach(b => {
-    nodes.push({
-      id: b.id, type: "book",
-      label: b.title.length > 18 ? b.title.split(": ")[0].split(" ").slice(0,3).join("\n") : b.title,
-      displayLabel: b.title,
-      author: b.author, year: b.year, rating: b.rating, status: b.status,
-      quote: b.quote, summary: b.summary, ideas: b.ideas,
-      topics: b.topics, conceptIds: b.concepts
-    });
-    // Link to concepts
-    b.concepts.forEach(cid => addLink(b.id, cid));
-    // Link to topics
-    b.topics.forEach(t => {
-      const topic = TOPICS.find(x => x.label === t);
-      if (topic) addLink(b.id, topic.id);
-    });
+function buildGraphData(){
+  const nodes=[],linkSet=new Set(),links=[];
+  function addLink(a,b){const k=[a,b].sort().join('--');if(!linkSet.has(k)){linkSet.add(k);links.push({source:a,target:b});}}
+  BOOKS.forEach(b=>{
+    const lbl=b.title.length>20?b.title.split(/[:—]/)[0].trim().split(' ').slice(0,3).join(' '):b.title;
+    nodes.push({id:b.id,type:'book',label:lbl,displayLabel:b.title,author:b.author,year:b.year,rating:b.rating,status:b.status,quote:b.quote,summary:b.summary,ideas:b.ideas,chapters:b.chapters||[],conceptIds:b.concepts});
+    (b.concepts||[]).forEach(c=>addLink(b.id,c));
   });
-
-  // Concepts
-  CONCEPTS.forEach(c => {
-    nodes.push({
-      id: c.id, type: "concept",
-      label: c.label,
-      displayLabel: c.label,
-      quote: c.quote, summary: c.summary,
-      connections: c.books.map(bid => BOOKS.find(b => b.id === bid)?.title).filter(Boolean),
-      unifiedPrinciple: c.unifiedPrinciple
-    });
-    // Link concept → books (already added from book side, addLink deduplicates)
+  CONCEPTS.forEach(c=>{
+    nodes.push({id:c.id,type:'concept',label:c.label,displayLabel:c.label,quote:c.quote,summary:c.summary,connections:(c.books||[]).map(bid=>BOOKS.find(b=>b.id===bid)?.title).filter(Boolean),unifiedPrinciple:c.unifiedPrinciple});
   });
-
-  // Topics
-  TOPICS.forEach(t => {
-    nodes.push({
-      id: t.id, type: "topic",
-      label: t.label,
-      displayLabel: t.label
-    });
-  });
-
-  return { nodes, links };
+  return{nodes,links};
 }
 
-// Export for use in HTML files
-if (typeof module !== "undefined") module.exports = { BOOKS, CONCEPTS, TOPICS, buildGraphData };
+if(typeof module!=='undefined')module.exports={BOOKS,CONCEPTS,buildGraphData};
