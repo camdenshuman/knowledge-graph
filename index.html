@@ -872,29 +872,51 @@ nodes.append('circle')
   .transition().delay((_,i)=>i*14+60).duration(500).ease(d3.easeBackOut.overshoot(1.1))
   .attr('r',d=>R[d.type]);
 
-// Labels — smart positioning
+// Labels — full title, word-wrapped, with background for legibility
 nodes.each(function(d){
   const el=d3.select(this);
-  const cls=d.type==='book'?'blbl':'nlbl';
   const raw=(d.label||d.displayLabel||'');
-  // Wrap book titles across lines — 22 chars per line max, up to 4 lines
-  let display=raw;
-  if(d.type==='book'&&raw.length>22){
-    const words=raw.split(' ');
-    const lines=[];let line='';
-    words.forEach(w=>{
-      if((line+' '+w).trim().length>22&&line){lines.push(line);line=w;}
-      else line=(line?line+' ':'')+w;
-    });
-    if(line)lines.push(line);
-    display=lines.slice(0,4).join('\n');
-  }
-  const yOff=R[d.type]+16;
-  const lineArr=display.split('\n');
-  const txt=el.append('text').attr('class',cls).style('opacity',0);
-  lineArr.forEach((l,i)=>txt.append('tspan').attr('x',0).attr('dy',i===0?yOff:'1.15em').text(l));
-  txt.transition().delay(200).duration(400)
-    .style('opacity',d.type==='author'||d.type==='topic'?.45:.88);
+  const isBook=d.type==='book';
+  const maxChars=isBook?18:16;
+  const yOff=R[d.type]+15;
+
+  // Word-wrap with NO line cap — never truncate
+  const words=raw.split(' ');
+  const lines=[];let line='';
+  words.forEach(w=>{
+    const test=(line?line+' ':'')+w;
+    if(test.length>maxChars&&line){lines.push(line);line=w;}
+    else line=test;
+  });
+  if(line)lines.push(line);
+
+  // Background rect for legibility (appended first, sized after text)
+  const bg=el.append('rect')
+    .attr('fill','rgba(250,250,250,0.82)')
+    .attr('rx',3)
+    .attr('pointer-events','none')
+    .style('opacity',0);
+
+  const txt=el.append('text')
+    .attr('class',isBook?'blbl':'nlbl')
+    .style('opacity',0);
+
+  lines.forEach((l,i)=>{
+    txt.append('tspan').attr('x',0).attr('dy',i===0?yOff:'1.18em').text(l);
+  });
+
+  // After render, size the background rect to the text bbox
+  setTimeout(()=>{
+    try{
+      const bb=txt.node().getBBox();
+      const pad=3;
+      bg.attr('x',bb.x-pad).attr('y',bb.y-pad)
+        .attr('width',bb.width+pad*2).attr('height',bb.height+pad*2);
+    }catch(e){}
+  },600);
+
+  txt.transition().delay(200).duration(400).style('opacity',isBook?.88:.75);
+  bg.transition().delay(200).duration(400).style('opacity',1);
 });
 
 // Interactions
