@@ -559,33 +559,61 @@ function persist(){
 // SYNC FROM LIVE SITE
 async function syncFromLive(){
   const statusEl=document.getElementById('sync-status');
-  statusEl.textContent='Syncing from live site...';
-  statusEl.style.color='var(--mu)';
+  if(statusEl){statusEl.textContent='Syncing…';statusEl.style.color='var(--mu)';}
   try{
-    const res=await fetch('https://graph.camdenshuman.com/graph-data.js?nocache='+Date.now());
-    if(!res.ok) throw new Error('Fetch failed: '+res.status);
+    const res=await fetch('https://graph.camdenshuman.com/graph-data.js?v='+Date.now());
+    if(!res.ok) throw new Error('HTTP '+res.status);
     const js=await res.text();
-    // Execute the JS to get BOOKS and CONCEPTS
-    const match_b=js.match(/const BOOKS\s*=\s*(\[[\s\S]*?\]);\s*
-\s*const CONCEPTS/);
-    const match_c=js.match(/const CONCEPTS\s*=\s*(\[[\s\S]*?\]);\s*
-\s*const TOPICS/);
-    if(!match_b||!match_c) throw new Error('Could not parse graph-data.js');
-    const liveBooks=JSON.parse(match_b[1]);
-    const liveConcepts=JSON.parse(match_c[1]);
-    books=liveBooks;
-    concepts=liveConcepts;
-    persist();
-    renderAll();
-    showPage('dashboard');
-    statusEl.textContent='✓ Synced '+liveBooks.length+' books, '+liveConcepts.length+' concepts from live site';
-    statusEl.style.color='var(--grn)';
-    setTimeout(()=>statusEl.textContent='',4000);
+    // Execute the file in a sandboxed scope to extract BOOKS and CONCEPTS
+    const scope={};
+    const fn=new Function('module','exports',js+';scope.BOOKS=typeof BOOKS!=="undefined"?BOOKS:[];scope.CONCEPTS=typeof CONCEPTS!=="undefined"?CONCEPTS:[];');
+    try{
+      fn({exports:{}},{});
+    }catch(e){
+      // The function() scope won't have BOOKS/CONCEPTS as globals, use regex fallback
+    }
+    // Regex fallback — works on both JS-object and JSON formats
+    let liveBooks=scope.BOOKS,liveConcepts=scope.CONCEPTS;
+    if(!liveBooks||!liveBooks.length){
+      // Try extracting via regex between const BOOKS = [ ... ] and const CONCEPTS
+      const bMatch=js.match(/const BOOKS\s*=\s*\[/);
+      const cMatch=js.match(/const CONCEPTS\s*=\s*\[/);
+      const tMatch=js.match(/const TOPICS\s*=\s*\[/);
+      if(bMatch&&cMatch){
+        const bStart=js.indexOf('[',bMatch.index);
+        const bEnd=js.indexOf('
+const CONCEPTS');
+        const cStart=js.indexOf('[',cMatch.index);
+        const cEnd=tMatch?js.indexOf('
+const TOPICS'):js.indexOf('
+function buildGraphData');
+        // Use Function to safely eval the array literals
+        try{liveBooks=Function('"use strict";return '+js.slice(bStart,bEnd).trim().replace(/,\s*$/,''))();}catch(e){liveBooks=null;}
+        try{liveConcepts=Function('"use strict";return '+js.slice(cStart,cEnd).trim().replace(/,\s*$/,''))();}catch(e){liveConcepts=null;}
+      }
+    }
+    if(liveBooks&&liveBooks.length){
+      books=liveBooks;
+      concepts=liveConcepts||concepts;
+      persist();
+      renderAll();
+      showPage('dashboard');
+      if(statusEl){
+        statusEl.textContent='✓ Synced '+books.length+' books from live site';
+        statusEl.style.color='var(--grn)';
+        setTimeout(()=>{if(statusEl)statusEl.textContent='';},4000);
+      }
+    } else {
+      throw new Error('Could not parse books from graph-data.js');
+    }
   }catch(err){
-    console.error('Sync error:',err);
-    statusEl.textContent='Sync failed: '+err.message+' — using local data';
-    statusEl.style.color='var(--red)';
+    console.warn('Live sync failed, using local data:',err.message);
     loadState(); renderAll(); showPage('dashboard');
+    if(statusEl){
+      statusEl.textContent='Using local data (sync failed)';
+      statusEl.style.color='var(--mu)';
+      setTimeout(()=>{if(statusEl)statusEl.textContent='';},3000);
+    }
   }
 }
 
