@@ -114,7 +114,7 @@ body{overflow:hidden}
 .vt-btn.active{background:var(--tx);color:#fff}
 
 /* ── CANVAS ───────────────────────────────────────────────────── */
-#canvas{position:fixed;inset:var(--hh) 0 0 0;transition:right .4s cubic-bezier(.22,.61,.36,1);z-index:1}
+#canvas{position:fixed;inset:var(--hh) 0 0 0;transition:right .4s cubic-bezier(.22,.61,.36,1);z-index:1;overflow:visible}
 #canvas.popen{right:460px}
 #gsvg{width:100%;height:100%;overflow:visible}
 
@@ -879,11 +879,11 @@ nodes.each(function(d){
   const isBook=d.type==='book';
   const maxChars=22;
   const fontSize=isBook?12:10;
-  const lineH=isBook?16:14;  // px between lines, as numbers
+  const lineH=isBook?15:13;
   const charW=isBook?6.8:5.8;
   const yOff=R[d.type]+fontSize+6;
 
-  // Word-wrap — no line cap
+  // Word-wrap — no line cap, never truncates
   const words=raw.split(' ');
   const lines=[];let line='';
   words.forEach(w=>{
@@ -893,32 +893,26 @@ nodes.each(function(d){
   });
   if(line)lines.push(line);
 
-  // Size bg rect mathematically
+  // Background rect — covers all lines
   const maxLen=Math.max(...lines.map(l=>l.length));
-  const rectW=maxLen*charW+10;
-  const rectH=lines.length*lineH+6;
-
-  // Background rect — always covers all lines
+  const pad=4;
   el.append('rect')
-    .attr('x',-rectW/2)
-    .attr('y',yOff-fontSize-2)
-    .attr('width',rectW)
-    .attr('height',rectH)
+    .attr('x',-(maxLen*charW/2)-pad)
+    .attr('y',yOff-fontSize)
+    .attr('width',maxLen*charW+pad*2)
+    .attr('height',lines.length*lineH+pad)
     .attr('fill','rgba(250,250,250,0.88)')
     .attr('rx',3)
     .attr('pointer-events','none');
 
-  // Position each line using absolute y — guaranteed to render
+  // One <text> per line, absolute y — simplest and most reliable
   lines.forEach((l,i)=>{
     el.append('text')
       .attr('class',isBook?'blbl':'nlbl')
       .attr('x',0)
-      .attr('y',yOff + i*lineH)
+      .attr('y',yOff+i*lineH)
       .attr('pointer-events','none')
-      .style('opacity',0)
-      .text(l)
-      .transition().delay(200).duration(400)
-      .style('opacity',isBook?.9:.78);
+      .text(l);
   });
 });
 
