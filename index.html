@@ -125,13 +125,13 @@ body{overflow:hidden}
 .cv-section:first-child{margin-top:0}
 .cv-card{border:1.5px solid var(--bd);border-radius:8px;margin-bottom:10px;overflow:hidden;cursor:pointer;transition:border-color .15s,box-shadow .15s}
 .cv-card:hover,.cv-card.active{border-color:var(--blk);box-shadow:0 2px 12px rgba(0,0,0,.1)}
-.cv-card-hd{display:flex;align-items:flex-start;gap:12px;padding:14px 16px}
+.cv-card-hd{display:flex;align-items:flex-start;gap:12px;padding:16px}
 .cv-card-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
 .cv-card-body{flex:1}
-.cv-card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;line-height:1.25;margin-bottom:2px}
-.cv-card-sub{font-size:12px;color:var(--mu)}
-.cv-card-stars{color:var(--red);font-size:11px;margin-top:3px;letter-spacing:1px}
-.cv-card-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:2px;letter-spacing:.05em;text-transform:uppercase;margin-top:5px}
+.cv-card-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;line-height:1.25;margin-bottom:3px}
+.cv-card-sub{font-size:13px;color:var(--mu)}
+.cv-card-stars{color:var(--red);font-size:12px;margin-top:4px;letter-spacing:1px}
+.cv-card-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.05em;text-transform:uppercase;margin-top:6px}
 .cv-expand{padding:0 16px 16px;border-top:1px solid var(--bd);display:none}
 .cv-expand.open{display:block}
 .cv-quote{font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:var(--red);padding:10px 14px;border-left:3px solid var(--red);background:var(--rl);margin:12px 0;border-radius:0 4px 4px 0;line-height:1.55}
@@ -178,25 +178,79 @@ body{overflow:hidden}
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width:900px){
+  :root{--hh:104px}
+  /* header becomes two rows */
+  #hdr{
+    flex-wrap:wrap;
+    height:auto;
+    padding:0;
+    gap:0;
+  }
+  /* row 1: logo + buttons */
+  #hdr-row1{
+    display:flex;align-items:center;
+    width:100%;padding:10px 14px;gap:10px;
+    border-bottom:1px solid var(--bd);
+  }
+  /* row 2: search full width */
+  #hdr-row2{
+    display:flex;align-items:center;
+    width:100%;padding:8px 14px;
+  }
+  #search-wrap{max-width:none;flex:1}
+  #search{
+    font-size:15px;
+    color:#111 !important;
+    background:#fff !important;
+    border-color:var(--bd);
+    -webkit-text-fill-color:#111;
+  }
+  #search::placeholder{color:#999;-webkit-text-fill-color:#999}
   .hlogo span{display:none}
+  .hlogo{font-size:15px}
   #filters{display:none}
   .hdiv{display:none}
-  #view-toggle{display:flex}
+  #view-toggle{display:flex;margin-left:auto}
+  #btn-suggest{
+    padding:7px 12px;font-size:11px;
+    white-space:nowrap;flex-shrink:0;
+  }
   #canvas,#canvas-bg,#legend,#stats{display:none!important}
   #card-view{display:block}
   body{overflow:auto}
 }
-@media (max-width:600px){
-  :root{--hh:54px}
-  .hlogo{font-size:15px}
-  #search-wrap{max-width:none;flex:1}
-  #btn-suggest{padding:7px 10px;font-size:11px}
-  #panel{width:100%;top:var(--hh)}
+
+/* mobile filter tabs below header */
+@media (max-width:900px){
+  #mobile-filters{
+    display:flex;gap:6px;padding:10px 14px 4px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  #mobile-filters::-webkit-scrollbar{display:none}
+  .mf-btn{
+    display:flex;align-items:center;gap:5px;
+    padding:6px 12px;border-radius:100px;
+    border:1.5px solid var(--bd);background:transparent;
+    color:var(--mu);font-family:'Inter',sans-serif;
+    font-size:12px;font-weight:600;cursor:pointer;
+    white-space:nowrap;flex-shrink:0;transition:all .15s;
+  }
+  .mf-btn.on{background:var(--tx);color:#fff;border-color:var(--tx)}
+  .mf-dot{width:6px;height:6px;border-radius:50%}
+  #card-view{top:calc(var(--hh) + 44px)}
 }
+
+@media (max-width:480px){
+  #btn-suggest span{display:none}
+}
+
 @media (min-width:901px){
   body{overflow:hidden}
   #card-view{display:none!important}
   #view-toggle{display:none}
+  #mobile-filters{display:none}
+  #hdr-row1,#hdr-row2{display:contents}
 }
 </style>
 </head>
@@ -206,30 +260,54 @@ body{overflow:hidden}
 
 <!-- HEADER -->
 <div id="hdr">
-  <div class="hbar"></div>
-  <div class="hlogo">Camden's Knowledge Graph<span>ideas connected · understanding compounded</span></div>
-  <div class="hdiv"></div>
-  <div id="search-wrap">
-    <svg class="sico" viewBox="0 0 16 16" fill="none">
-      <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M10 10L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-    <input id="search" placeholder="Search books, concepts…" autocomplete="off" />
-  </div>
-  <div class="hright">
-    <div id="filters">
-      <button class="fp on" data-t="book"><span class="dot" style="background:var(--red)"></span>Books</button>
-      <button class="fp on" data-t="concept"><span class="dot" style="background:var(--blue)"></span>Concepts</button>
-      <button class="fp on" data-t="author"><span class="dot" style="background:var(--blk)"></span>Authors</button>
-      <button class="fp on" data-t="topic"><span class="dot" style="background:var(--slate)"></span>Topics</button>
-    </div>
-    <div id="view-toggle">
-      <button class="vt-btn" id="vt-list" title="List view">☰</button>
-      <button class="vt-btn active" id="vt-graph" title="Graph view">⬡</button>
-    </div>
+  <!-- Row 1: logo + actions -->
+  <div id="hdr-row1">
+    <div class="hbar"></div>
+    <div class="hlogo">Camden's Knowledge Graph<span>ideas connected · understanding compounded</span></div>
     <div class="hdiv"></div>
-    <button id="btn-suggest" onclick="openSuggest()">+ Suggest a Book</button>
+    <!-- desktop search lives here -->
+    <div id="search-wrap" id="desktop-search">
+      <svg class="sico" viewBox="0 0 16 16" fill="none">
+        <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10 10L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input id="search" placeholder="Search books, concepts…" autocomplete="off" />
+    </div>
+    <div class="hright">
+      <div id="filters">
+        <button class="fp on" data-t="book"><span class="dot" style="background:var(--red)"></span>Books</button>
+        <button class="fp on" data-t="concept"><span class="dot" style="background:var(--blue)"></span>Concepts</button>
+        <button class="fp on" data-t="author"><span class="dot" style="background:var(--blk)"></span>Authors</button>
+        <button class="fp on" data-t="topic"><span class="dot" style="background:var(--slate)"></span>Topics</button>
+      </div>
+      <div id="view-toggle">
+        <button class="vt-btn" id="vt-list" title="List view">☰</button>
+        <button class="vt-btn active" id="vt-graph" title="Graph view">⬡</button>
+      </div>
+      <div class="hdiv"></div>
+      <button id="btn-suggest" onclick="openSuggest()">+ <span>Suggest a Book</span></button>
+    </div>
   </div>
+  <!-- Row 2: mobile search (hidden on desktop) -->
+  <div id="hdr-row2">
+    <div style="position:relative;width:100%;display:flex">
+      <svg class="sico" viewBox="0 0 16 16" fill="none" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:#999;pointer-events:none">
+        <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10 10L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input id="search-mobile" placeholder="Search books, concepts, ideas…" autocomplete="off"
+        style="width:100%;padding:9px 12px 9px 34px;border:1.5px solid #E0E0E0;border-radius:5px;font-family:'Inter',sans-serif;font-size:15px;color:#111;background:#fff;outline:none;-webkit-text-fill-color:#111"
+        oninput="document.getElementById('search').value=this.value;document.getElementById('search').dispatchEvent(new Event('input'))"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Mobile filter tabs -->
+<div id="mobile-filters">
+  <button class="mf-btn on" data-mt="all">All</button>
+  <button class="mf-btn" data-mt="book"><span class="mf-dot" style="background:var(--red)"></span>Books</button>
+  <button class="mf-btn" data-mt="concept"><span class="mf-dot" style="background:var(--blue)"></span>Concepts</button>
 </div>
 
 <!-- DESKTOP GRAPH -->
@@ -320,8 +398,26 @@ let sel=null,filters=new Set(['book','concept','author','topic']);
 let mobileExpanded=null;
 const isMobile=()=>window.innerWidth<=900;
 
-// ── MOBILE CARD VIEW ──────────────────────────────────────────
-function buildCardView(filterTerm=''){
+// ── MOBILE FILTER TABS ────────────────────────────────────────
+let mobileFilter = 'all';
+document.querySelectorAll('.mf-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    mobileFilter = btn.dataset.mt;
+    document.querySelectorAll('.mf-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    buildCardView(document.getElementById('search-mobile').value);
+  });
+});
+
+// patch buildCardView to respect mobileFilter
+const _origBuildCardView = buildCardView;
+function buildCardView(filterTerm='') {
+  // filter by type if mobileFilter is set
+  const origFilter = mobileFilter;
+  _buildCardViewFiltered(filterTerm, origFilter);
+}
+
+function _buildCardViewFiltered(filterTerm='', typeFilter='all') {
   const cv=document.getElementById('cv-inner');
   const ft=filterTerm.toLowerCase().trim();
 
@@ -335,8 +431,11 @@ function buildCardView(filterTerm=''){
   let html='';
 
   // Books
+  const showBooks = typeFilter==='all'||typeFilter==='book';
+  const showConcepts = typeFilter==='all'||typeFilter==='concept';
+
   const books=ND.filter(n=>n.type==='book'&&matches(n));
-  if(books.length){
+  if(books.length && showBooks){
     html+='<div class="cv-section">Books ('+books.length+')</div>';
     books.forEach(n=>{
       const stars='★'.repeat(n.rating||0);
@@ -393,7 +492,7 @@ function buildCardView(filterTerm=''){
 
   // Concepts
   const concepts=ND.filter(n=>n.type==='concept'&&matches(n));
-  if(concepts.length){
+  if(concepts.length && showConcepts){
     html+='<div class="cv-section">Concepts ('+concepts.length+')</div>';
     concepts.forEach(n=>{
       const bCons=(n.connections||[]).slice(0,6);
