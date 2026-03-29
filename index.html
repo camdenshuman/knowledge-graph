@@ -872,18 +872,18 @@ nodes.append('circle')
   .transition().delay((_,i)=>i*14+60).duration(500).ease(d3.easeBackOut.overshoot(1.1))
   .attr('r',d=>R[d.type]);
 
-// Labels — full title, word-wrapped, background rect sized mathematically
+// Labels — full title, word-wrapped, never truncated
 nodes.each(function(d){
   const el=d3.select(this);
   const raw=(d.label||d.displayLabel||'');
   const isBook=d.type==='book';
   const maxChars=22;
   const fontSize=isBook?12:10;
-  const lineH=fontSize*1.35;
-  const charW=isBook?6.5:5.8; // approximate px per char for these fonts
-  const yOff=R[d.type]+fontSize+4;
+  const lineH=isBook?16:14;  // px between lines, as numbers
+  const charW=isBook?6.8:5.8;
+  const yOff=R[d.type]+fontSize+6;
 
-  // Word-wrap — no line cap, never truncates
+  // Word-wrap — no line cap
   const words=raw.split(' ');
   const lines=[];let line='';
   words.forEach(w=>{
@@ -893,34 +893,33 @@ nodes.each(function(d){
   });
   if(line)lines.push(line);
 
-  // Compute rect dimensions upfront (no getBBox needed)
+  // Size bg rect mathematically
   const maxLen=Math.max(...lines.map(l=>l.length));
-  const rectW=maxLen*charW+8;
-  const rectH=lines.length*lineH+4;
+  const rectW=maxLen*charW+10;
+  const rectH=lines.length*lineH+6;
 
-  // Background rect — sized mathematically, centered
+  // Background rect — always covers all lines
   el.append('rect')
     .attr('x',-rectW/2)
-    .attr('y',yOff-fontSize)
+    .attr('y',yOff-fontSize-2)
     .attr('width',rectW)
     .attr('height',rectH)
-    .attr('fill','rgba(250,250,250,0.85)')
+    .attr('fill','rgba(250,250,250,0.88)')
     .attr('rx',3)
     .attr('pointer-events','none');
 
-  // Text + tspans
-  const txt=el.append('text')
-    .attr('class',isBook?'blbl':'nlbl')
-    .style('opacity',0);
-
+  // Position each line using absolute y — guaranteed to render
   lines.forEach((l,i)=>{
-    txt.append('tspan')
+    el.append('text')
+      .attr('class',isBook?'blbl':'nlbl')
       .attr('x',0)
-      .attr('dy',i===0?yOff:(lineH+'px'))
-      .text(l);
+      .attr('y',yOff + i*lineH)
+      .attr('pointer-events','none')
+      .style('opacity',0)
+      .text(l)
+      .transition().delay(200).duration(400)
+      .style('opacity',isBook?.9:.78);
   });
-
-  txt.transition().delay(200).duration(400).style('opacity',isBook?.9:.78);
 });
 
 // Interactions
