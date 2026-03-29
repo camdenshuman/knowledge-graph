@@ -669,7 +669,6 @@ const BOOKS = [
         notes: ""
       }
     ]
-  }
   },
   {
     id: "build-fadell",
