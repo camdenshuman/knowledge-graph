@@ -859,13 +859,13 @@ const BOOKS=[
   },
   {
     "id": "how-to-win-friends",
+    "title": "How to Win Friends and Influence People",
+    "author": "Dale Carnegie",
+    "year": 1936,
+    "rating": 5,
     "status": "read",
-    "concepts": [
-      "leverage",
-      "long-term-thinking",
-      "identity"
-    ],
-    "topics": [],
+    "quote": "The person who has technical knowledge plus the ability to express ideas, to assume leadership and to arouse enthusiasm among people - that person is headed for higher earning power.",
+    "summary": "The original relationship handbook — still the best. Carnegie's principles are simple and counter-intuitive: don't criticize, condemn, or complain; give honest appreciation; arouse in others an eager want. The book's durability comes from the fact that human nature hasn't changed. People want to feel important and understood, and whoever provides that wins.",
     "ideas": [
       "Genuine Interest in Others",
       "The Only Way to Win an Argument",
@@ -874,13 +874,35 @@ const BOOKS=[
       "Let Others Feel the Idea Is Theirs",
       "Sincere Appreciation"
     ],
-    "rating": 5,
-    "chapters": [],
-    "title": "How to Win Friends and Influence People",
-    "author": "Dale Carnegie",
-    "year": 1936,
-    "quote": "You can make more friends in two months by becoming genuinely interested in other people than you can in two years by trying to get other people interested in you.",
-    "summary": "The original relationship handbook — still the best. Carnegie's principles are simple and counter-intuitive: don't criticize, condemn, or complain; give honest appreciation; arouse in others an eager want. The book's durability comes from the fact that human nature hasn't changed. People want to feel important and understood, and whoever provides that wins."
+    "concepts": [
+      "long-term-thinking",
+      "ownership",
+      "identity",
+      "leverage"
+    ],
+    "chapters": [
+      {
+        "title": "Essentials of Enagement",
+        "ideas": "Don't communicate until you are calm and in control of your emotions. \n\nAffirm the good in every interaction. \n\nUltimately, gaining influence is about setting yourself apart, stepping to a higher plane in the mind and heart of another. \n\nDialogue is considerate, authentic, transparent, secure, interested in meeting needs, and builds trust. \n\nTo influence others to act, you must first connect to a core desire within them. ",
+        "notes": ""
+      },
+      {
+        "title": "Six Ways to Make a Lasting Impression",
+        "ideas": "Take interest in others' interests and you will be set apart. \n\nSmile when you speak to people. \n\nLearn names with the Napolean technique. \n\nThe power of listening is the power to change hearts and minds. \n\nWhen it comes to mattering others, you must dicuss what matters to them. \n\nLeave everyone you speak to better than you found them ",
+        "notes": ""
+      },
+      {
+        "title": "How to Merit and Maintain Others' Trust",
+        "ideas": "Arguing with another person will rarely get you anywhere; they usually end with each person more firmly convinced of his rightness. \n\n\"Always default to diplomacy. Admit that you may be wrong. Concede that the other person may be right. Be agreeable. Ask questions. And above all, consider the situation from the other's persepctive and show that person respect.\" \n\n\"Friendliness begets friendliness. We are more inclined to agree with another person or see things from his persepective when we have friendly feelings toward him.\" \n\n\"It is the unconventional mind that understands success isn't about attention or accolades. It's about partnerships and progress.\" \n\n\"We would all grow in stature and confidence if we could learn how to celebrate the most common thread in everyone.\" \n\n\"To truly connect with people you must celebrate their inherent dignity. In doing so you celebrate yours. Appeal to noble motives and you can move the masses, and yourself along with them.\" \n\n\"Share your stories, and others will be willing to share theirs. Together you will create a new and larger story.\"\n\n\"When a victory is defined as a team victory - for a cause, a country, a cure, or a company - winning is all the more compelling, becuase the competition forces us to communicate and connect on an area of affinity.\" ",
+        "notes": ""
+      },
+      {
+        "title": "How to Lead Change without Resistance or Resentment",
+        "ideas": "\"Instead, begin a conversation with honest and genuine appreciation; the reciever will be more amenable to your ideas and less defensive or resistant.\" \n\n\"When you acknowledge your baggage, trust builds naturally.\" \n\n\"It is to your advantage to pull people out of their dejected state as quickly as possible. Do so by calling out their mistakes quietly and returning them to a place of confidence and strength.\" \n\n\"Questions allow you to create a conversation - in any medium - that can lead to a beter place for all involved.\" \n\n\"Tell someone that you have total faith in his ability to accomplish a goal and encourage him by highlighting all of the skills he possesses that will help him along the way, and he will practice until the dawn in the window in order to excel.\" \n\n\"To change somebody's behavior, change the level of respect she recieves by giving her a fine reputation to live up to. Act as though the trait you are trying to influence is already one of the person's outstanding characteristics.\"\n\n\"It is true that the world is open for business, but your first task remains the business of humanity.\"",
+        "notes": ""
+      }
+    ],
+    "topics": []
   },
   {
     "id": "build-fadell",
@@ -1321,7 +1343,8 @@ const CONCEPTS=[
       "innovators-dilemma",
       "managing-up",
       "buying-small-business",
-      "clear-thinking"
+      "clear-thinking",
+      "how-to-win-friends"
     ],
     "unifiedPrinciple": "The longer your time horizon, the fewer competitors you have."
   },
@@ -1340,7 +1363,8 @@ const CONCEPTS=[
       "ceo-excellence",
       "billion-dollar-brand-club",
       "innovators-dilemma",
-      "buying-small-business"
+      "buying-small-business",
+      "how-to-win-friends"
     ],
     "unifiedPrinciple": "The path from income to wealth runs through ownership."
   },
@@ -1397,7 +1421,8 @@ const CONCEPTS=[
       "meditations",
       "emotional-intelligence",
       "leadership-challenge",
-      "21-laws-leadership"
+      "21-laws-leadership",
+      "how-to-win-friends"
     ],
     "unifiedPrinciple": "Identity → Habits → Outcomes. Not: Outcomes → Habits → Identity."
   },
@@ -1450,7 +1475,8 @@ const CONCEPTS=[
       "billion-dollar-brand-club",
       "leadership-challenge",
       "managing-up",
-      "21-laws-leadership"
+      "21-laws-leadership",
+      "how-to-win-friends"
     ],
     "unifiedPrinciple": "Specific knowledge × leverage = wealth at scale."
   },
