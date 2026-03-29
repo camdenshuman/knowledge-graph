@@ -325,6 +325,7 @@ body{overflow:hidden}
   .h-right,.h-div{display:none}
   #view-toggle{display:none}
   .h-search{display:none}
+  #desktop-toggle{display:none!important}
   #bg-grid,#canvas,#legend,#stats{display:none!important}
   #card-view{display:block;top:var(--hh)}
   body{overflow:auto}
@@ -396,7 +397,17 @@ body{overflow:hidden}
         <svg viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         Suggest a Book
       </button>
-    </div>
+      <div class="h-div"></div>
+      <!-- Desktop view toggle -->
+      <div id="desktop-toggle" style="display:flex;align-items:center;border:1px solid var(--bd);border-radius:6px;overflow:hidden">
+        <button class="vt-btn active" id="dt-graph" title="Graph view" onclick="setDesktopView('graph')">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.4"/><circle cx="2" cy="2" r="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="2" r="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="2" cy="12" r="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="1.5" stroke="currentColor" stroke-width="1.3"/><line x1="3.1" y1="3.1" x2="5.5" y2="5.5" stroke="currentColor" stroke-width="1.3"/><line x1="10.9" y1="3.1" x2="8.5" y2="5.5" stroke="currentColor" stroke-width="1.3"/><line x1="3.1" y1="10.9" x2="5.5" y2="8.5" stroke="currentColor" stroke-width="1.3"/><line x1="10.9" y1="10.9" x2="8.5" y2="8.5" stroke="currentColor" stroke-width="1.3"/></svg>
+        </button>
+        <button class="vt-btn" id="dt-list" title="List view" onclick="setDesktopView('list')">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><line x1="1" y1="3" x2="13" y2="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="11" x2="13" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div><!-- end h-right -->
     <!-- Mobile-only controls -->
     <div id="view-toggle">
       <button class="vt-btn" id="vt-list" title="List view">☰</button>
@@ -427,6 +438,13 @@ body{overflow:hidden}
 
 <!-- Desktop canvas -->
 <div id="canvas"><svg id="gsvg"></svg></div>
+
+<!-- Desktop card/list view (hidden by default) -->
+<div id="desktop-card-view" style="display:none;position:fixed;inset:var(--hh) 0 0 0;overflow-y:auto;z-index:2;background:var(--bg)">
+  <div style="max-width:960px;margin:0 auto;padding:28px 32px 80px">
+    <div id="dcv-inner"></div>
+  </div>
+</div>
 
 <!-- Tooltip -->
 <div id="tip"><div class="t-type" id="tip-t"></div><div class="t-title" id="tip-n"></div></div>
@@ -652,7 +670,103 @@ vtL.addEventListener('click',()=>{vtL.classList.add('active');vtG.classList.remo
 vtG.addEventListener('click',()=>{vtG.classList.add('active');vtL.classList.remove('active');cv.classList.remove('show');});
 if(isMobile()){cv.classList.add('show');buildCardView();}
 
-// ── DESKTOP GRAPH ─────────────────────────────────────────────
+// ── DESKTOP VIEW TOGGLE ───────────────────────────────────────
+function setDesktopView(mode){
+  const dtG=document.getElementById('dt-graph');
+  const dtL=document.getElementById('dt-list');
+  const canv=document.getElementById('canvas');
+  const bgG=document.getElementById('bg-grid');
+  const dcv=document.getElementById('desktop-card-view');
+  const leg=document.getElementById('legend');
+  const st=document.getElementById('stats');
+  if(mode==='list'){
+    dtL.classList.add('active');dtG.classList.remove('active');
+    canv.style.display='none';bgG.style.display='none';
+    leg.style.display='none';st.style.display='none';
+    dcv.style.display='block';
+    buildDesktopList(document.getElementById('search').value);
+  } else {
+    dtG.classList.add('active');dtL.classList.remove('active');
+    canv.style.display='';bgG.style.display='';
+    leg.style.display='';st.style.display='';
+    dcv.style.display='none';
+    if(sel){openPanel(ND.find(x=>x.id===sel)||ND[0]);}
+  }
+}
+
+function buildDesktopList(ft=''){
+  const wrap=document.getElementById('dcv-inner');
+  const term=ft.toLowerCase().trim();
+  function matches(n){
+    if(!term)return true;
+    return(n.displayLabel||'').toLowerCase().includes(term)||
+      (n.author||'').toLowerCase().includes(term)||
+      (n.summary||'').toLowerCase().includes(term);
+  }
+  const books=ND.filter(n=>n.type==='book'&&matches(n));
+  const concs=ND.filter(n=>n.type==='concept'&&matches(n));
+  const colStyle='display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:32px';
+  const secStyle='font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--di);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--tx)';
+
+  let html='';
+  if(books.length){
+    html+=`<div style="${secStyle}">Books (${books.length})</div>`;
+    html+=`<div style="${colStyle}">`;
+    books.forEach(n=>{
+      const stars='★'.repeat(n.rating||0);
+      const sc=n.status==='read'?'background:var(--gl);color:var(--grn);border:1px solid var(--gm)':n.status==='reading'?'background:var(--bl);color:var(--blue);border:1px solid var(--bm)':'background:var(--ol);color:var(--org);border:1px solid #DCA86A';
+      const stxt=n.status==='read'?'Read':n.status==='reading'?'Reading':'Want to Read';
+      const cCons=LD.filter(l=>{
+        const a=typeof l.source==='object'?l.source.id:l.source,b=typeof l.target==='object'?l.target.id:l.target;
+        return a===n.id||b===n.id;
+      }).map(l=>{
+        const a=typeof l.source==='object'?l.source.id:l.source,b=typeof l.target==='object'?l.target.id:l.target;
+        const oid=a===n.id?b:a;
+        return ND.find(x=>x.id===oid&&x.type==='concept');
+      }).filter(Boolean);
+      html+=`<div onclick="setDesktopView('graph');setTimeout(()=>{const nd=ND.find(x=>x.id==='${n.id}');if(nd){sel=nd.id;openPanel(nd);hlNode(nd,true);}},300)"
+        style="background:var(--white);border:1px solid var(--bd);border-radius:10px;padding:18px;cursor:pointer;transition:all .15s;box-shadow:0 1px 3px rgba(0,0,0,.05)"
+        onmouseover="this.style.borderColor='var(--tx)';this.style.boxShadow='0 2px 12px rgba(0,0,0,.1)'"
+        onmouseout="this.style.borderColor='var(--bd)';this.style.boxShadow='0 1px 3px rgba(0,0,0,.05)'">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;line-height:1.3;margin-bottom:4px">${esc(n.displayLabel)}</div>
+        <div style="font-size:12px;color:var(--mu);margin-bottom:8px">${esc(n.author||'')}${n.year?' · '+n.year:''}</div>
+        ${stars?`<div style="color:var(--red);font-size:12px;letter-spacing:1px;margin-bottom:8px">${stars}</div>`:''}
+        <span style="display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.05em;text-transform:uppercase;${sc}">${stxt}</span>
+        ${cCons.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:10px">${cCons.map(c=>`<span style="font-size:10px;padding:2px 8px;border-radius:4px;background:var(--bl);color:var(--blue);border:1px solid var(--bm)">${esc(c.displayLabel)}</span>`).join('')}</div>`:''}
+        ${n.quote?`<div style="font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:var(--mu);margin-top:10px;padding-top:10px;border-top:1px solid var(--bd);line-height:1.5">"${esc(n.quote.slice(0,120))}${n.quote.length>120?'…':''}"</div>`:''}
+      </div>`;
+    });
+    html+='</div>';
+  }
+  if(concs.length){
+    html+=`<div style="${secStyle}">Concepts (${concs.length})</div>`;
+    html+=`<div style="${colStyle}">`;
+    concs.forEach(n=>{
+      const bCons=(n.connections||[]).slice(0,5);
+      html+=`<div onclick="setDesktopView('graph');setTimeout(()=>{const nd=ND.find(x=>x.id==='${n.id}');if(nd){sel=nd.id;openPanel(nd);hlNode(nd,true);}},300)"
+        style="background:var(--white);border:1px solid var(--bm);border-radius:10px;padding:18px;cursor:pointer;transition:all .15s;box-shadow:0 1px 3px rgba(0,0,0,.05)"
+        onmouseover="this.style.borderColor='var(--blue)';this.style.boxShadow='0 2px 12px rgba(26,77,173,.1)'"
+        onmouseout="this.style.borderColor='var(--bm)';this.style.boxShadow='0 1px 3px rgba(0,0,0,.05)'">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0"></div>
+          <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700">${esc(n.displayLabel)}</div>
+        </div>
+        ${n.quote?`<div style="font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:var(--red);margin-bottom:10px;line-height:1.5">"${esc(n.quote.slice(0,100))}${n.quote.length>100?'…':''}"</div>`:''}
+        ${n.summary?`<div style="font-size:12px;color:var(--mu);line-height:1.6;margin-bottom:10px">${esc(n.summary.slice(0,140))}…</div>`:''}
+        ${bCons.length?`<div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--di);margin-bottom:6px">Appears In</div><div style="display:flex;flex-wrap:wrap;gap:4px">${bCons.map(b=>`<span style="font-size:10px;padding:2px 8px;border-radius:4px;background:var(--rl);color:var(--red);border:1px solid var(--rm)">${esc(b)}</span>`).join('')}</div>`:''}
+      </div>`;
+    });
+    html+='</div>';
+  }
+  wrap.innerHTML=html||'<div style="padding:60px 0;text-align:center;color:var(--di)">No results.</div>';
+}
+
+// Hook search to also update desktop list view
+const _origSearchHandler=document.getElementById('search').oninput;
+document.getElementById('search').addEventListener('input',e=>{
+  const dcv=document.getElementById('desktop-card-view');
+  if(dcv.style.display!=='none') buildDesktopList(e.target.value);
+});
 const svg=d3.select('#gsvg');
 const canvas=document.getElementById('canvas');
 const panel=document.getElementById('panel');
@@ -725,17 +839,17 @@ nodes.each(function(d){
   const el=d3.select(this);
   const cls=d.type==='book'?'blbl':'nlbl';
   const raw=(d.label||d.displayLabel||'');
-  // Truncate long book titles intelligently
+  // Wrap book titles across lines — 22 chars per line max, up to 4 lines
   let display=raw;
-  if(d.type==='book'&&raw.length>16){
+  if(d.type==='book'&&raw.length>22){
     const words=raw.split(' ');
     const lines=[];let line='';
     words.forEach(w=>{
-      if((line+' '+w).trim().length>16&&line){lines.push(line);line=w;}
+      if((line+' '+w).trim().length>22&&line){lines.push(line);line=w;}
       else line=(line?line+' ':'')+w;
     });
     if(line)lines.push(line);
-    display=lines.slice(0,3).join('\n');
+    display=lines.slice(0,4).join('\n');
   }
   const yOff=R[d.type]+16;
   const lineArr=display.split('\n');
