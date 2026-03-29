@@ -360,6 +360,958 @@ const BOOKS = [
     "communication"
   ],
   "chapters": []
+},
+  {
+  "id": "no-rules-rules",
+  "title": "No Rules Rules",
+  "author": "Reed Hastings & Erin Meyer",
+  "year": 2020,
+  "rating": 0,
+  "status": "want-to-read",
+  "quote": "The best thing you can do for employees is hire only senior people.",
+  "summary": "Netflix's co-founder argues that most corporate policies exist to manage the lowest common denominator \u2014 and that eliminating them while hiring only exceptional people creates a culture of freedom and responsibility that outperforms conventional management. Talent density is the prerequisite to everything else.",
+  "ideas": [
+    "Talent Density",
+    "Freedom and Responsibility",
+    "Radical Candor at Scale",
+    "Remove Controls as Trust Builds",
+    "Context Not Control"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "leverage",
+    "ownership"
+  ],
+  "chapters": []
+},
+  {
+  "id": "writing-busy-readers",
+  "title": "Writing for Busy Readers",
+  "author": "Todd Rogers & Jessica Lasky-Fink",
+  "year": 2023,
+  "rating": 4,
+  "status": "read",
+  "quote": "The best writing anticipates what the reader needs, not what the writer wants to say.",
+  "summary": "Two behavioral scientists apply cognitive research to practical writing. The core insight: readers are always busier than writers assume. Every word that doesn't earn its place loses the reader. Less is almost always more, and structure does more work than style.",
+  "ideas": [
+    "Less Is More",
+    "Lead with the Ask",
+    "Hierarchy of Information",
+    "Design for Skimmers",
+    "Cognitive Load in Writing"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "leverage"
+  ],
+  "chapters": []
+},
+  {
+  "id": "power-professionalism",
+  "title": "The Power of Professionalism",
+  "author": "Bill Wiersma",
+  "year": 2011,
+  "rating": 0,
+  "status": "want-to-read",
+  "quote": "Professionalism is about what you do when no one is watching.",
+  "summary": "Wiersma argues that professionalism is not about etiquette or credentials but about a mindset \u2014 a commitment to excellence, accountability, and client-first thinking that separates elite performers from the rest. It is a choice made repeatedly under pressure.",
+  "ideas": [
+    "Mindset Over Credentials",
+    "Accountability as Identity",
+    "Client-First Thinking",
+    "Professionalism Under Pressure"
+  ],
+  "concepts": [
+    "identity",
+    "systems-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "great-mental-models-1",
+  "title": "The Great Mental Models Vol. 1",
+  "author": "Shane Parrish",
+  "year": 2019,
+  "rating": 5,
+  "status": "read",
+  "quote": "The quality of our thinking is proportional to the models in our head.",
+  "summary": "Parrish introduces the concept of a mental model latticework \u2014 a cross-disciplinary collection of thinking tools that improve decision-making across all domains. Volume 1 covers foundational models: the map is not the territory, first principles thinking, thought experiments, second-order thinking, probabilistic thinking, inversion, and Occam's razor.",
+  "ideas": [
+    "The Map Is Not The Territory",
+    "First Principles Thinking",
+    "Second-Order Thinking",
+    "Inversion",
+    "Probabilistic Thinking",
+    "Occam's Razor"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "risk-asymmetry",
+    "long-term-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "great-mental-models-2",
+  "title": "The Great Mental Models Vol. 2",
+  "author": "Shane Parrish",
+  "year": 2019,
+  "rating": 5,
+  "status": "read",
+  "quote": "Physics, chemistry, and biology offer the most reliable models because they describe how the world actually works.",
+  "summary": "Volume 2 draws mental models from physics, chemistry, and biology \u2014 velocity vs. speed, leverage, activation energy, catalysts, evolution, natural selection, ecosystem thinking. The goal is to see patterns across disciplines that most specialists never notice because they stay inside their own domain.",
+  "ideas": [
+    "Velocity vs Speed",
+    "Leverage from Physics",
+    "Activation Energy",
+    "Catalysts",
+    "Natural Selection Applied to Ideas",
+    "Ecosystem Thinking"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "leverage",
+    "long-term-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "great-mental-models-3",
+  "title": "The Great Mental Models Vol. 3",
+  "author": "Shane Parrish",
+  "year": 2021,
+  "rating": 5,
+  "status": "read",
+  "quote": "The military understands something most businesses don't: complex systems fail in complex ways.",
+  "summary": "Volume 3 pulls models from mathematics and military thinking \u2014 redundancy, margin of safety, critical mass, game theory, via negativa, the power of default thinking. The military section is particularly sharp on how to act under uncertainty with incomplete information.",
+  "ideas": [
+    "Redundancy",
+    "Critical Mass",
+    "Game Theory Basics",
+    "Via Negativa",
+    "Margin of Safety Applied",
+    "Default Thinking"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "risk-asymmetry",
+    "long-term-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "great-mental-models-4",
+  "title": "The Great Mental Models Vol. 4",
+  "author": "Shane Parrish",
+  "year": 2023,
+  "rating": 4,
+  "status": "read",
+  "quote": "Human behavior follows predictable patterns precisely because we are social animals.",
+  "summary": "Volume 4 focuses on human nature and social systems \u2014 status games, signaling, narrative bias, tribalism, social proof, incentive structures, and the dynamics of group behavior. Understanding these models makes you harder to manipulate and better at designing systems that work with human nature rather than against it.",
+  "ideas": [
+    "Status Games",
+    "Signaling vs Substance",
+    "Narrative Bias",
+    "Incentive Structures",
+    "Social Proof",
+    "Tribalism"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "identity",
+    "risk-asymmetry"
+  ],
+  "chapters": []
+},
+  {
+  "id": "youre-invited",
+  "title": "You're Invited",
+  "author": "Jon Levy",
+  "year": 2021,
+  "rating": 4,
+  "status": "read",
+  "quote": "The most influential people in the world got there by helping others feel like they belong.",
+  "summary": "Behavioral scientist Jon Levy studies the science of belonging and influence. His thesis: the most connected people don't network \u2014 they create experiences that make others feel seen, invested, and part of something meaningful. The dinner table is more powerful than the conference room.",
+  "ideas": [
+    "Belonging Over Networking",
+    "The IKEA Effect in Relationships",
+    "Influence Through Experience",
+    "Community as Infrastructure",
+    "Effortful Investment Creates Value"
+  ],
+  "concepts": [
+    "leverage",
+    "long-term-thinking",
+    "identity"
+  ],
+  "chapters": []
+},
+  {
+  "id": "greatest-salesman",
+  "title": "The Greatest Salesman in the World",
+  "author": "Og Mandino",
+  "year": 1968,
+  "rating": 4,
+  "status": "read",
+  "quote": "I will form good habits and become their slave.",
+  "summary": "A parable structured around ten scrolls of wisdom on habit, persistence, love, and action. Mandino's central argument: all success is built on habits formed through daily repetition until they become automatic. The scrolls are designed to be read repeatedly \u2014 the repetition is the point.",
+  "ideas": [
+    "Habits as Master",
+    "Persistence as Strategy",
+    "Love as a Sales Tool",
+    "Act Now",
+    "Each Day a New Life"
+  ],
+  "concepts": [
+    "identity",
+    "compounding",
+    "long-term-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "drucker-leadership",
+  "title": "Drucker on Leadership",
+  "author": "William A. Cohen",
+  "year": 2010,
+  "rating": 4,
+  "status": "read",
+  "quote": "Management is doing things right. Leadership is doing the right things.",
+  "summary": "A synthesis of Peter Drucker's leadership philosophy \u2014 the most important management thinker of the 20th century. Drucker argued that leadership is not about personality or charisma but about results, trust, and the elevation of people's capacity. Effectiveness is a discipline that can be learned.",
+  "ideas": [
+    "Effectiveness as a Discipline",
+    "Management vs Leadership",
+    "Results Define Leadership",
+    "Trust as Foundation",
+    "Developing People"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "leverage",
+    "ownership"
+  ],
+  "chapters": []
+},
+  {
+  "id": "ruthless-elimination-hurry",
+  "title": "The Ruthless Elimination of Hurry",
+  "author": "John Mark Comer",
+  "year": 2019,
+  "rating": 5,
+  "status": "read",
+  "quote": "Hurry is the great enemy of spiritual life in our day.",
+  "summary": "Comer argues that the pace of modern life \u2014 chronic busyness, digital distraction, the tyranny of the urgent \u2014 is incompatible with a deep, meaningful existence. Drawing on ancient spiritual practices, he makes the case for intentional slowness, sabbath, silence, and simplicity as acts of resistance and formation.",
+  "ideas": [
+    "Hurry as a Spiritual Problem",
+    "Sabbath as Resistance",
+    "Silence and Solitude",
+    "Simplicity",
+    "Formation Requires Pace"
+  ],
+  "concepts": [
+    "identity",
+    "long-term-thinking",
+    "systems-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "ceo-excellence",
+  "title": "CEO Excellence",
+  "author": "Scott Keller & Vikram Malhotra",
+  "year": 2022,
+  "rating": 4,
+  "status": "read",
+  "quote": "The best CEOs don't do things differently \u2014 they do different things.",
+  "summary": "McKinsey researchers interviewed 67 of the world's top-performing CEOs to identify what distinguishes excellent from merely good leadership at the top. Six key mindsets emerge: direction-setting, organization alignment, team mobilization, board engagement, stakeholder connection, and personal effectiveness. Each has a higher and lower road.",
+  "ideas": [
+    "Direction Setting at Scale",
+    "Bold Vision vs Sandbagging",
+    "Organization Design as Strategy",
+    "Board as Asset Not Obstacle",
+    "Operating Cadence",
+    "Managing Energy Not Time"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "leverage",
+    "long-term-thinking",
+    "ownership"
+  ],
+  "chapters": []
+},
+  {
+  "id": "basic-economics",
+  "title": "Basic Economics",
+  "author": "Thomas Sowell",
+  "year": 2000,
+  "rating": 5,
+  "status": "read",
+  "quote": "The first lesson of economics is scarcity. The first lesson of politics is to disregard the first lesson of economics.",
+  "summary": "Sowell's masterwork explains economic principles without equations or jargon \u2014 supply and demand, price signals, incentives, trade-offs, and the law of unintended consequences. His central argument: economic decisions should be judged by their actual results, not their intentions. Resources are allocated by prices, not good intentions.",
+  "ideas": [
+    "Price Signals",
+    "Incentives Change Behavior",
+    "Trade-offs Are Unavoidable",
+    "Unintended Consequences",
+    "Scarcity as the Foundation",
+    "Comparative Advantage"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "risk-asymmetry",
+    "capital-allocation"
+  ],
+  "chapters": []
+},
+  {
+  "id": "why-we-sleep",
+  "title": "Why We Sleep",
+  "author": "Matthew Walker",
+  "year": 2017,
+  "rating": 5,
+  "status": "read",
+  "quote": "Sleep is the single most effective thing you can do to reset your brain and body health each day.",
+  "summary": "Neuroscientist Matthew Walker presents the science of sleep \u2014 what it does, what happens when we deprive ourselves of it, and why the modern world's relationship with sleep is a public health catastrophe. The research is unambiguous: consistently sleeping less than seven hours is correlated with nearly every major disease and dramatically impairs cognitive performance.",
+  "ideas": [
+    "REM vs Deep Sleep Functions",
+    "Sleep Deprivation Compounds",
+    "Memory Consolidation During Sleep",
+    "Emotional Regulation and Sleep",
+    "Caffeine Half-Life",
+    "The Lie of Catching Up on Sleep"
+  ],
+  "concepts": [
+    "compounding",
+    "systems-thinking",
+    "long-term-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "million-dollar-weekend",
+  "title": "Million Dollar Weekend",
+  "author": "Noah Kagan",
+  "year": 2024,
+  "rating": 4,
+  "status": "read",
+  "quote": "The biggest barrier to starting is the stories we tell ourselves about why we can't.",
+  "summary": "AppSumo founder Noah Kagan's playbook for validating a business idea in 48 hours before investing serious time or money. The core methodology: identify a customer, make an offer, collect money \u2014 in that order. Most entrepreneurs build before they validate. Kagan argues you can and should validate in a weekend.",
+  "ideas": [
+    "Validate Before Building",
+    "The Coffee Challenge",
+    "Ask for the Sale",
+    "Freedom Number",
+    "Customer-First Entrepreneurship",
+    "The 48-Hour Launch"
+  ],
+  "concepts": [
+    "risk-asymmetry",
+    "leverage",
+    "systems-thinking",
+    "ownership"
+  ],
+  "chapters": []
+},
+  {
+  "id": "first-90-days",
+  "title": "The First 90 Days",
+  "author": "Michael Watkins",
+  "year": 2003,
+  "rating": 5,
+  "status": "read",
+  "quote": "The actions you take in your first 90 days will largely determine whether you succeed or fail.",
+  "summary": "The definitive guide to navigating role transitions \u2014 new job, promotion, or new assignment. Watkins argues that the first 90 days are disproportionately important because patterns are set, alliances are formed, and credibility is established before you've had time to make results. The goal: reach the breakeven point (where you're contributing more than consuming) as fast as possible.",
+  "ideas": [
+    "Breakeven Point",
+    "Early Wins Build Credibility",
+    "Diagnose Before Prescribing",
+    "Secure Early Wins",
+    "Build Your Team",
+    "Match Strategy to Situation Type"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "long-term-thinking",
+    "leverage"
+  ],
+  "chapters": []
+},
+  {
+  "id": "grit",
+  "title": "Grit",
+  "author": "Angela Duckworth",
+  "year": 2016,
+  "rating": 5,
+  "status": "read",
+  "quote": "Enthusiasm is common. Endurance is rare.",
+  "summary": "Psychologist Angela Duckworth presents her research on what predicts success: not talent, not IQ, but grit \u2014 the combination of passion and perseverance for long-term goals. Talent multiplied by effort equals skill; skill multiplied by effort equals achievement. Effort counts twice, talent once.",
+  "ideas": [
+    "Talent vs Effort Formula",
+    "Passion as Direction",
+    "Perseverance as Engine",
+    "Growth Mindset Foundation",
+    "Hard Thing Rule",
+    "Grit Is Learnable"
+  ],
+  "concepts": [
+    "identity",
+    "compounding",
+    "long-term-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "forging-mettle",
+  "title": "Forging Mettle",
+  "author": "Brad Buren Jr.",
+  "year": 2022,
+  "rating": 4,
+  "status": "read",
+  "quote": "Character is not what you claim. It is what pressure reveals.",
+  "summary": "A framework for developing the character and resilience required for elite performance and leadership. Buren argues that mettle \u2014 the combination of courage, character, and competence under pressure \u2014 is forged through deliberate exposure to difficulty, not through comfort or theory. You become what you repeatedly do under fire.",
+  "ideas": [
+    "Mettle as Forged Not Given",
+    "Pressure Reveals Character",
+    "Deliberate Discomfort",
+    "Courage as a Skill",
+    "Leadership Under Fire"
+  ],
+  "concepts": [
+    "identity",
+    "long-term-thinking",
+    "compounding"
+  ],
+  "chapters": []
+},
+  {
+  "id": "meditations",
+  "title": "Meditations",
+  "author": "Marcus Aurelius",
+  "year": 180,
+  "rating": 5,
+  "status": "read",
+  "quote": "You have power over your mind, not outside events. Realize this, and you will find strength.",
+  "summary": "The private journal of a Roman emperor \u2014 never intended for publication. Marcus Aurelius wrote to himself to maintain his Stoic practice: focus on what you control, accept what you don't, act virtuously regardless of outcome, and remember your mortality. The most powerful leadership philosophy ever written, and the author was arguably the most powerful person alive when he wrote it.",
+  "ideas": [
+    "Control What You Control",
+    "Memento Mori",
+    "Virtue as the Highest Good",
+    "The Present Moment",
+    "Amor Fati",
+    "The View from Above"
+  ],
+  "concepts": [
+    "identity",
+    "long-term-thinking",
+    "systems-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "emotional-intelligence",
+  "title": "Emotional Intelligence",
+  "author": "Daniel Goleman",
+  "year": 1995,
+  "rating": 4,
+  "status": "read",
+  "quote": "If your emotional abilities aren't in hand, if you don't have self-awareness, if you are not able to manage your distressing emotions, if you can't have empathy and have effective relationships, then no matter how smart you are you are not going to get very far.",
+  "summary": "Goleman introduced EQ to mainstream consciousness: the ability to recognize, understand, and manage emotions \u2014 in yourself and others \u2014 predicts success more than IQ in most domains. The five components: self-awareness, self-regulation, motivation, empathy, and social skills. EQ is not fixed; it can be developed.",
+  "ideas": [
+    "Self-Awareness as Foundation",
+    "Self-Regulation Under Pressure",
+    "Empathy as Intelligence",
+    "The Amygdala Hijack",
+    "EQ Is Developable",
+    "Social Skills as Competence"
+  ],
+  "concepts": [
+    "identity",
+    "systems-thinking",
+    "leverage"
+  ],
+  "chapters": []
+},
+  {
+  "id": "crucial-conversations",
+  "title": "Crucial Conversations",
+  "author": "Patterson, Grenny, McMillan & Switzler",
+  "year": 2002,
+  "rating": 5,
+  "status": "read",
+  "quote": "The single biggest problem in communication is the illusion that it has taken place.",
+  "summary": "A framework for handling high-stakes conversations where emotions run high, opinions differ, and the stakes matter. The core insight: most people either avoid crucial conversations or handle them poorly. The skills \u2014 creating safety, stating your path, exploring others' paths \u2014 can be learned and dramatically change outcomes in relationships, teams, and organizations.",
+  "ideas": [
+    "Start with Heart",
+    "Creating Safety",
+    "The Pool of Shared Meaning",
+    "STATE Your Path",
+    "Explore Others' Paths",
+    "Move to Action"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "identity",
+    "leverage"
+  ],
+  "chapters": []
+},
+  {
+  "id": "very-good-copy",
+  "title": "Very Good Copy",
+  "author": "Eddie Shleyner",
+  "year": 2023,
+  "rating": 4,
+  "status": "read",
+  "quote": "Copy is salesmanship in print.",
+  "summary": "A practitioner's guide to writing copy that moves people to action. Shleyner distills his experience into principles: write for one person, lead with the problem, use specificity over generality, and treat every word as earning its place. Good copy is invisible \u2014 the reader doesn't notice it, they just act.",
+  "ideas": [
+    "Write for One Person",
+    "Lead with the Problem",
+    "Specificity Over Generality",
+    "The Job of Every Line",
+    "Voice and Distinctiveness",
+    "Edit to the Bone"
+  ],
+  "concepts": [
+    "leverage",
+    "systems-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "billion-dollar-brand-club",
+  "title": "Billion Dollar Brand Club",
+  "author": "Lawrence Ingrassia",
+  "year": 2020,
+  "rating": 4,
+  "status": "read",
+  "quote": "The internet didn't just change how we shop. It changed who can build a brand.",
+  "summary": "The story of how direct-to-consumer brands \u2014 Warby Parker, Dollar Shave Club, Casper, Away \u2014 disrupted legacy industries by going direct to customers, cutting out the middleman, and using digital channels as leverage. The pattern: identify an industry where the incumbent is lazy, use the internet to undercut on price and experience, build a brand that feels personal.",
+  "ideas": [
+    "Direct to Consumer Model",
+    "Cut Out the Middleman",
+    "Brand as Relationship",
+    "Digital as Leverage",
+    "Category Disruption Pattern",
+    "Unit Economics First"
+  ],
+  "concepts": [
+    "leverage",
+    "ownership",
+    "capital-allocation",
+    "risk-asymmetry"
+  ],
+  "chapters": []
+},
+  {
+  "id": "life-youve-always-wanted",
+  "title": "The Life You've Always Wanted",
+  "author": "John Ortberg",
+  "year": 2002,
+  "rating": 4,
+  "status": "read",
+  "quote": "Spiritual transformation is not about trying harder. It is about training smarter.",
+  "summary": "Ortberg applies the same logic athletes use for physical training to spiritual formation. You don't try your way to transformation \u2014 you train for it through spiritual disciplines: silence, solitude, confession, service, celebration. The goal is not behavior modification but the renovation of the heart.",
+  "ideas": [
+    "Training vs Trying",
+    "Spiritual Disciplines as Training",
+    "Soul Renovation",
+    "Ruthless Elimination of Hurry",
+    "Practicing the Presence",
+    "Community as Formation Context"
+  ],
+  "concepts": [
+    "identity",
+    "long-term-thinking",
+    "compounding"
+  ],
+  "chapters": []
+},
+  {
+  "id": "graphic-design-everyone",
+  "title": "Graphic Design for Everyone",
+  "author": "Cath Caldwell",
+  "year": 2019,
+  "rating": 3,
+  "status": "read",
+  "quote": "Design is not decoration. Design is communication.",
+  "summary": "An accessible introduction to graphic design principles for non-designers: typography, color theory, layout, hierarchy, and visual communication. The central argument is that design literacy \u2014 understanding why things look the way they do \u2014 makes you a better communicator in any medium, not just visual ones.",
+  "ideas": [
+    "Visual Hierarchy",
+    "Typography as Voice",
+    "Color Psychology",
+    "White Space as Tool",
+    "Grid Systems",
+    "Design Is Communication"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "leverage"
+  ],
+  "chapters": []
+},
+  {
+  "id": "how-to-win-friends",
+  "title": "How to Win Friends and Influence People",
+  "author": "Dale Carnegie",
+  "year": 1936,
+  "rating": 5,
+  "status": "read",
+  "quote": "You can make more friends in two months by becoming genuinely interested in other people than you can in two years by trying to get other people interested in you.",
+  "summary": "The original relationship handbook \u2014 still the best. Carnegie's principles are simple and counter-intuitive: don't criticize, condemn, or complain; give honest appreciation; arouse in others an eager want. The book's durability comes from the fact that human nature hasn't changed. People want to feel important and understood, and whoever provides that wins.",
+  "ideas": [
+    "Genuine Interest in Others",
+    "The Only Way to Win an Argument",
+    "Remember Names",
+    "See From Their Perspective",
+    "Let Others Feel the Idea Is Theirs",
+    "Sincere Appreciation"
+  ],
+  "concepts": [
+    "leverage",
+    "long-term-thinking",
+    "identity"
+  ],
+  "chapters": []
+},
+  {
+  "id": "build-fadell",
+  "title": "Build",
+  "author": "Tony Fadell",
+  "year": 2022,
+  "rating": 5,
+  "status": "read",
+  "quote": "The best products solve problems people didn't know they had.",
+  "summary": "The inventor of the iPod and Nest shares his playbook for building products and companies. Fadell's core argument: most people focus on the product, but the real work is building the team, culture, and conditions for great products to emerge. Product intuition comes from obsessive attention to customer pain \u2014 not market research.",
+  "ideas": [
+    "Customer Pain as Product Foundation",
+    "Tell a Story Not a Spec",
+    "Hire for Attitude",
+    "Make the Intangible Tangible",
+    "The Butterflies in Your Stomach Test",
+    "Culture Is Built in the Details"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "ownership",
+    "leverage"
+  ],
+  "chapters": []
+},
+  {
+  "id": "lean-startup",
+  "title": "The Lean Startup",
+  "author": "Eric Ries",
+  "year": 2011,
+  "rating": 4,
+  "status": "read",
+  "quote": "The only way to win is to learn faster than anyone else.",
+  "summary": "Ries argues that most startups fail not because they can't build the product, but because they build the wrong product. The antidote: build-measure-learn cycles that validate assumptions before committing resources. The minimum viable product is not the smallest product \u2014 it is the smallest experiment that produces the most learning.",
+  "ideas": [
+    "Build-Measure-Learn",
+    "Minimum Viable Product",
+    "Validated Learning",
+    "Pivot or Persevere",
+    "Vanity vs Actionable Metrics",
+    "Innovation Accounting"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "risk-asymmetry",
+    "long-term-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "outliers",
+  "title": "Outliers",
+  "author": "Malcolm Gladwell",
+  "year": 2008,
+  "rating": 4,
+  "status": "read",
+  "quote": "Practice isn't the thing you do once you're good. It's the thing you do that makes you good.",
+  "summary": "Gladwell examines exceptional success and finds that individual talent explains far less than we think. What actually produces outliers: the 10,000-hour rule, birth month effects, cultural legacies, and the extraordinary importance of opportunity. Success is more sociological than psychological \u2014 it's about systems, timing, and access as much as effort.",
+  "ideas": [
+    "The 10,000-Hour Rule",
+    "Meaningful Work",
+    "Accumulative Advantage",
+    "Cultural Legacy",
+    "The Matthew Effect",
+    "Timing and Opportunity"
+  ],
+  "concepts": [
+    "compounding",
+    "long-term-thinking",
+    "systems-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "design-everyday-things",
+  "title": "The Design of Everyday Things",
+  "author": "Don Norman",
+  "year": 1988,
+  "rating": 4,
+  "status": "read",
+  "quote": "It's not the user's fault. It's the designer's fault.",
+  "summary": "The foundational text of user-centered design. Norman argues that most design failures are not user errors but design errors \u2014 when something is confusing or hard to use, blame the designer, not the user. Affordances, signifiers, feedback, constraints, and mappings are the vocabulary of good design. This book changed how every product designer thinks.",
+  "ideas": [
+    "Affordances and Signifiers",
+    "The User Is Never Wrong",
+    "Feedback Loops in Design",
+    "Constraints as Guidance",
+    "Human Error Is Usually Design Error",
+    "Mental Models in UX"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "identity"
+  ],
+  "chapters": []
+},
+  {
+  "id": "personal-mba",
+  "title": "The Personal MBA",
+  "author": "Josh Kaufman",
+  "year": 2010,
+  "rating": 4,
+  "status": "read",
+  "quote": "Every successful business creates or provides something of value that other people want or need.",
+  "summary": "Kaufman argues you can learn everything a business school teaches \u2014 and more practically \u2014 by reading the right books and building things. His framework covers five core business processes: value creation, marketing, sales, value delivery, and finance. Understanding all five and how they interconnect is the MBA.",
+  "ideas": [
+    "Five Core Business Processes",
+    "Value Creation First",
+    "Marketing vs Sales",
+    "The Iron Law of the Market",
+    "Systems Create Businesses",
+    "Sufficiency Over Maximization"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "capital-allocation",
+    "ownership",
+    "cashflow"
+  ],
+  "chapters": []
+},
+  {
+  "id": "leadership-challenge",
+  "title": "The Leadership Challenge",
+  "author": "James Kouzes & Barry Posner",
+  "year": 1987,
+  "rating": 4,
+  "status": "read",
+  "quote": "Leadership is not about personality. It's about behavior.",
+  "summary": "Based on 30+ years of research on peak leadership moments, Kouzes and Posner identify five practices of exemplary leadership: model the way, inspire a shared vision, challenge the process, enable others to act, and encourage the heart. Leadership is not a position \u2014 it is a set of practices available to anyone willing to develop them.",
+  "ideas": [
+    "Model the Way",
+    "Inspire a Shared Vision",
+    "Challenge the Process",
+    "Enable Others to Act",
+    "Encourage the Heart",
+    "Leadership Is a Choice"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "identity",
+    "leverage"
+  ],
+  "chapters": []
+},
+  {
+  "id": "crossing-chasm",
+  "title": "Crossing the Chasm",
+  "author": "Geoffrey Moore",
+  "year": 1991,
+  "rating": 4,
+  "status": "read",
+  "quote": "The chasm is the perilous journey from early market success to mainstream market penetration.",
+  "summary": "Moore's technology adoption lifecycle model identifies the gap between early adopters (who accept imperfect products for cutting-edge capabilities) and the early majority (who need proven solutions). Most technology companies die in this chasm. The solution: concentrate all resources on one beachhead market and win it completely before expanding.",
+  "ideas": [
+    "Technology Adoption Lifecycle",
+    "The Chasm",
+    "Beachhead Strategy",
+    "Whole Product Concept",
+    "Early Adopters vs Early Majority",
+    "Concentrate Force"
+  ],
+  "concepts": [
+    "risk-asymmetry",
+    "leverage",
+    "long-term-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "innovators-dilemma",
+  "title": "The Innovator's Dilemma",
+  "author": "Clayton Christensen",
+  "year": 1997,
+  "rating": 5,
+  "status": "read",
+  "quote": "Disruptive technologies typically enable new markets to emerge.",
+  "summary": "Christensen's landmark work explains why great companies fail: they are killed by doing everything right. Sustaining innovation \u2014 improving products for existing customers \u2014 leaves companies vulnerable to disruptive innovations that initially look worse by traditional metrics but serve new markets before improving rapidly. The innovator's dilemma: serving current customers well makes you blind to the next wave.",
+  "ideas": [
+    "Sustaining vs Disruptive Innovation",
+    "The Innovator's Dilemma",
+    "Jobs to Be Done",
+    "Disruption from Below",
+    "Asymmetric Motivation",
+    "Spin-Out for New Markets"
+  ],
+  "concepts": [
+    "risk-asymmetry",
+    "long-term-thinking",
+    "ownership",
+    "systems-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "managing-up",
+  "title": "Managing Up",
+  "author": "Melody Wilding",
+  "year": 2023,
+  "rating": 4,
+  "status": "read",
+  "quote": "Managing up is not about managing your boss. It's about managing the relationship.",
+  "summary": "Wilding's framework for building productive relationships with managers and senior leadership \u2014 understanding their priorities, communication styles, and pressures, then positioning yourself as a solution rather than a problem. The core insight: your manager has their own manager. Understanding that chain makes you dramatically more effective.",
+  "ideas": [
+    "Understand Your Manager's Pressures",
+    "Make Their Priorities Your Priorities",
+    "Communicate in Their Style",
+    "Deliver Before Being Asked",
+    "Build a Reputation Not Just Results",
+    "Navigate Office Politics Cleanly"
+  ],
+  "concepts": [
+    "leverage",
+    "systems-thinking",
+    "long-term-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "financial-literacy-managers",
+  "title": "Financial Literacy for Managers",
+  "author": "Richard Lambert",
+  "year": 2011,
+  "rating": 4,
+  "status": "read",
+  "quote": "Every business decision is a financial decision.",
+  "summary": "A Wharton professor's concise guide to financial literacy for non-finance managers. The core argument: you don't need to be an accountant to make good financial decisions, but you do need to understand what the numbers are measuring and why they matter. Covers the income statement, balance sheet, cash flow statement, and how they connect.",
+  "ideas": [
+    "Income Statement Logic",
+    "Balance Sheet Relationships",
+    "Cash Flow as Reality",
+    "ROI Thinking",
+    "Margin Analysis",
+    "Working Capital Cycles"
+  ],
+  "concepts": [
+    "cashflow",
+    "capital-allocation",
+    "systems-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "21-laws-leadership",
+  "title": "The 21 Irrefutable Laws of Leadership",
+  "author": "John C. Maxwell",
+  "year": 1998,
+  "rating": 4,
+  "status": "read",
+  "quote": "Everything rises and falls on leadership.",
+  "summary": "Maxwell's most influential work \u2014 21 principles of leadership drawn from decades of study and practice. His central thesis: leadership is influence, nothing more, nothing less. The laws include the Law of the Lid (leadership ability determines the ceiling on effectiveness), the Law of Process (leadership develops daily), and the Law of Connection (leaders touch hearts before they ask for hands).",
+  "ideas": [
+    "Leadership Is Influence",
+    "The Law of the Lid",
+    "The Law of Process",
+    "Leadership Develops Daily",
+    "Connect Before You Direct",
+    "The Law of Addition"
+  ],
+  "concepts": [
+    "systems-thinking",
+    "identity",
+    "leverage",
+    "compounding"
+  ],
+  "chapters": []
+},
+  {
+  "id": "made-to-stick",
+  "title": "Made to Stick",
+  "author": "Chip Heath & Dan Heath",
+  "year": 2007,
+  "rating": 5,
+  "status": "read",
+  "quote": "The curse of knowledge: once you know something, it's hard to imagine not knowing it.",
+  "summary": "The Heath brothers analyze why some ideas survive and others die. Their framework: sticky ideas are Simple, Unexpected, Concrete, Credible, Emotional, and tell Stories (SUCCESs). The book's deepest insight is the curse of knowledge \u2014 the more you know about something, the harder it is to communicate it to those who don't.",
+  "ideas": [
+    "The SUCCESs Framework",
+    "The Curse of Knowledge",
+    "Simple Core Message",
+    "Unexpected Creates Curiosity",
+    "Concrete Beats Abstract",
+    "Stories Drive Action"
+  ],
+  "concepts": [
+    "leverage",
+    "systems-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "buying-small-business",
+  "title": "Buying a Small Business",
+  "author": "Richard Ruback & Royce Yudkoff",
+  "year": 2017,
+  "rating": 5,
+  "status": "read",
+  "quote": "Buying a small business is a highly personal decision that requires honest self-assessment.",
+  "summary": "Two Harvard Business School professors make the academic case for search fund entrepreneurship \u2014 buying a small business rather than starting one. The book covers the full search fund process: the decision to search, sourcing deals, due diligence, deal structure, financing, and post-acquisition management. It is the most rigorous framework for small business acquisition available.",
+  "ideas": [
+    "The Search Fund Process",
+    "Self-Assessment First",
+    "Deal Sourcing Strategy",
+    "Due Diligence Framework",
+    "Deal Structure and Financing",
+    "Post-Acquisition 100 Days"
+  ],
+  "concepts": [
+    "ownership",
+    "cashflow",
+    "capital-allocation",
+    "risk-asymmetry",
+    "long-term-thinking"
+  ],
+  "chapters": []
+},
+  {
+  "id": "on-writing-well",
+  "title": "On Writing Well",
+  "author": "William Zinsser",
+  "year": 1976,
+  "rating": 5,
+  "status": "read",
+  "quote": "The secret of good writing is to strip every sentence to its cleanest components.",
+  "summary": "The classic guide to nonfiction writing. Zinsser's principles are ruthless and timeless: simplicity, clarity, brevity, and humanity. Clutter is the enemy. Every word must earn its place. The writer's job is not to impress but to communicate, and the highest compliment a reader can pay is to keep reading.",
+  "ideas": [
+    "Clutter Is the Enemy",
+    "Strip to the Essentials",
+    "Write to Express Not Impress",
+    "Every Word Earns Its Place",
+    "Voice Is Humanity on the Page",
+    "Rewriting Is Writing"
+  ],
+  "concepts": [
+    "leverage",
+    "systems-thinking"
+  ],
+  "chapters": []
 }
 ];
 
