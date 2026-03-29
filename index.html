@@ -872,15 +872,18 @@ nodes.append('circle')
   .transition().delay((_,i)=>i*14+60).duration(500).ease(d3.easeBackOut.overshoot(1.1))
   .attr('r',d=>R[d.type]);
 
-// Labels — full title, word-wrapped, with background for legibility
+// Labels — full title, word-wrapped, background rect sized mathematically
 nodes.each(function(d){
   const el=d3.select(this);
   const raw=(d.label||d.displayLabel||'');
   const isBook=d.type==='book';
-  const maxChars=isBook?18:16;
-  const yOff=R[d.type]+15;
+  const maxChars=22;
+  const fontSize=isBook?12:10;
+  const lineH=fontSize*1.35;
+  const charW=isBook?6.5:5.8; // approximate px per char for these fonts
+  const yOff=R[d.type]+fontSize+4;
 
-  // Word-wrap with NO line cap — never truncate
+  // Word-wrap — no line cap, never truncates
   const words=raw.split(' ');
   const lines=[];let line='';
   words.forEach(w=>{
@@ -890,33 +893,34 @@ nodes.each(function(d){
   });
   if(line)lines.push(line);
 
-  // Background rect for legibility (appended first, sized after text)
-  const bg=el.append('rect')
-    .attr('fill','rgba(250,250,250,0.82)')
-    .attr('rx',3)
-    .attr('pointer-events','none')
-    .style('opacity',0);
+  // Compute rect dimensions upfront (no getBBox needed)
+  const maxLen=Math.max(...lines.map(l=>l.length));
+  const rectW=maxLen*charW+8;
+  const rectH=lines.length*lineH+4;
 
+  // Background rect — sized mathematically, centered
+  el.append('rect')
+    .attr('x',-rectW/2)
+    .attr('y',yOff-fontSize)
+    .attr('width',rectW)
+    .attr('height',rectH)
+    .attr('fill','rgba(250,250,250,0.85)')
+    .attr('rx',3)
+    .attr('pointer-events','none');
+
+  // Text + tspans
   const txt=el.append('text')
     .attr('class',isBook?'blbl':'nlbl')
     .style('opacity',0);
 
   lines.forEach((l,i)=>{
-    txt.append('tspan').attr('x',0).attr('dy',i===0?yOff:'1.18em').text(l);
+    txt.append('tspan')
+      .attr('x',0)
+      .attr('dy',i===0?yOff:(lineH+'px'))
+      .text(l);
   });
 
-  // After render, size the background rect to the text bbox
-  setTimeout(()=>{
-    try{
-      const bb=txt.node().getBBox();
-      const pad=3;
-      bg.attr('x',bb.x-pad).attr('y',bb.y-pad)
-        .attr('width',bb.width+pad*2).attr('height',bb.height+pad*2);
-    }catch(e){}
-  },600);
-
-  txt.transition().delay(200).duration(400).style('opacity',isBook?.88:.75);
-  bg.transition().delay(200).duration(400).style('opacity',1);
+  txt.transition().delay(200).duration(400).style('opacity',isBook?.9:.78);
 });
 
 // Interactions
