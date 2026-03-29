@@ -242,6 +242,8 @@ code{background:var(--sf);padding:1px 6px;border-radius:3px;font-size:12px;borde
     <div class="tb-right">
       <span class="tb-info" id="tbinfo"></span>
       <button class="btn-exp" onclick="showPage('export')">↓ Export</button>
+      <button class="btn-sm" onclick="manualSync()" style="padding:6px 12px;background:var(--sf);color:var(--mu);border:1px solid var(--bd);border-radius:5px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;cursor:pointer;margin-right:6px">↻ Sync Live</button>
+      <span id="sync-status" style="font-size:11px;color:var(--mu);margin-right:12px;vertical-align:middle"></span>
       <button class="btn-out" onclick="doLogout()">Logout</button>
     </div>
   </div>
@@ -554,12 +556,45 @@ function persist(){
   localStorage.setItem('kg_a',JSON.stringify(authors));
 }
 
+// SYNC FROM LIVE SITE
+async function syncFromLive(){
+  const statusEl=document.getElementById('sync-status');
+  statusEl.textContent='Syncing from live site...';
+  statusEl.style.color='var(--mu)';
+  try{
+    const res=await fetch('https://graph.camdenshuman.com/graph-data.js?nocache='+Date.now());
+    if(!res.ok) throw new Error('Fetch failed: '+res.status);
+    const js=await res.text();
+    // Execute the JS to get BOOKS and CONCEPTS
+    const match_b=js.match(/const BOOKS\s*=\s*(\[[\s\S]*?\]);\s*
+\s*const CONCEPTS/);
+    const match_c=js.match(/const CONCEPTS\s*=\s*(\[[\s\S]*?\]);\s*
+\s*const TOPICS/);
+    if(!match_b||!match_c) throw new Error('Could not parse graph-data.js');
+    const liveBooks=JSON.parse(match_b[1]);
+    const liveConcepts=JSON.parse(match_c[1]);
+    books=liveBooks;
+    concepts=liveConcepts;
+    persist();
+    renderAll();
+    showPage('dashboard');
+    statusEl.textContent='✓ Synced '+liveBooks.length+' books, '+liveConcepts.length+' concepts from live site';
+    statusEl.style.color='var(--grn)';
+    setTimeout(()=>statusEl.textContent='',4000);
+  }catch(err){
+    console.error('Sync error:',err);
+    statusEl.textContent='Sync failed: '+err.message+' — using local data';
+    statusEl.style.color='var(--red)';
+    loadState(); renderAll(); showPage('dashboard');
+  }
+}
+
 // AUTH
 function doLogin(){
   if(document.getElementById('pw').value===PW){
     document.getElementById('ls').style.display='none';
     document.getElementById('app').classList.add('show');
-    loadState(); renderAll(); showPage('dashboard');
+    syncFromLive();
   } else {
     const e=document.getElementById('lerr');
     e.style.display='block';
@@ -572,6 +607,9 @@ function doLogout(){
   document.getElementById('ls').style.display='flex';
   document.getElementById('app').classList.remove('show');
   document.getElementById('pw').value='';
+}
+function manualSync(){
+  syncFromLive();
 }
 
 // NAV
