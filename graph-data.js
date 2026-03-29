@@ -642,12 +642,34 @@ const BOOKS = [
     year: 1936,
     rating: 5,
     status: "read",
-    quote: "You can make more friends in two months by becoming genuinely interested in other people than you can in two years by trying to get other people interested in you.",
-    summary: "The original relationship handbook \u2014 still the best. Carnegie's principles are simple and counter-intuitive: don't criticize, condemn, or complain; give honest appreciation; arouse in others an eager want. The book's durability comes from the fact that human nature hasn't changed. People want to feel important and understood, and whoever provides that wins.",
+    quote: "The person who has technical knowledge plus the ability to express ideas, to assume leadership and to arouse enthusiasm among people \u2014 that person is headed for higher earning power.",
+    summary: "The original relationship handbook — still the best. Carnegie's principles are simple and counter-intuitive: don't criticize, condemn, or complain; give honest appreciation; arouse in others an eager want. The book's durability comes from the fact that human nature hasn't changed. People want to feel important and understood, and whoever provides that wins.",
     ideas: ["Genuine Interest in Others", "The Only Way to Win an Argument", "Remember Names", "See From Their Perspective", "Let Others Feel the Idea Is Theirs", "Sincere Appreciation"],
-    concepts: ["leverage", "long-term-thinking", "identity", "communication", "public-speaking", "sales", "influence", "negotiation"],
+    concepts: ["leverage", "long-term-thinking", "identity", "communication", "public-speaking", "sales", "influence", "negotiation", "ownership"],
     topics: [],
-    chapters: []
+    chapters: [
+      {
+        title: "Essentials of Engagement",
+        ideas: "Don't communicate until you are calm and in control of your emotions.\n\nAffirm the good in every interaction.\n\nUltimately, gaining influence is about setting yourself apart, stepping to a higher plane in the mind and heart of another.\n\nDialogue is considerate, authentic, transparent, secure, interested in meeting needs, and builds trust.\n\nTo influence others to act, you must first connect to a core desire within them.",
+        notes: ""
+      },
+      {
+        title: "Six Ways to Make a Lasting Impression",
+        ideas: "Take interest in others' interests and you will be set apart.\n\nSmile when you speak to people.\n\nLearn names with the Napoleon technique.\n\nThe power of listening is the power to change hearts and minds.\n\nWhen it comes to mattering to others, you must discuss what matters to them.\n\nLeave everyone you speak to better than you found them.",
+        notes: ""
+      },
+      {
+        title: "How to Merit and Maintain Others' Trust",
+        ideas: "Arguing with another person will rarely get you anywhere \u2014 they usually end with each person more firmly convinced of his rightness.\n\nAlways default to diplomacy. Admit that you may be wrong. Concede that the other person may be right. Be agreeable. Ask questions. And above all, consider the situation from the other's perspective and show that person respect.\n\nFriendliness begets friendliness. We are more inclined to agree with another person or see things from his perspective when we have friendly feelings toward him.\n\nTo truly connect with people you must celebrate their inherent dignity. In doing so you celebrate yours. Appeal to noble motives and you can move the masses, and yourself along with them.",
+        notes: ""
+      },
+      {
+        title: "How to Lead Change without Resistance or Resentment",
+        ideas: "Begin a conversation with honest and genuine appreciation \u2014 the receiver will be more amenable to your ideas and less defensive or resistant.\n\nWhen you acknowledge your baggage, trust builds naturally.\n\nIt is to your advantage to pull people out of their dejected state as quickly as possible \u2014 return them to a place of confidence and strength.\n\nTell someone that you have total faith in his ability to accomplish a goal and he will practice until the dawn to excel.\n\nTo change somebody's behavior, change the level of respect she receives by giving her a fine reputation to live up to.",
+        notes: ""
+      }
+    ]
+  }
   },
   {
     id: "build-fadell",
