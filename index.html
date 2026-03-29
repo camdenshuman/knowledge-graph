@@ -872,18 +872,16 @@ nodes.append('circle')
   .transition().delay((_,i)=>i*14+60).duration(500).ease(d3.easeBackOut.overshoot(1.1))
   .attr('r',d=>R[d.type]);
 
-// Labels — full title, word-wrapped, never truncated
+// Labels — clean, no box, max 2 lines under node
 nodes.each(function(d){
   const el=d3.select(this);
   const raw=(d.label||d.displayLabel||'');
   const isBook=d.type==='book';
-  const maxChars=22;
-  const fontSize=isBook?12:10;
+  const maxChars=18;
   const lineH=isBook?15:13;
-  const charW=isBook?6.8:5.8;
-  const yOff=R[d.type]+fontSize+6;
+  const yOff=R[d.type]+14;
 
-  // Word-wrap — no line cap, never truncates
+  // Word-wrap into max 2 lines, truncate remainder with …
   const words=raw.split(' ');
   const lines=[];let line='';
   words.forEach(w=>{
@@ -893,20 +891,13 @@ nodes.each(function(d){
   });
   if(line)lines.push(line);
 
-  // Background rect — covers all lines
-  const maxLen=Math.max(...lines.map(l=>l.length));
-  const pad=4;
-  el.append('rect')
-    .attr('x',-(maxLen*charW/2)-pad)
-    .attr('y',yOff-fontSize)
-    .attr('width',maxLen*charW+pad*2)
-    .attr('height',lines.length*lineH+pad)
-    .attr('fill','rgba(250,250,250,0.88)')
-    .attr('rx',3)
-    .attr('pointer-events','none');
+  // Max 2 lines — if more, truncate last with ellipsis
+  const display=lines.length>2
+    ? [lines[0], lines[1].length>maxChars-1 ? lines[1].slice(0,maxChars-1)+'…' : lines[1]+'…']
+    : lines;
 
-  // One <text> per line, absolute y — simplest and most reliable
-  lines.forEach((l,i)=>{
+  // Render — no background rect, just clean text
+  display.forEach((l,i)=>{
     el.append('text')
       .attr('class',isBook?'blbl':'nlbl')
       .attr('x',0)
