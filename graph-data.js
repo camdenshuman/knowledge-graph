@@ -258,16 +258,16 @@ const BOOKS = [
     chapters: []
   },
   {
-    id: "running-down-a-dream",
-    title: "Running Down a Dream",
-    author: "Bill Strickland",
-    year: 2007,
-    rating: 4,
+    id: "runnin-down-a-dream",
+    title: "Runnin\' Down a Dream",
+    author: "Bill Gurley",
+    year: 2022,
+    rating: 5,
     status: "read",
-    quote: "You have to have a dream before you can make it come true.",
-    summary: "Strickland's memoir of building Manchester Bidwell Corporation \u2014 a world-class arts and job-training center in one of Pittsburgh's most impoverished neighborhoods. His thesis: environment shapes destiny, and creating environments of excellence in places of poverty is the most practical thing you can do.",
-    ideas: ["Environment Shapes Destiny", "Excellence as a Tool", "Beauty as Infrastructure", "Vision Before Resources", "Belief as Strategy", "The Power of High Expectations"],
-    concepts: ["identity", "long-term-thinking", "leadership", "habits-and-character"],
+    quote: "The best VCs don\'t just pick winners. They help create them.",
+    summary: "Bill Gurley, one of Silicon Valley\'s most respected venture capitalists and general partner at Benchmark, shares his framework for identifying and building extraordinary companies. Drawing on decades of investing in category-defining businesses, Gurley explores what separates truly great companies from merely good ones — and what founders and investors need to understand about the long game of building enduring value.",
+    ideas: ["Category-Defining Businesses", "Long-Term Value Creation", "The Dangers of Unicorn Obsession", "Unit Economics Over Growth", "Sustainable Competitive Advantage", "What Great Boards Actually Do"],
+    concepts: ["long-term-thinking", "ownership", "risk-asymmetry", "entrepreneurship", "capital-allocation"],
     topics: [],
     chapters: []
   },
@@ -295,7 +295,7 @@ const BOOKS = [
     quote: "The best thing you can do for employees is hire only senior people.",
     summary: "Netflix's co-founder argues that most corporate policies exist to manage the lowest common denominator \u2014 and that eliminating them while hiring only exceptional people creates a culture of freedom and responsibility that outperforms conventional management. Talent density is the prerequisite to everything else.",
     ideas: ["Talent Density", "Freedom and Responsibility", "Radical Candor at Scale", "Remove Controls as Trust Builds", "Context Not Control"],
-    concepts: ["systems-thinking", "leverage", "ownership"],
+    concepts: ["systems-thinking", "leverage", "ownership", "leadership", "entrepreneurship"],
     topics: [],
     chapters: []
   },
@@ -309,7 +309,7 @@ const BOOKS = [
     quote: "The best writing anticipates what the reader needs, not what the writer wants to say.",
     summary: "Two behavioral scientists apply cognitive research to practical writing. The core insight: readers are always busier than writers assume. Every word that doesn't earn its place loses the reader. Less is almost always more, and structure does more work than style.",
     ideas: ["Less Is More", "Lead with the Ask", "Hierarchy of Information", "Design for Skimmers", "Cognitive Load in Writing"],
-    concepts: ["systems-thinking", "leverage"],
+    concepts: ["systems-thinking", "leverage", "communication", "writing"],
     topics: [],
     chapters: []
   },
@@ -337,7 +337,7 @@ const BOOKS = [
     quote: "The quality of our thinking is proportional to the models in our head.",
     summary: "Parrish introduces the concept of a mental model latticework \u2014 a cross-disciplinary collection of thinking tools that improve decision-making across all domains. Volume 1 covers foundational models: the map is not the territory, first principles thinking, thought experiments, second-order thinking, probabilistic thinking, inversion, and Occam's razor.",
     ideas: ["The Map Is Not The Territory", "First Principles Thinking", "Second-Order Thinking", "Inversion", "Probabilistic Thinking", "Occam's Razor"],
-    concepts: ["systems-thinking", "risk-asymmetry", "long-term-thinking"],
+    concepts: ["systems-thinking", "risk-asymmetry", "long-term-thinking", "mental-models", "decision-making"],
     topics: [],
     chapters: []
   },
@@ -351,7 +351,7 @@ const BOOKS = [
     quote: "Physics, chemistry, and biology offer the most reliable models because they describe how the world actually works.",
     summary: "Volume 2 draws mental models from physics, chemistry, and biology \u2014 velocity vs. speed, leverage, activation energy, catalysts, evolution, natural selection, ecosystem thinking. The goal is to see patterns across disciplines that most specialists never notice because they stay inside their own domain.",
     ideas: ["Velocity vs Speed", "Leverage from Physics", "Activation Energy", "Catalysts", "Natural Selection Applied to Ideas", "Ecosystem Thinking"],
-    concepts: ["systems-thinking", "leverage", "long-term-thinking"],
+    concepts: ["systems-thinking", "leverage", "long-term-thinking", "mental-models", "decision-making"],
     topics: [],
     chapters: []
   },
@@ -365,7 +365,7 @@ const BOOKS = [
     quote: "The military understands something most businesses don't: complex systems fail in complex ways.",
     summary: "Volume 3 pulls models from mathematics and military thinking \u2014 redundancy, margin of safety, critical mass, game theory, via negativa, the power of default thinking. The military section is particularly sharp on how to act under uncertainty with incomplete information.",
     ideas: ["Redundancy", "Critical Mass", "Game Theory Basics", "Via Negativa", "Margin of Safety Applied", "Default Thinking"],
-    concepts: ["systems-thinking", "risk-asymmetry", "long-term-thinking"],
+    concepts: ["systems-thinking", "risk-asymmetry", "long-term-thinking", "mental-models", "decision-making"],
     topics: [],
     chapters: []
   },
@@ -379,7 +379,7 @@ const BOOKS = [
     quote: "Human behavior follows predictable patterns precisely because we are social animals.",
     summary: "Volume 4 focuses on human nature and social systems \u2014 status games, signaling, narrative bias, tribalism, social proof, incentive structures, and the dynamics of group behavior. Understanding these models makes you harder to manipulate and better at designing systems that work with human nature rather than against it.",
     ideas: ["Status Games", "Signaling vs Substance", "Narrative Bias", "Incentive Structures", "Social Proof", "Tribalism"],
-    concepts: ["systems-thinking", "identity", "risk-asymmetry"],
+    concepts: ["systems-thinking", "identity", "risk-asymmetry", "mental-models", "decision-making"],
     topics: [],
     chapters: []
   },
@@ -407,7 +407,7 @@ const BOOKS = [
     quote: "I will form good habits and become their slave.",
     summary: "A parable structured around ten scrolls of wisdom on habit, persistence, love, and action. Mandino's central argument: all success is built on habits formed through daily repetition until they become automatic. The scrolls are designed to be read repeatedly \u2014 the repetition is the point.",
     ideas: ["Habits as Master", "Persistence as Strategy", "Love as a Sales Tool", "Act Now", "Each Day a New Life"],
-    concepts: ["identity", "compounding", "long-term-thinking"],
+    concepts: ["identity", "compounding", "long-term-thinking", "habits-and-character"],
     topics: [],
     chapters: []
   },
@@ -421,7 +421,7 @@ const BOOKS = [
     quote: "Management is doing things right. Leadership is doing the right things.",
     summary: "A synthesis of Peter Drucker's leadership philosophy \u2014 the most important management thinker of the 20th century. Drucker argued that leadership is not about personality or charisma but about results, trust, and the elevation of people's capacity. Effectiveness is a discipline that can be learned.",
     ideas: ["Effectiveness as a Discipline", "Management vs Leadership", "Results Define Leadership", "Trust as Foundation", "Developing People"],
-    concepts: ["systems-thinking", "leverage", "ownership"],
+    concepts: ["systems-thinking", "leverage", "ownership", "leadership"],
     topics: [],
     chapters: []
   },
@@ -435,7 +435,7 @@ const BOOKS = [
     quote: "Hurry is the great enemy of spiritual life in our day.",
     summary: "Comer argues that the pace of modern life \u2014 chronic busyness, digital distraction, the tyranny of the urgent \u2014 is incompatible with a deep, meaningful existence. Drawing on ancient spiritual practices, he makes the case for intentional slowness, sabbath, silence, and simplicity as acts of resistance and formation.",
     ideas: ["Hurry as a Spiritual Problem", "Sabbath as Resistance", "Silence and Solitude", "Simplicity", "Formation Requires Pace"],
-    concepts: ["identity", "long-term-thinking", "systems-thinking"],
+    concepts: ["identity", "long-term-thinking", "systems-thinking", "habits-and-character"],
     topics: [],
     chapters: []
   },
@@ -449,7 +449,7 @@ const BOOKS = [
     quote: "The best CEOs don't do things differently \u2014 they do different things.",
     summary: "McKinsey researchers interviewed 67 of the world's top-performing CEOs to identify what distinguishes excellent from merely good leadership at the top. Six key mindsets emerge: direction-setting, organization alignment, team mobilization, board engagement, stakeholder connection, and personal effectiveness. Each has a higher and lower road.",
     ideas: ["Direction Setting at Scale", "Bold Vision vs Sandbagging", "Organization Design as Strategy", "Board as Asset Not Obstacle", "Operating Cadence", "Managing Energy Not Time"],
-    concepts: ["systems-thinking", "leverage", "long-term-thinking", "ownership"],
+    concepts: ["systems-thinking", "leverage", "long-term-thinking", "ownership", "leadership"],
     topics: [],
     chapters: []
   },
@@ -463,7 +463,7 @@ const BOOKS = [
     quote: "The first lesson of economics is scarcity. The first lesson of politics is to disregard the first lesson of economics.",
     summary: "Sowell's masterwork explains economic principles without equations or jargon \u2014 supply and demand, price signals, incentives, trade-offs, and the law of unintended consequences. His central argument: economic decisions should be judged by their actual results, not their intentions. Resources are allocated by prices, not good intentions.",
     ideas: ["Price Signals", "Incentives Change Behavior", "Trade-offs Are Unavoidable", "Unintended Consequences", "Scarcity as the Foundation", "Comparative Advantage"],
-    concepts: ["systems-thinking", "risk-asymmetry", "capital-allocation"],
+    concepts: ["systems-thinking", "risk-asymmetry", "capital-allocation", "mental-models", "decision-making"],
     topics: [],
     chapters: []
   },
@@ -491,7 +491,7 @@ const BOOKS = [
     quote: "The biggest barrier to starting is the stories we tell ourselves about why we can't.",
     summary: "AppSumo founder Noah Kagan's playbook for validating a business idea in 48 hours before investing serious time or money. The core methodology: identify a customer, make an offer, collect money \u2014 in that order. Most entrepreneurs build before they validate. Kagan argues you can and should validate in a weekend.",
     ideas: ["Validate Before Building", "The Coffee Challenge", "Ask for the Sale", "Freedom Number", "Customer-First Entrepreneurship", "The 48-Hour Launch"],
-    concepts: ["risk-asymmetry", "leverage", "systems-thinking", "ownership"],
+    concepts: ["risk-asymmetry", "leverage", "systems-thinking", "ownership", "entrepreneurship"],
     topics: [],
     chapters: []
   },
@@ -505,7 +505,7 @@ const BOOKS = [
     quote: "The actions you take in your first 90 days will largely determine whether you succeed or fail.",
     summary: "The definitive guide to navigating role transitions \u2014 new job, promotion, or new assignment. Watkins argues that the first 90 days are disproportionately important because patterns are set, alliances are formed, and credibility is established before you've had time to make results. The goal: reach the breakeven point (where you're contributing more than consuming) as fast as possible.",
     ideas: ["Breakeven Point", "Early Wins Build Credibility", "Diagnose Before Prescribing", "Secure Early Wins", "Build Your Team", "Match Strategy to Situation Type"],
-    concepts: ["systems-thinking", "long-term-thinking", "leverage"],
+    concepts: ["systems-thinking", "long-term-thinking", "leverage", "leadership"],
     topics: [],
     chapters: []
   },
@@ -519,7 +519,7 @@ const BOOKS = [
     quote: "Enthusiasm is common. Endurance is rare.",
     summary: "Psychologist Angela Duckworth presents her research on what predicts success: not talent, not IQ, but grit \u2014 the combination of passion and perseverance for long-term goals. Talent multiplied by effort equals skill; skill multiplied by effort equals achievement. Effort counts twice, talent once.",
     ideas: ["Talent vs Effort Formula", "Passion as Direction", "Perseverance as Engine", "Growth Mindset Foundation", "Hard Thing Rule", "Grit Is Learnable"],
-    concepts: ["identity", "compounding", "long-term-thinking"],
+    concepts: ["identity", "compounding", "long-term-thinking", "habits-and-character"],
     topics: [],
     chapters: []
   },
@@ -533,7 +533,7 @@ const BOOKS = [
     quote: "Character is not what you claim. It is what pressure reveals.",
     summary: "A framework for developing the character and resilience required for elite performance and leadership. Buren argues that mettle \u2014 the combination of courage, character, and competence under pressure \u2014 is forged through deliberate exposure to difficulty, not through comfort or theory. You become what you repeatedly do under fire.",
     ideas: ["Mettle as Forged Not Given", "Pressure Reveals Character", "Deliberate Discomfort", "Courage as a Skill", "Leadership Under Fire"],
-    concepts: ["identity", "long-term-thinking", "compounding"],
+    concepts: ["identity", "long-term-thinking", "compounding", "habits-and-character"],
     topics: [],
     chapters: []
   },
@@ -547,7 +547,7 @@ const BOOKS = [
     quote: "You have power over your mind, not outside events. Realize this, and you will find strength.",
     summary: "The private journal of a Roman emperor \u2014 never intended for publication. Marcus Aurelius wrote to himself to maintain his Stoic practice: focus on what you control, accept what you don't, act virtuously regardless of outcome, and remember your mortality. The most powerful leadership philosophy ever written, and the author was arguably the most powerful person alive when he wrote it.",
     ideas: ["Control What You Control", "Memento Mori", "Virtue as the Highest Good", "The Present Moment", "Amor Fati", "The View from Above"],
-    concepts: ["identity", "long-term-thinking", "systems-thinking"],
+    concepts: ["identity", "long-term-thinking", "systems-thinking", "mental-models", "habits-and-character", "decision-making"],
     topics: [],
     chapters: []
   },
@@ -561,7 +561,7 @@ const BOOKS = [
     quote: "If your emotional abilities aren't in hand, if you don't have self-awareness, if you are not able to manage your distressing emotions, if you can't have empathy and have effective relationships, then no matter how smart you are you are not going to get very far.",
     summary: "Goleman introduced EQ to mainstream consciousness: the ability to recognize, understand, and manage emotions \u2014 in yourself and others \u2014 predicts success more than IQ in most domains. The five components: self-awareness, self-regulation, motivation, empathy, and social skills. EQ is not fixed; it can be developed.",
     ideas: ["Self-Awareness as Foundation", "Self-Regulation Under Pressure", "Empathy as Intelligence", "The Amygdala Hijack", "EQ Is Developable", "Social Skills as Competence"],
-    concepts: ["identity", "systems-thinking", "leverage"],
+    concepts: ["identity", "systems-thinking", "leverage", "leadership", "communication"],
     topics: [],
     chapters: []
   },
@@ -575,7 +575,7 @@ const BOOKS = [
     quote: "The single biggest problem in communication is the illusion that it has taken place.",
     summary: "A framework for handling high-stakes conversations where emotions run high, opinions differ, and the stakes matter. The core insight: most people either avoid crucial conversations or handle them poorly. The skills \u2014 creating safety, stating your path, exploring others' paths \u2014 can be learned and dramatically change outcomes in relationships, teams, and organizations.",
     ideas: ["Start with Heart", "Creating Safety", "The Pool of Shared Meaning", "STATE Your Path", "Explore Others' Paths", "Move to Action"],
-    concepts: ["systems-thinking", "identity", "leverage"],
+    concepts: ["systems-thinking", "identity", "leverage", "leadership", "communication", "decision-making"],
     topics: [],
     chapters: []
   },
@@ -589,7 +589,7 @@ const BOOKS = [
     quote: "Copy is salesmanship in print.",
     summary: "A practitioner's guide to writing copy that moves people to action. Shleyner distills his experience into principles: write for one person, lead with the problem, use specificity over generality, and treat every word as earning its place. Good copy is invisible \u2014 the reader doesn't notice it, they just act.",
     ideas: ["Write for One Person", "Lead with the Problem", "Specificity Over Generality", "The Job of Every Line", "Voice and Distinctiveness", "Edit to the Bone"],
-    concepts: ["leverage", "systems-thinking"],
+    concepts: ["leverage", "systems-thinking", "communication", "writing"],
     topics: [],
     chapters: []
   },
@@ -603,7 +603,7 @@ const BOOKS = [
     quote: "The internet didn't just change how we shop. It changed who can build a brand.",
     summary: "The story of how direct-to-consumer brands \u2014 Warby Parker, Dollar Shave Club, Casper, Away \u2014 disrupted legacy industries by going direct to customers, cutting out the middleman, and using digital channels as leverage. The pattern: identify an industry where the incumbent is lazy, use the internet to undercut on price and experience, build a brand that feels personal.",
     ideas: ["Direct to Consumer Model", "Cut Out the Middleman", "Brand as Relationship", "Digital as Leverage", "Category Disruption Pattern", "Unit Economics First"],
-    concepts: ["leverage", "ownership", "capital-allocation", "risk-asymmetry"],
+    concepts: ["leverage", "ownership", "capital-allocation", "risk-asymmetry", "innovation-and-disruption"],
     topics: [],
     chapters: []
   },
@@ -617,7 +617,7 @@ const BOOKS = [
     quote: "Spiritual transformation is not about trying harder. It is about training smarter.",
     summary: "Ortberg applies the same logic athletes use for physical training to spiritual formation. You don't try your way to transformation \u2014 you train for it through spiritual disciplines: silence, solitude, confession, service, celebration. The goal is not behavior modification but the renovation of the heart.",
     ideas: ["Training vs Trying", "Spiritual Disciplines as Training", "Soul Renovation", "Ruthless Elimination of Hurry", "Practicing the Presence", "Community as Formation Context"],
-    concepts: ["identity", "long-term-thinking", "compounding"],
+    concepts: ["identity", "long-term-thinking", "compounding", "habits-and-character"],
     topics: [],
     chapters: []
   },
@@ -645,7 +645,7 @@ const BOOKS = [
     quote: "You can make more friends in two months by becoming genuinely interested in other people than you can in two years by trying to get other people interested in you.",
     summary: "The original relationship handbook \u2014 still the best. Carnegie's principles are simple and counter-intuitive: don't criticize, condemn, or complain; give honest appreciation; arouse in others an eager want. The book's durability comes from the fact that human nature hasn't changed. People want to feel important and understood, and whoever provides that wins.",
     ideas: ["Genuine Interest in Others", "The Only Way to Win an Argument", "Remember Names", "See From Their Perspective", "Let Others Feel the Idea Is Theirs", "Sincere Appreciation"],
-    concepts: ["leverage", "long-term-thinking", "identity"],
+    concepts: ["leverage", "long-term-thinking", "identity", "communication"],
     topics: [],
     chapters: []
   },
@@ -659,7 +659,7 @@ const BOOKS = [
     quote: "The best products solve problems people didn't know they had.",
     summary: "The inventor of the iPod and Nest shares his playbook for building products and companies. Fadell's core argument: most people focus on the product, but the real work is building the team, culture, and conditions for great products to emerge. Product intuition comes from obsessive attention to customer pain \u2014 not market research.",
     ideas: ["Customer Pain as Product Foundation", "Tell a Story Not a Spec", "Hire for Attitude", "Make the Intangible Tangible", "The Butterflies in Your Stomach Test", "Culture Is Built in the Details"],
-    concepts: ["systems-thinking", "ownership", "leverage"],
+    concepts: ["systems-thinking", "ownership", "leverage", "entrepreneurship", "innovation-and-disruption"],
     topics: [],
     chapters: []
   },
@@ -673,7 +673,7 @@ const BOOKS = [
     quote: "The only way to win is to learn faster than anyone else.",
     summary: "Ries argues that most startups fail not because they can't build the product, but because they build the wrong product. The antidote: build-measure-learn cycles that validate assumptions before committing resources. The minimum viable product is not the smallest product \u2014 it is the smallest experiment that produces the most learning.",
     ideas: ["Build-Measure-Learn", "Minimum Viable Product", "Validated Learning", "Pivot or Persevere", "Vanity vs Actionable Metrics", "Innovation Accounting"],
-    concepts: ["systems-thinking", "risk-asymmetry", "long-term-thinking"],
+    concepts: ["systems-thinking", "risk-asymmetry", "long-term-thinking", "entrepreneurship", "innovation-and-disruption"],
     topics: [],
     chapters: []
   },
@@ -729,7 +729,7 @@ const BOOKS = [
     quote: "Leadership is not about personality. It's about behavior.",
     summary: "Based on 30+ years of research on peak leadership moments, Kouzes and Posner identify five practices of exemplary leadership: model the way, inspire a shared vision, challenge the process, enable others to act, and encourage the heart. Leadership is not a position \u2014 it is a set of practices available to anyone willing to develop them.",
     ideas: ["Model the Way", "Inspire a Shared Vision", "Challenge the Process", "Enable Others to Act", "Encourage the Heart", "Leadership Is a Choice"],
-    concepts: ["systems-thinking", "identity", "leverage"],
+    concepts: ["systems-thinking", "identity", "leverage", "leadership"],
     topics: [],
     chapters: []
   },
@@ -743,7 +743,7 @@ const BOOKS = [
     quote: "The chasm is the perilous journey from early market success to mainstream market penetration.",
     summary: "Moore's technology adoption lifecycle model identifies the gap between early adopters (who accept imperfect products for cutting-edge capabilities) and the early majority (who need proven solutions). Most technology companies die in this chasm. The solution: concentrate all resources on one beachhead market and win it completely before expanding.",
     ideas: ["Technology Adoption Lifecycle", "The Chasm", "Beachhead Strategy", "Whole Product Concept", "Early Adopters vs Early Majority", "Concentrate Force"],
-    concepts: ["risk-asymmetry", "leverage", "long-term-thinking"],
+    concepts: ["risk-asymmetry", "leverage", "long-term-thinking", "entrepreneurship", "innovation-and-disruption"],
     topics: [],
     chapters: []
   },
@@ -757,7 +757,7 @@ const BOOKS = [
     quote: "Disruptive technologies typically enable new markets to emerge.",
     summary: "Christensen's landmark work explains why great companies fail: they are killed by doing everything right. Sustaining innovation \u2014 improving products for existing customers \u2014 leaves companies vulnerable to disruptive innovations that initially look worse by traditional metrics but serve new markets before improving rapidly. The innovator's dilemma: serving current customers well makes you blind to the next wave.",
     ideas: ["Sustaining vs Disruptive Innovation", "The Innovator's Dilemma", "Jobs to Be Done", "Disruption from Below", "Asymmetric Motivation", "Spin-Out for New Markets"],
-    concepts: ["risk-asymmetry", "long-term-thinking", "ownership", "systems-thinking"],
+    concepts: ["risk-asymmetry", "long-term-thinking", "ownership", "systems-thinking", "entrepreneurship", "innovation-and-disruption"],
     topics: [],
     chapters: []
   },
@@ -771,7 +771,7 @@ const BOOKS = [
     quote: "Managing up is not about managing your boss. It's about managing the relationship.",
     summary: "Wilding's framework for building productive relationships with managers and senior leadership \u2014 understanding their priorities, communication styles, and pressures, then positioning yourself as a solution rather than a problem. The core insight: your manager has their own manager. Understanding that chain makes you dramatically more effective.",
     ideas: ["Understand Your Manager's Pressures", "Make Their Priorities Your Priorities", "Communicate in Their Style", "Deliver Before Being Asked", "Build a Reputation Not Just Results", "Navigate Office Politics Cleanly"],
-    concepts: ["leverage", "systems-thinking", "long-term-thinking"],
+    concepts: ["leverage", "systems-thinking", "long-term-thinking", "leadership"],
     topics: [],
     chapters: []
   },
@@ -799,7 +799,7 @@ const BOOKS = [
     quote: "Everything rises and falls on leadership.",
     summary: "Maxwell's most influential work \u2014 21 principles of leadership drawn from decades of study and practice. His central thesis: leadership is influence, nothing more, nothing less. The laws include the Law of the Lid (leadership ability determines the ceiling on effectiveness), the Law of Process (leadership develops daily), and the Law of Connection (leaders touch hearts before they ask for hands).",
     ideas: ["Leadership Is Influence", "The Law of the Lid", "The Law of Process", "Leadership Develops Daily", "Connect Before You Direct", "The Law of Addition"],
-    concepts: ["systems-thinking", "identity", "leverage", "compounding"],
+    concepts: ["systems-thinking", "identity", "leverage", "compounding", "leadership"],
     topics: [],
     chapters: []
   },
@@ -813,7 +813,7 @@ const BOOKS = [
     quote: "The curse of knowledge: once you know something, it's hard to imagine not knowing it.",
     summary: "The Heath brothers analyze why some ideas survive and others die. Their framework: sticky ideas are Simple, Unexpected, Concrete, Credible, Emotional, and tell Stories (SUCCESs). The book's deepest insight is the curse of knowledge \u2014 the more you know about something, the harder it is to communicate it to those who don't.",
     ideas: ["The SUCCESs Framework", "The Curse of Knowledge", "Simple Core Message", "Unexpected Creates Curiosity", "Concrete Beats Abstract", "Stories Drive Action"],
-    concepts: ["leverage", "systems-thinking"],
+    concepts: ["leverage", "systems-thinking", "communication", "writing"],
     topics: [],
     chapters: []
   },
@@ -827,7 +827,7 @@ const BOOKS = [
     quote: "Buying a small business is a highly personal decision that requires honest self-assessment.",
     summary: "Two Harvard Business School professors make the academic case for search fund entrepreneurship \u2014 buying a small business rather than starting one. The book covers the full search fund process: the decision to search, sourcing deals, due diligence, deal structure, financing, and post-acquisition management. It is the most rigorous framework for small business acquisition available.",
     ideas: ["The Search Fund Process", "Self-Assessment First", "Deal Sourcing Strategy", "Due Diligence Framework", "Deal Structure and Financing", "Post-Acquisition 100 Days"],
-    concepts: ["ownership", "cashflow", "capital-allocation", "risk-asymmetry", "long-term-thinking"],
+    concepts: ["ownership", "cashflow", "capital-allocation", "risk-asymmetry", "long-term-thinking", "entrepreneurship"],
     topics: [],
     chapters: []
   },
@@ -841,7 +841,7 @@ const BOOKS = [
     quote: "The secret of good writing is to strip every sentence to its cleanest components.",
     summary: "The classic guide to nonfiction writing. Zinsser's principles are ruthless and timeless: simplicity, clarity, brevity, and humanity. Clutter is the enemy. Every word must earn its place. The writer's job is not to impress but to communicate, and the highest compliment a reader can pay is to keep reading.",
     ideas: ["Clutter Is the Enemy", "Strip to the Essentials", "Write to Express Not Impress", "Every Word Earns Its Place", "Voice Is Humanity on the Page", "Rewriting Is Writing"],
-    concepts: ["leverage", "systems-thinking"],
+    concepts: ["leverage", "systems-thinking", "communication", "writing"],
     topics: [],
     chapters: []
   }
