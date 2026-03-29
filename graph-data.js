@@ -29,7 +29,7 @@ const BOOKS = [
     quote: "Acquisition entrepreneurship is entrepreneurship \u2014 just with a head start.",
     summary: "Deibel reframes entrepreneurship entirely. Buying an existing business with real cash flow gives you proof of concept, existing customers, and operational infrastructure on day one. This is the intellectual foundation of small business acquisition strategy.",
     ideas: ["Acquisition Entrepreneurship", "SDE as a Valuation Tool", "The Wealth Certainty Spectrum", "Buy vs. Build Risk", "Search Fund Model"],
-    concepts: ["cashflow", "ownership", "risk-asymmetry", "capital-allocation", "long-term-thinking", "entrepreneurship"],
+    concepts: ["cashflow", "ownership", "risk-asymmetry", "capital-allocation", "long-term-thinking", "entrepreneurship", "acquisition", "negotiation"],
     topics: [],
     chapters: []
   },
@@ -43,7 +43,7 @@ const BOOKS = [
     quote: "The boring business is not a consolation prize. It is the point.",
     summary: "Sanchez popularizes the boring business thesis \u2014 unglamorous, cash-flowing Main Street businesses are better acquisition targets than tech-adjacent startups. Where Deibel gives the framework, Sanchez gives the operator's perspective on finding, buying, and scaling these businesses.",
     ideas: ["The Boring Business Thesis", "Cashflow Over Growth", "Seller Financing", "Owner-Dependent Risk"],
-    concepts: ["cashflow", "ownership", "risk-asymmetry", "capital-allocation", "compounding", "entrepreneurship"],
+    concepts: ["cashflow", "ownership", "risk-asymmetry", "capital-allocation", "compounding", "entrepreneurship", "acquisition"],
     topics: [],
     chapters: []
   },
@@ -57,7 +57,7 @@ const BOOKS = [
     quote: "Profit is an opinion. Cash is a fact.",
     summary: "Financial statements are not objective truth \u2014 they are constructed documents with built-in assumptions. Understanding those assumptions is the difference between a sophisticated acquirer and a naive one. Builds the literacy to read financials with appropriate skepticism.",
     ideas: ["The Art of Finance", "Accrual vs. Cash Accounting", "Working Capital", "Reading a Balance Sheet"],
-    concepts: ["cashflow", "capital-allocation", "systems-thinking", "risk-asymmetry", "decision-making"],
+    concepts: ["cashflow", "capital-allocation", "systems-thinking", "risk-asymmetry", "decision-making", "acquisition"],
     topics: [],
     chapters: []
   },
@@ -127,7 +127,7 @@ const BOOKS = [
     quote: "No deal is better than a bad deal.",
     summary: "Former FBI hostage negotiator reveals that all negotiation is emotional, not rational. Tactical empathy and calibrated questions are more powerful than logic. Directly applicable to acquisition deal-making.",
     ideas: ["Tactical Empathy", "Mirroring", "Calibrated Questions", "The Black Swan"],
-    concepts: ["risk-asymmetry", "systems-thinking", "communication", "decision-making"],
+    concepts: ["risk-asymmetry", "systems-thinking", "communication", "decision-making", "acquisition", "sales", "influence", "negotiation"],
     topics: [],
     chapters: []
   },
@@ -155,7 +155,7 @@ const BOOKS = [
     quote: "Build your business like you're going to franchise it.",
     summary: "Most small businesses fail because the owner is a technician who had an entrepreneurial seizure. The fix: build systems so the business runs without you.",
     ideas: ["Entrepreneur vs Technician vs Manager", "Work On vs In Your Business", "The Franchise Prototype"],
-    concepts: ["systems-thinking", "ownership", "leverage", "risk-asymmetry", "entrepreneurship"],
+    concepts: ["systems-thinking", "ownership", "leverage", "risk-asymmetry", "entrepreneurship", "acquisition"],
     topics: [],
     chapters: []
   },
@@ -183,7 +183,7 @@ const BOOKS = [
     quote: "Don't be in love with your company. Fall in love with the problem you're solving.",
     summary: "Building a sellable business is the same as building a good one. Warrillow argues that even if you never sell, building with the exit in mind forces better systems, clearer processes, and less owner-dependence.",
     ideas: ["Teachable Valuable Repeatable", "The Sellability Score", "Avoiding the Owner Trap", "SOPs as Equity"],
-    concepts: ["systems-thinking", "ownership", "cashflow", "risk-asymmetry", "entrepreneurship"],
+    concepts: ["systems-thinking", "ownership", "cashflow", "risk-asymmetry", "entrepreneurship", "acquisition"],
     topics: [],
     chapters: []
   },
@@ -211,7 +211,7 @@ const BOOKS = [
     quote: "Wind extinguishes a candle and energizes fire. Likewise with randomness and chaos: you want to use them, not hide from them.",
     summary: "Taleb introduces antifragility: beyond resilience or robustness. Fragile things break under stress. Robust things resist. Antifragile things get stronger. The goal is to be positioned so that disorder and volatility are net positive.",
     ideas: ["Fragile vs Robust vs Antifragile", "Via Negativa", "The Barbell Strategy", "Optionality", "Skin in the Game"],
-    concepts: ["risk-asymmetry", "long-term-thinking", "ownership", "leverage", "decision-making"],
+    concepts: ["risk-asymmetry", "long-term-thinking", "ownership", "leverage", "decision-making", "resilience"],
     topics: [],
     chapters: []
   },
@@ -267,7 +267,7 @@ const BOOKS = [
     quote: "The best VCs don\'t just pick winners. They help create them.",
     summary: "Bill Gurley, one of Silicon Valley\'s most respected venture capitalists and general partner at Benchmark, shares his framework for identifying and building extraordinary companies. Drawing on decades of investing in category-defining businesses, Gurley explores what separates truly great companies from merely good ones — and what founders and investors need to understand about the long game of building enduring value.",
     ideas: ["Category-Defining Businesses", "Long-Term Value Creation", "The Dangers of Unicorn Obsession", "Unit Economics Over Growth", "Sustainable Competitive Advantage", "What Great Boards Actually Do"],
-    concepts: ["long-term-thinking", "ownership", "risk-asymmetry", "entrepreneurship", "capital-allocation"],
+    concepts: ["long-term-thinking", "ownership", "risk-asymmetry", "entrepreneurship", "capital-allocation", "acquisition", "resilience"],
     topics: [],
     chapters: []
   },
@@ -309,7 +309,7 @@ const BOOKS = [
     quote: "The best writing anticipates what the reader needs, not what the writer wants to say.",
     summary: "Two behavioral scientists apply cognitive research to practical writing. The core insight: readers are always busier than writers assume. Every word that doesn't earn its place loses the reader. Less is almost always more, and structure does more work than style.",
     ideas: ["Less Is More", "Lead with the Ask", "Hierarchy of Information", "Design for Skimmers", "Cognitive Load in Writing"],
-    concepts: ["systems-thinking", "leverage", "communication", "writing"],
+    concepts: ["systems-thinking", "leverage", "communication", "writing-craft"],
     topics: [],
     chapters: []
   },
@@ -393,7 +393,7 @@ const BOOKS = [
     quote: "The most influential people in the world got there by helping others feel like they belong.",
     summary: "Behavioral scientist Jon Levy studies the science of belonging and influence. His thesis: the most connected people don't network \u2014 they create experiences that make others feel seen, invested, and part of something meaningful. The dinner table is more powerful than the conference room.",
     ideas: ["Belonging Over Networking", "The IKEA Effect in Relationships", "Influence Through Experience", "Community as Infrastructure", "Effortful Investment Creates Value"],
-    concepts: ["leverage", "long-term-thinking", "identity"],
+    concepts: ["leverage", "long-term-thinking", "identity", "sales", "influence"],
     topics: [],
     chapters: []
   },
@@ -407,7 +407,7 @@ const BOOKS = [
     quote: "I will form good habits and become their slave.",
     summary: "A parable structured around ten scrolls of wisdom on habit, persistence, love, and action. Mandino's central argument: all success is built on habits formed through daily repetition until they become automatic. The scrolls are designed to be read repeatedly \u2014 the repetition is the point.",
     ideas: ["Habits as Master", "Persistence as Strategy", "Love as a Sales Tool", "Act Now", "Each Day a New Life"],
-    concepts: ["identity", "compounding", "long-term-thinking", "habits-and-character"],
+    concepts: ["identity", "compounding", "long-term-thinking", "habits-and-character", "sales", "influence"],
     topics: [],
     chapters: []
   },
@@ -435,7 +435,7 @@ const BOOKS = [
     quote: "Hurry is the great enemy of spiritual life in our day.",
     summary: "Comer argues that the pace of modern life \u2014 chronic busyness, digital distraction, the tyranny of the urgent \u2014 is incompatible with a deep, meaningful existence. Drawing on ancient spiritual practices, he makes the case for intentional slowness, sabbath, silence, and simplicity as acts of resistance and formation.",
     ideas: ["Hurry as a Spiritual Problem", "Sabbath as Resistance", "Silence and Solitude", "Simplicity", "Formation Requires Pace"],
-    concepts: ["identity", "long-term-thinking", "systems-thinking", "habits-and-character"],
+    concepts: ["identity", "long-term-thinking", "systems-thinking", "habits-and-character", "resilience"],
     topics: [],
     chapters: []
   },
@@ -491,7 +491,7 @@ const BOOKS = [
     quote: "The biggest barrier to starting is the stories we tell ourselves about why we can't.",
     summary: "AppSumo founder Noah Kagan's playbook for validating a business idea in 48 hours before investing serious time or money. The core methodology: identify a customer, make an offer, collect money \u2014 in that order. Most entrepreneurs build before they validate. Kagan argues you can and should validate in a weekend.",
     ideas: ["Validate Before Building", "The Coffee Challenge", "Ask for the Sale", "Freedom Number", "Customer-First Entrepreneurship", "The 48-Hour Launch"],
-    concepts: ["risk-asymmetry", "leverage", "systems-thinking", "ownership", "entrepreneurship"],
+    concepts: ["risk-asymmetry", "leverage", "systems-thinking", "ownership", "entrepreneurship", "sales", "negotiation"],
     topics: [],
     chapters: []
   },
@@ -519,7 +519,7 @@ const BOOKS = [
     quote: "Enthusiasm is common. Endurance is rare.",
     summary: "Psychologist Angela Duckworth presents her research on what predicts success: not talent, not IQ, but grit \u2014 the combination of passion and perseverance for long-term goals. Talent multiplied by effort equals skill; skill multiplied by effort equals achievement. Effort counts twice, talent once.",
     ideas: ["Talent vs Effort Formula", "Passion as Direction", "Perseverance as Engine", "Growth Mindset Foundation", "Hard Thing Rule", "Grit Is Learnable"],
-    concepts: ["identity", "compounding", "long-term-thinking", "habits-and-character"],
+    concepts: ["identity", "compounding", "long-term-thinking", "habits-and-character", "resilience"],
     topics: [],
     chapters: []
   },
@@ -533,7 +533,7 @@ const BOOKS = [
     quote: "Character is not what you claim. It is what pressure reveals.",
     summary: "A framework for developing the character and resilience required for elite performance and leadership. Buren argues that mettle \u2014 the combination of courage, character, and competence under pressure \u2014 is forged through deliberate exposure to difficulty, not through comfort or theory. You become what you repeatedly do under fire.",
     ideas: ["Mettle as Forged Not Given", "Pressure Reveals Character", "Deliberate Discomfort", "Courage as a Skill", "Leadership Under Fire"],
-    concepts: ["identity", "long-term-thinking", "compounding", "habits-and-character"],
+    concepts: ["identity", "long-term-thinking", "compounding", "habits-and-character", "resilience"],
     topics: [],
     chapters: []
   },
@@ -547,7 +547,7 @@ const BOOKS = [
     quote: "You have power over your mind, not outside events. Realize this, and you will find strength.",
     summary: "The private journal of a Roman emperor \u2014 never intended for publication. Marcus Aurelius wrote to himself to maintain his Stoic practice: focus on what you control, accept what you don't, act virtuously regardless of outcome, and remember your mortality. The most powerful leadership philosophy ever written, and the author was arguably the most powerful person alive when he wrote it.",
     ideas: ["Control What You Control", "Memento Mori", "Virtue as the Highest Good", "The Present Moment", "Amor Fati", "The View from Above"],
-    concepts: ["identity", "long-term-thinking", "systems-thinking", "mental-models", "habits-and-character", "decision-making"],
+    concepts: ["identity", "long-term-thinking", "systems-thinking", "mental-models", "habits-and-character", "decision-making", "resilience"],
     topics: [],
     chapters: []
   },
@@ -561,7 +561,7 @@ const BOOKS = [
     quote: "If your emotional abilities aren't in hand, if you don't have self-awareness, if you are not able to manage your distressing emotions, if you can't have empathy and have effective relationships, then no matter how smart you are you are not going to get very far.",
     summary: "Goleman introduced EQ to mainstream consciousness: the ability to recognize, understand, and manage emotions \u2014 in yourself and others \u2014 predicts success more than IQ in most domains. The five components: self-awareness, self-regulation, motivation, empathy, and social skills. EQ is not fixed; it can be developed.",
     ideas: ["Self-Awareness as Foundation", "Self-Regulation Under Pressure", "Empathy as Intelligence", "The Amygdala Hijack", "EQ Is Developable", "Social Skills as Competence"],
-    concepts: ["identity", "systems-thinking", "leverage", "leadership", "communication"],
+    concepts: ["identity", "systems-thinking", "leverage", "leadership", "communication", "influence"],
     topics: [],
     chapters: []
   },
@@ -575,7 +575,7 @@ const BOOKS = [
     quote: "The single biggest problem in communication is the illusion that it has taken place.",
     summary: "A framework for handling high-stakes conversations where emotions run high, opinions differ, and the stakes matter. The core insight: most people either avoid crucial conversations or handle them poorly. The skills \u2014 creating safety, stating your path, exploring others' paths \u2014 can be learned and dramatically change outcomes in relationships, teams, and organizations.",
     ideas: ["Start with Heart", "Creating Safety", "The Pool of Shared Meaning", "STATE Your Path", "Explore Others' Paths", "Move to Action"],
-    concepts: ["systems-thinking", "identity", "leverage", "leadership", "communication", "decision-making"],
+    concepts: ["systems-thinking", "identity", "leverage", "leadership", "communication", "decision-making", "public-speaking", "influence", "negotiation"],
     topics: [],
     chapters: []
   },
@@ -589,7 +589,7 @@ const BOOKS = [
     quote: "Copy is salesmanship in print.",
     summary: "A practitioner's guide to writing copy that moves people to action. Shleyner distills his experience into principles: write for one person, lead with the problem, use specificity over generality, and treat every word as earning its place. Good copy is invisible \u2014 the reader doesn't notice it, they just act.",
     ideas: ["Write for One Person", "Lead with the Problem", "Specificity Over Generality", "The Job of Every Line", "Voice and Distinctiveness", "Edit to the Bone"],
-    concepts: ["leverage", "systems-thinking", "communication", "writing"],
+    concepts: ["leverage", "systems-thinking", "communication", "writing-craft", "public-speaking", "sales"],
     topics: [],
     chapters: []
   },
@@ -617,7 +617,7 @@ const BOOKS = [
     quote: "Spiritual transformation is not about trying harder. It is about training smarter.",
     summary: "Ortberg applies the same logic athletes use for physical training to spiritual formation. You don't try your way to transformation \u2014 you train for it through spiritual disciplines: silence, solitude, confession, service, celebration. The goal is not behavior modification but the renovation of the heart.",
     ideas: ["Training vs Trying", "Spiritual Disciplines as Training", "Soul Renovation", "Ruthless Elimination of Hurry", "Practicing the Presence", "Community as Formation Context"],
-    concepts: ["identity", "long-term-thinking", "compounding", "habits-and-character"],
+    concepts: ["identity", "long-term-thinking", "compounding", "habits-and-character", "resilience"],
     topics: [],
     chapters: []
   },
@@ -645,7 +645,7 @@ const BOOKS = [
     quote: "You can make more friends in two months by becoming genuinely interested in other people than you can in two years by trying to get other people interested in you.",
     summary: "The original relationship handbook \u2014 still the best. Carnegie's principles are simple and counter-intuitive: don't criticize, condemn, or complain; give honest appreciation; arouse in others an eager want. The book's durability comes from the fact that human nature hasn't changed. People want to feel important and understood, and whoever provides that wins.",
     ideas: ["Genuine Interest in Others", "The Only Way to Win an Argument", "Remember Names", "See From Their Perspective", "Let Others Feel the Idea Is Theirs", "Sincere Appreciation"],
-    concepts: ["leverage", "long-term-thinking", "identity", "communication"],
+    concepts: ["leverage", "long-term-thinking", "identity", "communication", "public-speaking", "sales", "influence", "negotiation"],
     topics: [],
     chapters: []
   },
@@ -687,7 +687,7 @@ const BOOKS = [
     quote: "Practice isn't the thing you do once you're good. It's the thing you do that makes you good.",
     summary: "Gladwell examines exceptional success and finds that individual talent explains far less than we think. What actually produces outliers: the 10,000-hour rule, birth month effects, cultural legacies, and the extraordinary importance of opportunity. Success is more sociological than psychological \u2014 it's about systems, timing, and access as much as effort.",
     ideas: ["The 10,000-Hour Rule", "Meaningful Work", "Accumulative Advantage", "Cultural Legacy", "The Matthew Effect", "Timing and Opportunity"],
-    concepts: ["compounding", "long-term-thinking", "systems-thinking"],
+    concepts: ["compounding", "long-term-thinking", "systems-thinking", "resilience"],
     topics: [],
     chapters: []
   },
@@ -729,7 +729,7 @@ const BOOKS = [
     quote: "Leadership is not about personality. It's about behavior.",
     summary: "Based on 30+ years of research on peak leadership moments, Kouzes and Posner identify five practices of exemplary leadership: model the way, inspire a shared vision, challenge the process, enable others to act, and encourage the heart. Leadership is not a position \u2014 it is a set of practices available to anyone willing to develop them.",
     ideas: ["Model the Way", "Inspire a Shared Vision", "Challenge the Process", "Enable Others to Act", "Encourage the Heart", "Leadership Is a Choice"],
-    concepts: ["systems-thinking", "identity", "leverage", "leadership"],
+    concepts: ["systems-thinking", "identity", "leverage", "leadership", "influence"],
     topics: [],
     chapters: []
   },
@@ -743,7 +743,7 @@ const BOOKS = [
     quote: "The chasm is the perilous journey from early market success to mainstream market penetration.",
     summary: "Moore's technology adoption lifecycle model identifies the gap between early adopters (who accept imperfect products for cutting-edge capabilities) and the early majority (who need proven solutions). Most technology companies die in this chasm. The solution: concentrate all resources on one beachhead market and win it completely before expanding.",
     ideas: ["Technology Adoption Lifecycle", "The Chasm", "Beachhead Strategy", "Whole Product Concept", "Early Adopters vs Early Majority", "Concentrate Force"],
-    concepts: ["risk-asymmetry", "leverage", "long-term-thinking", "entrepreneurship", "innovation-and-disruption"],
+    concepts: ["risk-asymmetry", "leverage", "long-term-thinking", "entrepreneurship", "innovation-and-disruption", "sales"],
     topics: [],
     chapters: []
   },
@@ -813,7 +813,7 @@ const BOOKS = [
     quote: "The curse of knowledge: once you know something, it's hard to imagine not knowing it.",
     summary: "The Heath brothers analyze why some ideas survive and others die. Their framework: sticky ideas are Simple, Unexpected, Concrete, Credible, Emotional, and tell Stories (SUCCESs). The book's deepest insight is the curse of knowledge \u2014 the more you know about something, the harder it is to communicate it to those who don't.",
     ideas: ["The SUCCESs Framework", "The Curse of Knowledge", "Simple Core Message", "Unexpected Creates Curiosity", "Concrete Beats Abstract", "Stories Drive Action"],
-    concepts: ["leverage", "systems-thinking", "communication", "writing"],
+    concepts: ["leverage", "systems-thinking", "communication", "writing-craft", "public-speaking", "sales", "influence"],
     topics: [],
     chapters: []
   },
@@ -827,7 +827,7 @@ const BOOKS = [
     quote: "Buying a small business is a highly personal decision that requires honest self-assessment.",
     summary: "Two Harvard Business School professors make the academic case for search fund entrepreneurship \u2014 buying a small business rather than starting one. The book covers the full search fund process: the decision to search, sourcing deals, due diligence, deal structure, financing, and post-acquisition management. It is the most rigorous framework for small business acquisition available.",
     ideas: ["The Search Fund Process", "Self-Assessment First", "Deal Sourcing Strategy", "Due Diligence Framework", "Deal Structure and Financing", "Post-Acquisition 100 Days"],
-    concepts: ["ownership", "cashflow", "capital-allocation", "risk-asymmetry", "long-term-thinking", "entrepreneurship"],
+    concepts: ["ownership", "cashflow", "capital-allocation", "risk-asymmetry", "long-term-thinking", "entrepreneurship", "acquisition", "negotiation"],
     topics: [],
     chapters: []
   },
@@ -841,7 +841,7 @@ const BOOKS = [
     quote: "The secret of good writing is to strip every sentence to its cleanest components.",
     summary: "The classic guide to nonfiction writing. Zinsser's principles are ruthless and timeless: simplicity, clarity, brevity, and humanity. Clutter is the enemy. Every word must earn its place. The writer's job is not to impress but to communicate, and the highest compliment a reader can pay is to keep reading.",
     ideas: ["Clutter Is the Enemy", "Strip to the Essentials", "Write to Express Not Impress", "Every Word Earns Its Place", "Voice Is Humanity on the Page", "Rewriting Is Writing"],
-    concepts: ["leverage", "systems-thinking", "communication", "writing"],
+    concepts: ["leverage", "systems-thinking", "communication", "writing-craft"],
     topics: [],
     chapters: []
   }
@@ -961,14 +961,6 @@ const CONCEPTS = [
     unifiedPrinciple: "Entrepreneurship is about creating value under conditions of uncertainty. The best entrepreneurs validate assumptions cheaply before committing resources, and stay close to the customer while building systems that work without them."
   },
   {
-    id: "writing",
-    label: "Writing & Communication",
-    quote: "The secret of good writing is to strip every sentence to its cleanest components. \u2014 Zinsser",
-    summary: "Writing is thinking made visible. The discipline of writing \u2014 removing clutter, finding the core message, structuring for the reader's attention \u2014 is the discipline of clear thinking. Writing well is not a talent; it is a skill built through deliberate practice and ruthless editing.",
-    books: ["on-writing-well", "writing-busy-readers", "very-good-copy", "made-to-stick"],
-    unifiedPrinciple: "Good writing is not about style \u2014 it is about clarity. Every word that does not earn its place costs the reader attention they will not spend. Simplicity is the hardest discipline and the highest achievement."
-  },
-  {
     id: "habits-and-character",
     label: "Habits & Character",
     quote: "We are what we repeatedly do. Excellence is not an act but a habit. \u2014 Aristotle",
@@ -991,6 +983,62 @@ const CONCEPTS = [
     summary: "The process of choosing between options under conditions of uncertainty, limited information, and cognitive bias. Good decision-making is a craft: it requires understanding your own biases, using multiple mental models, thinking in probabilities rather than certainties, and inverting the problem before solving it.",
     books: ["great-mental-models-1", "great-mental-models-2", "great-mental-models-3", "great-mental-models-4", "thinking-fast-slow", "poor-charlies-almanack", "basic-economics", "meditations", "never-split", "crucial-conversations"],
     unifiedPrinciple: "Most poor decisions are not caused by bad information \u2014 they are caused by flawed thinking processes. Build decision frameworks before you need them. Slow down the important decisions; most urgency is manufactured."
+  },
+  {
+    id: "writing-craft",
+    label: "Writing",
+    quote: "The secret of good writing is to strip every sentence to its cleanest components. \u2014 Zinsser",
+    summary: "Writing is thinking made visible. The discipline of writing \u2014 removing clutter, finding the core message, structuring for the reader \u2014 is the discipline of clear thinking. Good writing is not about style; it is about clarity. Every word that does not earn its place costs the reader attention they will not spend again.",
+    books: ["on-writing-well", "writing-busy-readers", "very-good-copy", "made-to-stick"],
+    unifiedPrinciple: "Strip to the essential. Write for the reader, not the writer. The best writing is invisible \u2014 the reader doesn't notice it, they just understand."
+  },
+  {
+    id: "public-speaking",
+    label: "Public Speaking",
+    quote: "There are only two types of speakers in the world: the nervous and the liars. \u2014 Mark Twain",
+    summary: "The ability to communicate ideas clearly and compellingly to a room \u2014 whether five people or five thousand. Public speaking is not about performance; it is about connection and clarity. The best speakers don't impress audiences \u2014 they make audiences feel something and understand something they didn't before.",
+    books: ["made-to-stick", "how-to-win-friends", "crucial-conversations", "very-good-copy"],
+    unifiedPrinciple: "Structure beats style. A clear idea poorly delivered beats a polished delivery of nothing. Know your one point before you walk in the room."
+  },
+  {
+    id: "acquisition",
+    label: "Acquisition",
+    quote: "Buying a business is a highly personal decision that requires honest self-assessment. \u2014 Ruback & Yudkoff",
+    summary: "The practice of purchasing existing businesses rather than building from scratch \u2014 changing the nature of entrepreneurial risk from existential to operational. Acquisition is not the safe path; it is the knowable-risk path. The diligence process converts unknown future risk into assessable past risk, which is a fundamentally different and more manageable position.",
+    books: ["buy-build", "main-street", "buying-small-business", "financial-intelligence", "e-myth", "built-to-sell", "never-split-difference", "runnin-down-a-dream"],
+    unifiedPrinciple: "Buy existing cash flow, improve the systems, grow from a proven base. The acquisition is not the destination \u2014 it is the platform."
+  },
+  {
+    id: "resilience",
+    label: "Resilience",
+    quote: "Enthusiasm is common. Endurance is rare. \u2014 Angela Duckworth",
+    summary: "The capacity to absorb difficulty, adapt under pressure, and continue moving forward without losing essential character. Resilience is not the absence of struggle \u2014 it is the quality of response to it. It is forged through repeated exposure to difficulty, not through comfort. The most resilient people are not those who feel no fear or pain, but those who act anyway.",
+    books: ["grit", "meditations", "forging-mettle", "antifragile", "ruthless-elimination-hurry", "running-down-a-dream", "life-youve-always-wanted", "outliers"],
+    unifiedPrinciple: "Resilience is built, not inherited. Consistent action under difficulty \u2014 not once, but as a repeated practice \u2014 is what produces the capacity to endure what others cannot."
+  },
+  {
+    id: "sales",
+    label: "Sales",
+    quote: "The best salespeople are not selling. They are helping people solve problems.",
+    summary: "The discipline of moving people from interest to commitment \u2014 whether selling a product, an idea, a vision, or yourself. Great sales is not persuasion in the manipulative sense; it is the alignment of a genuine solution with a genuine need, communicated so clearly that the decision becomes obvious. Every leader, entrepreneur, and professional is always selling something.",
+    books: ["never-split-difference", "how-to-win-friends", "greatest-salesman", "made-to-stick", "million-dollar-weekend", "very-good-copy", "crossing-chasm", "youre-invited"],
+    unifiedPrinciple: "Sales is not about closing \u2014 it is about understanding. The best sale feels like a natural conclusion to a conversation where the customer felt genuinely heard."
+  },
+  {
+    id: "influence",
+    label: "Influence",
+    quote: "You can make more friends in two months by becoming genuinely interested in other people than in two years by trying to get them interested in you. \u2014 Carnegie",
+    summary: "The ability to change what people think, feel, or do \u2014 without force or formal authority. Influence is the currency of leadership, sales, relationships, and ideas. The most durable influence comes not from manipulation but from genuine interest in others, consistent credibility over time, and the ability to frame ideas in terms of what the other person already cares about.",
+    books: ["how-to-win-friends", "never-split-difference", "made-to-stick", "youre-invited", "crucial-conversations", "emotional-intelligence", "greatest-salesman", "leadership-challenge"],
+    unifiedPrinciple: "Influence flows toward those who give value first, listen most, and frame everything in terms of the other person's interests. Credibility is the foundation \u2014 without it, every technique is just manipulation."
+  },
+  {
+    id: "negotiation",
+    label: "Negotiation",
+    quote: "No deal is better than a bad deal. \u2014 Chris Voss",
+    summary: "The process of reaching agreements where interests differ \u2014 in business deals, acquisitions, salary discussions, partnerships, and everyday decisions. Great negotiation is not about winning; it is about creating agreements that hold. The biggest shift in modern negotiation theory: logic loses to emotion. Tactical empathy, calibrated questions, and the ability to make the other side feel heard are more powerful than any rational argument.",
+    books: ["never-split-difference", "crucial-conversations", "how-to-win-friends", "buying-small-business", "buy-build", "million-dollar-weekend"],
+    unifiedPrinciple: "All negotiation is emotional. Get to the other side's actual interests \u2014 not their stated positions \u2014 and you've already won half the negotiation before you've said a word about your own."
   }
 ];
 
@@ -1034,9 +1082,7 @@ function buildGraphData() {
     });
   });
 
-  TOPICS.forEach(t => {
-    nodes.push({ id: t.id, type: "topic", label: t.label, displayLabel: t.label });
-  });
+  // Topics omitted from graph nodes — concepts serve this role at scale
 
   return { nodes, links };
 }
