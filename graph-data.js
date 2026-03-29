@@ -335,8 +335,8 @@ const BOOKS=[
     "year": 2022,
     "rating": 5,
     "status": "read",
-    "quote": "The best VCs don't just pick winners. They help create them.",
-    "summary": "Bill Gurley, one of Silicon Valley's most respected venture capitalists and general partner at Benchmark, shares his framework for identifying and building extraordinary companies. Drawing on decades of investing in category-defining businesses, Gurley explores what separates truly great companies from merely good ones — and what founders and investors need to understand about the long game of building enduring value.",
+    "quote": "Life is a use-it or lose-it proposition",
+    "summary": "Most career advice tells you to be strategic. Gurley argues strategy without passion is a trap.\nBuilt from three case studies — Bobby Knight, Bob Dylan, and Danny Meyer — the book identifies a pattern hiding in plain sight: the people who build extraordinary careers aren’t the ones who optimized for prestige or safety. They’re the ones who became obsessed, found the people already doing what they loved, and outlearned everyone around them.\nKnight befriended the five best basketball minds on the East Coast before he needed them. Dylan hitchhiked 1,200 miles to find Woody Guthrie. Meyer spent every college weekend eating in New York City because that’s just what he did. None of it looked strategic from the outside. All of it compounded.\nThe five principles Gurley draws out: pick what you’re genuinely passionate about, be insatiable about learning, build real mentor and peer relationships, give credit freely, and pay it forward.\nThe deeper argument — especially relevant now — is that a generic path is increasingly dangerous. The candidate who builds a unique, intentional career becomes irreplaceable. The one who follows the default script becomes replaceable by default.\nLife is a use or lose it proposition. You only get one path. Might as well run it toward something that matters to you.",
     "ideas": [
       "Category-Defining Businesses",
       "Long-Term Value Creation",
