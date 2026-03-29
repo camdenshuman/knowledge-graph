@@ -349,14 +349,55 @@ const BOOKS=[
       "long-term-thinking",
       "ownership",
       "risk-asymmetry",
-      "entrepreneurship",
       "capital-allocation",
+      "leadership",
+      "entrepreneurship",
       "acquisition",
-      "resilience",
-      "leadership"
+      "resilience"
     ],
-    "topics": [],
-    "chapters": []
+    "chapters": [
+      {
+        "title": "Step off the Conveyor Belt",
+        "ideas": "“Life is a use-it or lose-it proposition”…\n\nPrinciple One: Chase your Curiosity:\n\n“Read as much as you possibly can”… the more you read, the more you will see how ideas bounce off each other in your mind.”\n\nPrinciple Two: Hone your Craft:\n\n4 types of learning:\n 1. Learn the History of your chosen field.\n 2. Commit to learning continuously\n 3. Go deep in a specialized, unique way\n 4. Learn from outside your field\n\nPrinciple Three: Develop Mentors in your Field:\n\n“Why relearn things others already learned the hard way?”\n\nPrinciple Four: Embrace your Peers:\n\n“Think of a strong peer network as a strategic unlock. If everyone is willing to put in their time and do the work, those connections — and everything that comes with them — raise the tide of the group.”\n\nPrinciple Five: Go where the Action is:\n\n“You’re surrounded by people who care about the same things. That matters.”\n\nPrinciple Six: Learning from the Legends\n\nPrinciple Seven: Always give back:\n\n“Real career success is communal.“",
+        "notes": ""
+      },
+      {
+        "title": "Principle One: Chase your Curiosity",
+        "ideas": "“Read as much as you possibly can”… the more you read, the more you will see how ideas bounce off each other in your mind.”",
+        "notes": ""
+      },
+      {
+        "title": "Principle Two: Hone your Craft",
+        "ideas": "4 types of learning:\n 1. Learn the History of your chosen field.\n 2. Commit to learning continuously\n 3. Go deep in a specialized, unique way\n 4. Learn from outside your field",
+        "notes": ""
+      },
+      {
+        "title": "Principle Three: Develop Mentors in your Field",
+        "ideas": "“Why relearn things others already learned the hard way?”",
+        "notes": ""
+      },
+      {
+        "title": "Principle Four: Embrace your Peers",
+        "ideas": "“Think of a strong peer network as a strategic unlock. If everyone is willing to put in their time and do the work, those connections — and everything that comes with them — raise the tide of the group.”",
+        "notes": ""
+      },
+      {
+        "title": "Principle Five: Go where the Action is",
+        "ideas": "“You’re surrounded by people who care about the same things. That matters.”",
+        "notes": ""
+      },
+      {
+        "title": "Principle Six: Learning from the Legends",
+        "ideas": "",
+        "notes": ""
+      },
+      {
+        "title": "Principle Seven: Always give back",
+        "ideas": "“Real career success is communal.“",
+        "notes": ""
+      }
+    ],
+    "topics": []
   },
   {
     "id": "culture-code",
@@ -1478,7 +1519,8 @@ const CONCEPTS=[
       "ceo-excellence",
       "forging-mettle",
       "meditations",
-      "buying-small-business"
+      "buying-small-business",
+      "runnin-down-a-dream"
     ],
     "unifiedPrinciple": "Long-term thinking is a structural advantage created by extending your time horizon beyond what most people can sustain. The longer your time horizon, the fewer competitors you have for the same opportunity."
   },
@@ -1495,7 +1537,8 @@ const CONCEPTS=[
       "ceo-excellence",
       "billion-dollar-brand-club",
       "personal-mba",
-      "buying-small-business"
+      "buying-small-business",
+      "runnin-down-a-dream"
     ],
     "unifiedPrinciple": "The path from income to wealth runs through ownership. Ownership converts active income potential into passive asset value. The career builds the skills; the acquisition deploys them."
   },
@@ -1531,7 +1574,8 @@ const CONCEPTS=[
       "great-mental-models-4",
       "basic-economics",
       "billion-dollar-brand-club",
-      "buying-small-business"
+      "buying-small-business",
+      "runnin-down-a-dream"
     ],
     "unifiedPrinciple": "Good risk management: understand the nature of the risk, ensure downside survival, position for asymmetric upside, concentrate where your information advantage is greatest. The worst position: unlimited downside, capped upside."
   },
@@ -1619,7 +1663,8 @@ const CONCEPTS=[
       "billion-dollar-brand-club",
       "personal-mba",
       "financial-literacy-managers",
-      "buying-small-business"
+      "buying-small-business",
+      "runnin-down-a-dream"
     ],
     "unifiedPrinciple": "Capital allocation determines whether the same income produces dramatically different long-term wealth. Two people with identical earnings — one into assets, one into consumption — have radically different net worths in 20 years."
   },
@@ -1693,7 +1738,8 @@ const CONCEPTS=[
       "crossing-chasm",
       "innovators-dilemma",
       "no-rules-rules",
-      "buying-small-business"
+      "buying-small-business",
+      "runnin-down-a-dream"
     ],
     "unifiedPrinciple": "Entrepreneurship is about creating value under conditions of uncertainty. The best entrepreneurs validate assumptions cheaply before committing resources, and stay close to the customer while building systems that work without them."
   },
@@ -1802,7 +1848,8 @@ const CONCEPTS=[
       "forging-mettle",
       "ruthless-elimination-hurry",
       "running-down-a-dream",
-      "life-youve-always-wanted"
+      "life-youve-always-wanted",
+      "runnin-down-a-dream"
     ],
     "unifiedPrinciple": "Resilience is built, not inherited. Consistent action under difficulty — not once, but as a repeated practice — is what produces the capacity to endure what others cannot."
   },
