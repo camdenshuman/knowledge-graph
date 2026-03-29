@@ -425,6 +425,11 @@ code{background:var(--sf);padding:1px 6px;border-radius:3px;font-size:12px;borde
         </div>
         <div class="fg fsp"><label>Key Quote</label><input class="fi" id="b-quote" placeholder="The single best line from the book" /></div>
         <div class="fg fsp"><label>Summary — Why This Book Matters</label><textarea class="fta" id="b-summary" placeholder="What is the core argument? Why does it matter to you personally?"></textarea></div>
+        <div class="fg fsp"><label>Amazon Affiliate URL <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;color:var(--di)">— paste your affiliate link here</span></label><input class="fi" id="b-amazon" placeholder="https://www.amazon.com/dp/ASIN?tag=YOUR-TAG" /></div>
+        <div class="fg fsp">
+          <label>Camden's Connection <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;color:var(--di)">— how does this book connect to your life, work, or other ideas?</span></label>
+          <textarea class="fta" id="b-camden" placeholder="e.g. This book directly shaped how I think about the TX-1 acquisition pipeline. The SDE framework is the lens I use when I look at every deal..."></textarea>
+        </div>
         <div class="fg fsp">
           <label>Key Ideas <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;color:var(--di)">— press Enter after each</span></label>
           <div class="tbox" id="tbox"><input class="tinput" id="tinput" placeholder="Type an idea, press Enter…" /></div>
@@ -735,6 +740,8 @@ function openEditBook(i){
   document.getElementById('b-year').value=b.year||'';
   document.getElementById('b-quote').value=b.quote||'';
   document.getElementById('b-summary').value=b.summary||'';
+  document.getElementById('b-amazon').value=b.amazonUrl||'';
+  document.getElementById('b-camden').value=b.camdenNote||'';
   document.getElementById('b-status').value=b.status||'read';
   setStars(b.rating||0);
   document.getElementById('bm-note').textContent='ID: '+b.id;
