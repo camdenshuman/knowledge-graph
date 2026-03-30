@@ -1483,6 +1483,20 @@ const BOOKS=[
     ],
     "topics": [],
     "chapters": []
+  },
+  {
+    "id": "clear-thinking",
+    "title": "Clear Thinking",
+    "author": "Shane Parrish",
+    "year": 2023,
+    "rating": 5,
+    "status": "read",
+    "quote": "The quality of your life is determined by the quality of your thinking.",
+    "summary": "Parrish's most practical book — less about mental models and more about the invisible forces that hijack your thinking before you even realize a decision is being made. He identifies four default enemies: the emotion default, the ego default, the social default, and the inertia default. These are the autopilot patterns that make most decisions for us. The book then builds a positive framework: how to create space for clear thinking, how to define the problem correctly before solving it, and how to build the kind of judgment that makes great decisions feel almost automatic. Where the Mental Models series teaches you what to think with, Clear Thinking teaches you how to think when it matters most.",
+    "ideas": ["The Four Default Enemies", "The Emotion Default", "The Ego Default", "The Social Default", "The Inertia Default", "Creating Space to Think", "Define the Problem Before Solving It", "Judgment Is Built Not Born"],
+    "concepts": ["decision-making", "mental-models", "systems-thinking", "identity", "habits-and-character", "risk-asymmetry"],
+    "topics": [],
+    "chapters": []
   }
 ];
 
