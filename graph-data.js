@@ -1,5 +1,5 @@
 // Camden's Knowledge Graph — graph-data.js
-// Generated 2026-03-29
+// Generated 2026-03-30
 
 const GRAPH_VERSION="1.0.0";
 
@@ -332,7 +332,7 @@ const BOOKS=[
     "id": "runnin-down-a-dream",
     "title": "Runnin' Down a Dream",
     "author": "Bill Gurley",
-    "year": 2022,
+    "year": 2026,
     "rating": 5,
     "status": "read",
     "quote": "Life is a use-it or lose-it proposition",
